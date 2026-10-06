@@ -262,34 +262,6 @@
     background: rgb(99 90 114 / 18%);
   }
 
-  .approach-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-2);
-    padding-inline: var(--page-gutter);
-  }
-
-  .approach {
-    padding: var(--space-4);
-    border: 1px solid rgb(157 145 144 / 24%);
-    border-radius: var(--radius-surface);
-    background: var(--color-card);
-  }
-
-  .approach h3 {
-    margin-block-start: var(--space-2);
-  }
-
-  .approach > p:last-child {
-    margin-block-start: var(--space-3);
-    color: var(--color-text-muted);
-  }
-
-  .approach--cozy {
-    border-color: var(--color-active);
-    background: rgb(99 90 114 / 34%);
-  }
-
   .benefits {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -867,9 +839,6 @@
       grid-template-columns: 1fr;
     }
     .benefits {
-      grid-template-columns: 1fr;
-    }
-    .approach-grid {
       grid-template-columns: 1fr;
     }
     .benefit {

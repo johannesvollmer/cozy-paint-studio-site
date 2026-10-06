@@ -21,41 +21,6 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 const page = t.pages.home;
 const de = locale === "de";
-const approaches = de
-  ? [
-      [
-        "Die meisten Pixel-Malprogramme",
-        "Organische Spuren, feste Auflösung",
-        "Sie können sich wie Farbe anfühlen — verlangen aber vorab eine Auflösung. Zoomst du weit genug hinein, werden gezackte Kanten sichtbar.",
-      ],
-      [
-        "Die meisten Vektor-Zeichenprogramme",
-        "Saubere Skalierung, konstruierte Spuren",
-        "Sie bleiben in jeder Größe scharf — doch ihre Pinsel fühlen sich oft geometrisch statt organisch an.",
-      ],
-      [
-        "Cozy Paint Studio",
-        "Organisch und skalierbar",
-        "Programmierbare, organische Pinsel auf einer Leinwand, die nicht an eine feste Pixelauflösung gebunden ist.",
-      ],
-    ]
-  : [
-      [
-        "Most pixel-painting apps",
-        "Organic marks, fixed resolution",
-        "They can feel like paint—but ask you to choose a resolution up front. Zoom in far enough, and jagged edges show.",
-      ],
-      [
-        "Most vector-drawing apps",
-        "Clean scaling, constructed marks",
-        "They stay crisp at every size—but their brushes often feel geometric rather than organic.",
-      ],
-      [
-        "Cozy Paint Studio",
-        "Organic and scalable",
-        "Programmable, organic brushes on a canvas that is not bound to one fixed pixel resolution.",
-      ],
-    ];
 const benefits = de
   ? [
       [
@@ -147,23 +112,6 @@ const benefits = de
           : "Digital painting apps have become remarkably good at imitating pigment, yet they still ask you to choose a fixed pixel grid up front. Cozy Paint Studio removes that limit while keeping the feel of pixel-based painting: expressive, textured marks on an endless canvas you can keep zooming into and painting on. This is not a surgical Bézier-shape editor. It gets as messy as you want it to—and I love that."}
       </p>
     </div>
-  </section>
-
-  <section
-    class="approach-grid section-space"
-    aria-label={
-      de
-        ? "Vergleich von Pixel, Vektor und Cozy Paint Studio"
-        : "Pixel, vector, and Cozy Paint Studio compared"
-    }
-  >
-    {approaches.map(([label, heading, body], index) => (
-      <article class:list={["approach", { "approach--cozy": index === 2 }]}>
-        <p class="eyebrow">{label}</p>
-        <h3>{heading}</h3>
-        <p>{body}</p>
-      </article>
-    ))}
   </section>
 
   <section

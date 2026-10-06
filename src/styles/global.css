@@ -237,9 +237,10 @@
     box-shadow: var(--shadow-raised);
   }
 
-  .hero-visual img {
+  .hero-visual video {
+    display: block;
     inline-size: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1;
     object-fit: cover;
     object-position: center;
   }
@@ -260,6 +261,22 @@
 
   .statement {
     background: rgb(99 90 114 / 18%);
+  }
+
+  .difference-visual {
+    grid-column: 2;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: clamp(1.25rem, 3vw, 3rem);
+    background: var(--color-ground-deep);
+    box-shadow: var(--shadow-raised);
+  }
+
+  .difference-visual video {
+    display: block;
+    inline-size: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
   }
 
   .benefits {
@@ -834,6 +851,9 @@
 
     .landing-hero {
       min-block-size: auto;
+    }
+    .difference-visual {
+      grid-column: 1;
     }
     .color-section {
       grid-template-columns: 1fr;

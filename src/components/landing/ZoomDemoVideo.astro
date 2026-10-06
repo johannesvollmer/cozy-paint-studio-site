@@ -1,0 +1,58 @@
+---
+import { getImage } from "astro:assets";
+import zoomDemoMp4 from "../../assets/difference/zoom-demo.mp4";
+import zoomDemoPoster from "../../assets/difference/zoom-demo-poster.jpg";
+import zoomDemoWebm from "../../assets/difference/zoom-demo.webm";
+import type { Locale } from "../../config/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const poster = await getImage({
+  src: zoomDemoPoster,
+  format: "webp",
+  quality: 55,
+  width: 1080,
+});
+---
+
+<video
+  aria-label={
+    locale === "de"
+      ? "Cozy Paint Studio demonstriert das stufenlose Zoomen auf der grenzenlosen Leinwand"
+      : "Cozy Paint Studio demonstrating continuous zoom on the endless canvas"
+  }
+  controls
+  controlslist="nodownload noremoteplayback"
+  disablepictureinpicture
+  loop
+  muted
+  playsinline
+  poster={poster.src}
+  preload="metadata"
+  data-zoom-demo
+>
+  <source src={zoomDemoWebm} type="video/webm" />
+  <source src={zoomDemoMp4} type="video/mp4" />
+</video>
+
+<script>
+  const zoomDemo = document.querySelector<HTMLVideoElement>("[data-zoom-demo]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (zoomDemo && !reducedMotion.matches && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          void zoomDemo.play().catch(() => null);
+        } else {
+          zoomDemo.pause();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(zoomDemo);
+  }
+</script>

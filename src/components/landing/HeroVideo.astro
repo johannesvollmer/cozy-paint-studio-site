@@ -1,0 +1,49 @@
+---
+import { getImage } from "astro:assets";
+import appleHeroMp4 from "../../assets/hero/apple-hero.mp4";
+import appleHeroPoster from "../../assets/hero/apple-hero-poster.jpg";
+import appleHeroWebm from "../../assets/hero/apple-hero.webm";
+import type { Locale } from "../../config/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const de = locale === "de";
+const poster = await getImage({
+  src: appleHeroPoster,
+  format: "webp",
+  quality: 55,
+  width: 1080,
+});
+---
+
+<video
+  aria-label={
+    de
+      ? "Cozy Paint Studio beim Malen eines roten Apfels auf der grenzenlosen Leinwand"
+      : "Cozy Paint Studio painting a red apple on the endless canvas"
+  }
+  autoplay
+  controls
+  controlslist="nodownload noremoteplayback"
+  disablepictureinpicture
+  loop
+  muted
+  playsinline
+  poster={poster.src}
+  preload="metadata"
+  data-hero-video
+>
+  <source src={appleHeroWebm} type="video/webm" />
+  <source src={appleHeroMp4} type="video/mp4" />
+</video>
+
+<script>
+  const heroVideo = document.querySelector<HTMLVideoElement>("[data-hero-video]");
+  if (heroVideo && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    heroVideo.pause();
+    heroVideo.removeAttribute("autoplay");
+  }
+</script>

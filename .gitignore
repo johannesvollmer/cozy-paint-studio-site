@@ -3,4 +3,6 @@ dist/
 .astro/
 .npm-cache/
 .pnpm-store/
+/src/assets/hero/apple-hero-source.mp4
+/src/assets/difference/zoom-demo-source.mp4
 .DS_Store

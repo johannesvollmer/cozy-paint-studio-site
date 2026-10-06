@@ -1,14 +1,17 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroVideo from "./HeroVideo.astro";
+import ZoomDemoVideo from "./ZoomDemoVideo.astro";
 import ReleaseAction from "../ui/ReleaseAction.astro";
 import { Image } from "astro:assets";
-import appCanvasLandscape from "../../assets/screenshots/app-canvas-landscape.png";
-import appCanvasPortrait from "../../assets/screenshots/app-canvas-portrait.png";
-import appCanvasTall from "../../assets/screenshots/app-canvas-tall.png";
-import appCanvasWide from "../../assets/screenshots/app-canvas-wide.png";
-import brushSelectionFull from "../../assets/screenshots/brush-selection-full.png";
-import colorPickerColor from "../../assets/screenshots/color-picker-color.png";
-import colorPickerLuminance from "../../assets/screenshots/color-picker-luminance.png";
+import {
+  appCanvasLandscape,
+  appCanvasPortrait,
+  appCanvasTall,
+  brushSelectionFull,
+  colorPickerColor,
+  colorPickerLuminance,
+} from "../../assets/screenshots";
 import type { Locale } from "../../config/site";
 import { releaseChannel } from "../../config/release";
 import { routeFor } from "../../i18n/routes";
@@ -79,25 +82,9 @@ const benefits = de
       </p>
     </div>
     <figure class="hero-visual">
-      <Image
-        src={appCanvasWide}
-        alt={
-          de
-            ? "Cozy Paint Studio mit einem gemalten roten Apfel auf der grenzenlosen Leinwand"
-            : "Cozy Paint Studio showing a painted red apple on the endless canvas"
-        }
-        format="webp"
-        quality={62}
-        width={1600}
-        widths={[720, 1080, 1600, 2200]}
-        sizes="(max-width: 56rem) 100vw, 56vw"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
+      <HeroVideo {locale} />
     </figure>
   </section>
-
   <section id="why-cozy" class="statement section-space content-grid">
     <p class="section-index">01 / {de ? "Der Unterschied" : "The difference"}</p>
     <div>
@@ -112,6 +99,9 @@ const benefits = de
           : "Digital painting apps have become remarkably good at imitating pigment, yet they still ask you to choose a fixed pixel grid up front. Cozy Paint Studio removes that limit while keeping the feel of pixel-based painting: expressive, textured marks on an endless canvas you can keep zooming into and painting on. This is not a surgical Bézier-shape editor. It gets as messy as you want it to—and I love that."}
       </p>
     </div>
+    <figure class="difference-visual">
+      <ZoomDemoVideo {locale} />
+    </figure>
   </section>
 
   <section

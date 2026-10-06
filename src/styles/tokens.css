@@ -1,0 +1,60 @@
+@layer tokens {
+  :root {
+    color-scheme: dark;
+
+    --font-body: "Iosevka Charon Mono", ui-monospace, "Cascadia Mono", monospace;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --text-small: clamp(0.78rem, 0.74rem + 0.15vw, 0.9rem);
+    --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.2rem);
+    --text-lead: clamp(1.18rem, 1rem + 0.7vw, 1.65rem);
+    --text-h2: clamp(2rem, 1.3rem + 3vw, 4.5rem);
+    --text-hero: clamp(3.1rem, 1.5rem + 7vw, 8.5rem);
+
+    --color-ground: #454447;
+    --color-ground-deep: #29282b;
+    --color-card: rgb(47 30 59 / 30%);
+    --color-control: rgb(99 90 114 / 50%);
+    --color-engaged: #635a72;
+    --color-ink-warm: rgb(95 64 61 / 40%);
+    --color-ink-purple: rgb(93 68 91 / 40%);
+    --color-ink-olive: rgb(129 117 96 / 40%);
+    --color-hover: #695353;
+    --color-active: #ddbfbf;
+    --color-outline: rgb(221 191 191 / 60%);
+    --color-text: #fff;
+    --color-text-muted: #c4c0c3;
+    --color-text-decorative: #929292;
+    --color-rail: #7f797d;
+    --color-divider: #9d9190;
+    --color-picker-neutral: #636363;
+
+    --space-1: clamp(0.5rem, 0.45rem + 0.2vw, 0.75rem);
+    --space-2: clamp(0.75rem, 0.65rem + 0.4vw, 1.25rem);
+    --space-3: clamp(1rem, 0.8rem + 0.8vw, 2rem);
+    --space-4: clamp(1.5rem, 1rem + 2vw, 3.5rem);
+    --space-section: clamp(4rem, 2.5rem + 6vw, 10rem);
+    --page-gutter: clamp(1rem, 0.35rem + 3vw, 4.5rem);
+    --reading-measure: 68ch;
+
+    --radius-content: 0.5rem;
+    --radius-control: 0.9rem;
+    --radius-surface: 1rem;
+    --radius-track: 1.1rem;
+    --shadow-control: 0 0.25rem 0.95rem rgb(0 0 0 / 15%);
+    --shadow-raised: 0 1rem 3rem rgb(0 0 0 / 25%);
+
+    --focus-color: #fff3a8;
+    --focus-width: 0.2rem;
+    --focus-offset: 0.25rem;
+    --target-min: 2.75rem;
+    --motion-fast: 140ms;
+    --motion-medium: 260ms;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --halftone-spacing: 0.685rem;
+    --halftone-dot-radius: calc(var(--halftone-spacing) * 0.125);
+    --halftone-row-offset: var(--halftone-spacing);
+    --halftone-tile-height: calc(var(--halftone-spacing) * 2);
+  }
+}

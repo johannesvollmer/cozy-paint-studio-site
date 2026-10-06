@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": {
+    "correctness": "error",
+    "pedantic": "warn",
+    "perf": "error",
+    "suspicious": "error"
+  },
+  "env": {
+    "astro": true,
+    "builtin": true,
+    "node": true
+  },
+  "ignorePatterns": [".astro/**", "dist/**", "node_modules/**"],
+  "options": {
+    "denyWarnings": true,
+    "reportUnusedDisableDirectives": "error"
+  },
+  "plugins": ["import", "oxc", "typescript", "unicorn"],
+  "rules": {
+    "import/no-unassigned-import": [
+      "error",
+      {
+        "allow": ["**/*.css"]
+      }
+    ]
+  }
+}

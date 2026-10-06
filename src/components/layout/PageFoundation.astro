@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { Locale } from "../../config/site";
+import { useTranslations } from "../../i18n";
+import type { RouteKey } from "../../i18n/routes";
+import type { Translation } from "../../i18n/types";
+
+interface Props {
+  locale: Locale;
+  route: Exclude<RouteKey, "privacy" | "legalNotice">;
+}
+
+const { locale, route } = Astro.props;
+const page: Translation["pages"][typeof route] = useTranslations(locale).pages[route];
+---
+
+<BaseLayout {locale} {route} title={page.title} description={page.description}>
+  <section class="foundation-hero section-space">
+    {page.eyebrow && <p class="eyebrow">{page.eyebrow}</p>}
+    <h1>{page.heading}</h1>
+    <p class="lead">{page.intro}</p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,77 @@
+---
+import "@fontsource/iosevka-charon-mono/latin-400.css";
+import "@fontsource/iosevka-charon-mono/latin-500.css";
+import SiteFooter from "../components/layout/SiteFooter.astro";
+import SiteHeader from "../components/layout/SiteHeader.astro";
+import { SITE, type Locale } from "../config/site";
+import { localizedRoutes, type RouteKey } from "../i18n/routes";
+import { useTranslations } from "../i18n";
+import "../styles/global.css";
+import "../styles/utilities.css";
+import "../styles/print.css";
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+  title: string;
+  description: string;
+  pageClass?: string;
+  canonicalPath?: string;
+  includeAlternates?: boolean;
+  noindex?: boolean;
+}
+
+const {
+  locale,
+  route,
+  title,
+  description,
+  pageClass,
+  canonicalPath,
+  includeAlternates = true,
+  noindex = false,
+} = Astro.props;
+const t = useTranslations(locale);
+const canonical = new URL(canonicalPath ?? localizedRoutes[route][locale], SITE.origin);
+const englishAlternate = new URL(localizedRoutes[route].en, SITE.origin);
+const germanAlternate = new URL(localizedRoutes[route].de, SITE.origin);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content={SITE.themeColor} />
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    {includeAlternates && <link rel="alternate" hreflang="en" href={englishAlternate} />}
+    {includeAlternates && <link rel="alternate" hreflang="de" href={germanAlternate} />}
+    {includeAlternates && <link rel="alternate" hreflang="x-default" href={englishAlternate} />}
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === "de" ? "de_DE" : "en_US"} />
+    <meta property="og:locale:alternate" content={locale === "de" ? "en_US" : "de_DE"} />
+  </head>
+  <body class:list={[pageClass]}>
+    <a class="skip-link" href="#main-content">
+      {t.skipLink}
+    </a>
+    <div class="site-shell">
+      <SiteHeader {locale} {route} />
+      <main id="main-content" tabindex="-1">
+        <slot />
+      </main>
+      <SiteFooter {locale} {route} />
+    </div>
+  </body>
+</html>

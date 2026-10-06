@@ -1,0 +1,27 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import type { Locale } from "../config/site";
+import type { RouteKey } from "../i18n/routes";
+
+interface Props {
+  locale: Locale;
+  route: Extract<RouteKey, "privacy" | "legalNotice">;
+  title: string;
+  description: string;
+  heading: string;
+  intro: string;
+}
+
+const { locale, route, title, description, heading, intro } = Astro.props;
+---
+
+<BaseLayout {locale} {route} {title} {description} pageClass="legal-page">
+  <article class="reading-layout section-space">
+    <header>
+      <p class="eyebrow">Cozy Paint Studio</p>
+      <h1>{heading}</h1>
+      <p class="lead">{intro}</p>
+    </header>
+    <slot />
+  </article>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import type { Locale } from "../../config/site";
+import { alternateLocale, routeFor, type RouteKey } from "../../i18n/routes";
+import { useTranslations } from "../../i18n";
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+}
+
+const { locale, route } = Astro.props;
+const t = useTranslations(locale);
+const otherLocale = alternateLocale(locale);
+---
+
+<footer class="site-footer">
+  <div>
+    <strong>Cozy Paint Studio</strong>
+    <span>{t.footer.status}</span>
+  </div>
+  <nav aria-label={t.footer.navigationLabel}>
+    <a href={routeFor("support", locale)}>{t.nav.support}</a>
+    <a href={routeFor("privacy", locale)}>{t.nav.privacy}</a>
+    <a href={routeFor("legalNotice", locale)}>{t.nav.legalNotice}</a>
+    <a href={routeFor(route, otherLocale)} lang={otherLocale} hreflang={otherLocale}>
+      {t.languageSwitchLabel}
+    </a>
+  </nav>
+  <small>© {new Date().getUTCFullYear()} Johannes Vollmer</small>
+</footer>

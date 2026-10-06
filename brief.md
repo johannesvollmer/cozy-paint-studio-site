@@ -586,7 +586,7 @@ The app pattern consists of three offset dot lattices over `#454447`:
 - Angles: 0°, +120°, and −120°.
 - Ink opacity: 40% per layer.
 
-For the web, implement the pattern with local CSS gradients or a tiny local SVG/CSS paint asset. Do not use a remote image. At normal reading distance one lattice should be apparent first, with the other colors emerging on closer inspection. Avoid moiré, hard seams, and animation that makes the background vibrate.
+For the web, implement the pattern with local CSS gradients or a tiny local SVG/CSS paint asset. Do not use a remote image. At normal reading distance one lattice should be apparent first, with the other colors emerging on closer inspection. The interference between the three rotated lattices should produce an intentional, stable moiré pattern. Preserve that printed effect while avoiding hard seams, unstable pixel shimmer, or animation that makes the background vibrate.
 
 The pattern is a material, not wallpaper for every square pixel. Use it on header surfaces, buttons, captions, and large framing shapes. Long reading areas and legal pages should use quieter solid or very low-contrast grounds.
 

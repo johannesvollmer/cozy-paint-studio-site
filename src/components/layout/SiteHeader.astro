@@ -1,0 +1,45 @@
+---
+import { hasStoreDestination, releaseChannel } from "../../config/release";
+import type { Locale } from "../../config/site";
+import { alternateLocale, routeFor, type RouteKey } from "../../i18n/routes";
+import { useTranslations } from "../../i18n";
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+}
+
+const { locale, route } = Astro.props;
+const t = useTranslations(locale);
+const otherLocale = alternateLocale(locale);
+const storeIsLive = hasStoreDestination(releaseChannel);
+---
+
+<header class="site-header halftone-surface">
+  <a class="wordmark" href={routeFor("home", locale)}>
+    Cozy Paint Studio
+  </a>
+  <nav aria-label={t.navigationLabel}>
+    <a href={routeFor("support", locale)}>{t.nav.support}</a>
+    <a href={routeFor("privacy", locale)}>{t.nav.privacy}</a>
+    <a href={routeFor("legalNotice", locale)}>{t.nav.legalNotice}</a>
+  </nav>
+  <a
+    class="language-switch"
+    href={routeFor(route, otherLocale)}
+    lang={otherLocale}
+    hreflang={otherLocale}
+    aria-label={`${t.languageSwitchLabel} — ${t.nav[route]}`}
+  >
+    {otherLocale.toUpperCase()}
+  </a>
+  {storeIsLive ? (
+    <a class="button button--primary" href={releaseChannel.storeUrl}>
+      {releaseChannel.label[locale]}
+    </a>
+  ) : (
+    <span class="button button--primary button--disabled" aria-disabled="true">
+      {releaseChannel.label[locale]}
+    </span>
+  )}
+</header>

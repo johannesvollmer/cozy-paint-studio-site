@@ -1,0 +1,38 @@
+@media print {
+  @page {
+    margin: 2cm;
+  }
+
+  html,
+  body,
+  .legal-page main {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  body {
+    font-size: 11pt;
+  }
+
+  .site-header,
+  .site-footer,
+  .skip-link {
+    display: none !important;
+  }
+
+  .reading-layout {
+    inline-size: 100%;
+    padding: 0;
+  }
+
+  .eyebrow,
+  .lead,
+  a {
+    color: #000 !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    overflow-wrap: anywhere;
+  }
+}

@@ -159,7 +159,7 @@ Use native CSS custom properties for:
 - Motion durations and easing.
 - Media aspect ratios.
 
-Implement the three-color halftone material using layered CSS radial gradients. It is a reusable material for controls and framing surfaces, not an animated full-page wallpaper.
+Implement the three-color halftone material using layered CSS radial gradients. Their differently rotated lattices deliberately produce a stable moiré interference pattern; this is part of the material rather than an artifact to remove. It is a reusable material for controls and framing surfaces, not an animated full-page wallpaper.
 
 Recommended CSS features:
 
@@ -289,4 +289,3 @@ The privacy policy must disclose GitHub Pages' processing of visitor request dat
 - [GitHub: Verifying a custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages)
 - [GitHub: What is GitHub Pages?](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
 - [MDN: `meta http-equiv`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta/http-equiv)
-

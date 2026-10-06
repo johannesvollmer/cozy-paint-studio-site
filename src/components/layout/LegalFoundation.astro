@@ -1,0 +1,23 @@
+---
+import LegalLayout from "../../layouts/LegalLayout.astro";
+import type { Locale } from "../../config/site";
+import { useTranslations } from "../../i18n";
+import type { RouteKey } from "../../i18n/routes";
+
+interface Props {
+  locale: Locale;
+  route: Extract<RouteKey, "privacy" | "legalNotice">;
+}
+
+const { locale, route } = Astro.props;
+const page = useTranslations(locale).pages[route];
+---
+
+<LegalLayout
+  {locale}
+  {route}
+  title={page.title}
+  description={page.description}
+  heading={page.heading}
+  intro={page.intro}
+/>

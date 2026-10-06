@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  locale="en"
+  route="home"
+  title="Page not found — Cozy Paint Studio"
+  description="The requested Cozy Paint Studio page could not be found."
+  canonicalPath="/404.html"
+  includeAlternates={false}
+  noindex
+>
+  <section class="foundation-hero section-space">
+    <p class="eyebrow">404</p>
+    <h1>This mark went off-canvas.</h1>
+    <p class="lead">
+      <a href="/">Return to Cozy Paint Studio</a> ·{" "}
+      <a href="/de/" lang="de">
+        Zur deutschen Startseite
+      </a>
+    </p>
+  </section>
+</BaseLayout>

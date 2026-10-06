@@ -2,6 +2,11 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ReleaseAction from "../ui/ReleaseAction.astro";
 import { Image } from "astro:assets";
+import appCanvasLandscape from "../../assets/screenshots/app-canvas-landscape.png";
+import appCanvasPortrait from "../../assets/screenshots/app-canvas-portrait.png";
+import appCanvasTall from "../../assets/screenshots/app-canvas-tall.png";
+import appCanvasWide from "../../assets/screenshots/app-canvas-wide.png";
+import brushSelectionFull from "../../assets/screenshots/brush-selection-full.png";
 import colorPickerColor from "../../assets/screenshots/color-picker-color.png";
 import colorPickerLuminance from "../../assets/screenshots/color-picker-luminance.png";
 import type { Locale } from "../../config/site";
@@ -108,21 +113,24 @@ const benefits = de
           : "Independently built by Johannes Vollmer—oil painter, designer, and professional software engineer."}
       </p>
     </div>
-    <div
-      class="canvas-preview halftone-surface"
-      role="img"
-      aria-label={
-        de
-          ? "Abstrakte Vorschaufläche; echte App-Aufnahmen folgen in der Medienphase"
-          : "Abstract preview surface; real app captures arrive in the media phase"
-      }
-    >
-      <span class="paint-stroke paint-stroke--one"></span>
-      <span class="paint-stroke paint-stroke--two"></span>
-      <span class="preview-note">
-        {de ? "Echte App-Aufnahme folgt" : "Real app capture to come"}
-      </span>
-    </div>
+    <figure class="hero-visual">
+      <Image
+        src={appCanvasWide}
+        alt={
+          de
+            ? "Cozy Paint Studio mit einem gemalten roten Apfel auf der grenzenlosen Leinwand"
+            : "Cozy Paint Studio showing a painted red apple on the endless canvas"
+        }
+        format="webp"
+        quality={62}
+        width={1600}
+        widths={[720, 1080, 1600, 2200]}
+        sizes="(max-width: 56rem) 100vw, 56vw"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </figure>
   </section>
 
   <section id="why-cozy" class="statement section-space content-grid">
@@ -172,21 +180,65 @@ const benefits = de
     ))}
   </section>
 
-  <section class="feature-section section-space content-grid">
+  <section class="feature-section interaction-section section-space feature-layout">
+    <figure class="interface-visual">
+      <Image
+        src={brushSelectionFull}
+        alt={
+          de
+            ? "Ein gemalter roter Apfel mit der direkt auf der Leinwand geöffneten Pinselauswahl"
+            : "A painted red apple with the brush selection open directly on the canvas"
+        }
+        format="webp"
+        quality={62}
+        width={1200}
+        widths={[640, 960, 1200, 1600]}
+        sizes="(max-width: 56rem) 100vw, 58vw"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+    <div class="feature-copy">
+      <p class="eyebrow">{de ? "Stift + Berührung" : "Pen + touch"}</p>
+      <h2>
+        {de ? "Bedienelemente, wo die Hand schon ist." : "Controls where the hand already is."}
+      </h2>
+      <p class="lead">
+        {de
+          ? "Halte eine Pinseleigenschaft und ihre Einstellung erscheint unter dem Stift. Lege Favoriten an den Tablet-Rand und erreiche kürzlich genutzte Pinsel mit einer radialen Geste."
+          : "Hold a brush control and its adjustment appears beneath the pen. Keep favorite properties on the tablet edge and reach for a recent brush with a radial gesture."}
+      </p>
+    </div>
+  </section>
+
+  <section class="color-section section-space feature-layout">
+    <div class="feature-copy">
+      <p class="eyebrow">{de ? "Farbe auf der Leinwand" : "Color on canvas"}</p>
+      <h2>
+        {de
+          ? "Farben dort, wo die Augen sind — direkt auf dem Bild."
+          : "Colors where the eyes are—right on the painting."}
+      </h2>
+      <p class="lead">
+        {de
+          ? "Drücke die Farbtaste und der Oklab-Farbwähler erscheint direkt unter dem Stift. Du vergleichst die nächste Farbe mit dem Bild, statt den Blick in eine abgetrennte Seitenleiste zu schicken."
+          : "Press the color control and the Oklab picker appears directly beneath the pen. Compare the next color with the painting itself instead of sending your eyes to an isolated pane on the right."}
+      </p>
+    </div>
     <div class="color-picker-visual">
       <figure>
         <Image
           src={colorPickerColor}
           alt={
             de
-              ? "Farbwähler von Cozy Paint Studio mit Farbfeld und Helligkeitsskala über einem gemalten roten Apfel"
-              : "Cozy Paint Studio color picker showing a color field and lightness scale over a painted red apple"
+              ? "Farbwähler von Cozy Paint Studio direkt über einem gemalten roten Apfel"
+              : "Cozy Paint Studio color picker directly over a painted red apple"
           }
           format="webp"
-          quality={45}
+          quality={50}
           width={720}
           widths={[360, 540, 720, 960]}
-          sizes="(max-width: 48rem) 100vw, 31vw"
+          sizes="(max-width: 56rem) 48vw, 31vw"
           loading="lazy"
           decoding="async"
         />
@@ -197,30 +249,19 @@ const benefits = de
           src={colorPickerLuminance}
           alt={
             de
-              ? "Kreisförmiger Farbwähler von Cozy Paint Studio mit Helligkeitsfeld über einem gemalten roten Apfel"
-              : "Cozy Paint Studio circular color picker with a lightness field over a painted red apple"
+              ? "Kreisförmiger Farbwähler von Cozy Paint Studio direkt über einem gemalten roten Apfel"
+              : "Cozy Paint Studio circular color picker directly over a painted red apple"
           }
           format="webp"
-          quality={45}
+          quality={50}
           width={720}
           widths={[360, 540, 720, 960]}
-          sizes="(max-width: 48rem) 100vw, 31vw"
+          sizes="(max-width: 56rem) 48vw, 31vw"
           loading="lazy"
           decoding="async"
         />
         <figcaption>{de ? "Helligkeit" : "Lightness"}</figcaption>
       </figure>
-    </div>
-    <div>
-      <p class="eyebrow">{de ? "Stift + Berührung" : "Pen + touch"}</p>
-      <h2>
-        {de ? "Bedienelemente, wo die Hand schon ist." : "Controls where the hand already is."}
-      </h2>
-      <p class="lead">
-        {de
-          ? "Halte eine Pinseleigenschaft und ihre Einstellung erscheint unter dem Stift. Lege Favoriten an den Tablet-Rand und erreiche kürzlich genutzte Pinsel mit einer radialen Geste."
-          : "Hold a brush control and its adjustment appears beneath the pen. Keep favorite properties on the tablet edge and reach for a recent brush with a radial gesture."}
-      </p>
     </div>
   </section>
 
@@ -313,9 +354,15 @@ const benefits = de
       </p>
     </div>
     <div class="project-wall" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
+      <figure>
+        <Image src={appCanvasPortrait} alt="" format="webp" quality={45} width={520} />
+      </figure>
+      <figure>
+        <Image src={appCanvasLandscape} alt="" format="webp" quality={45} width={520} />
+      </figure>
+      <figure>
+        <Image src={appCanvasTall} alt="" format="webp" quality={45} width={520} />
+      </figure>
       <span class="new-project">+</span>
     </div>
   </section>

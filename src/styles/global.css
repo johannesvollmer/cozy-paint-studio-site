@@ -229,48 +229,19 @@
     font-size: var(--text-small);
   }
 
-  .canvas-preview {
-    min-block-size: clamp(27rem, 64vw, 48rem);
+  .hero-visual {
+    overflow: hidden;
     border: 1px solid rgb(255 255 255 / 12%);
     border-radius: clamp(1.25rem, 3vw, 3rem);
+    background: var(--color-ground-deep);
     box-shadow: var(--shadow-raised);
   }
 
-  .canvas-preview::after {
-    opacity: 0.5;
-  }
-
-  .paint-stroke {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    border-radius: 45% 55% 42% 58%;
-    transform: rotate(-14deg);
-  }
-
-  .paint-stroke--one {
-    inset: 15% 12% 38% 10%;
-    background: linear-gradient(120deg, #ddbfbf, #695353 70%);
-    clip-path: polygon(0 48%, 13% 20%, 40% 32%, 67% 0, 100% 28%, 85% 67%, 49% 52%, 18% 100%);
-  }
-
-  .paint-stroke--two {
-    inset: 53% 19% 17% 25%;
-    background: #29282b;
-    clip-path: polygon(0 24%, 28% 0, 51% 32%, 100% 5%, 83% 78%, 46% 60%, 9% 100%);
-    opacity: 0.8;
-  }
-
-  .preview-note {
-    position: absolute;
-    z-index: 3;
-    inset-block-end: var(--space-3);
-    inset-inline-end: var(--space-3);
-    padding: var(--space-1) var(--space-2);
-    border-radius: var(--radius-control);
-    background: var(--color-ground-deep);
-    color: var(--color-text-muted);
-    font-size: var(--text-small);
+  .hero-visual img {
+    inline-size: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center;
   }
 
   .content-grid {
@@ -344,21 +315,51 @@
     color: var(--color-text-muted);
   }
 
-  .feature-section,
   .projects-section {
     align-items: center;
   }
 
-  .color-picker-visual {
-    position: relative;
+  .feature-layout {
     display: grid;
-    min-block-size: clamp(22rem, 39vw, 34rem);
+    grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+    gap: clamp(var(--space-3), 5vw, 5rem);
     align-items: center;
+    padding-inline: var(--page-gutter);
+  }
+
+  .feature-copy {
+    min-inline-size: 0;
+    max-inline-size: 42rem;
+  }
+
+  .interface-visual {
+    overflow: hidden;
+    min-inline-size: 0;
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: var(--radius-surface);
+    background: var(--color-ground-deep);
+    box-shadow: var(--shadow-raised);
+  }
+
+  .interface-visual img {
+    inline-size: 100%;
+    block-size: auto;
+  }
+
+  .color-section {
+    grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr);
+    background: rgb(99 90 114 / 14%);
+  }
+
+  .color-picker-visual {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+    min-inline-size: 0;
   }
 
   .color-picker-visual figure {
     position: relative;
-    grid-area: 1 / 1;
     overflow: hidden;
     border: 1px solid rgb(255 255 255 / 12%);
     border-radius: var(--radius-surface);
@@ -366,17 +367,11 @@
     box-shadow: var(--shadow-raised);
   }
 
-  .color-picker-visual figure:first-child {
-    transform: translate(-8%, -7%) rotate(-2deg);
-  }
-
-  .color-picker-visual figure:last-child {
-    transform: translate(12%, 12%) rotate(2deg);
-  }
-
   .color-picker-visual img {
     inline-size: 100%;
-    block-size: auto;
+    block-size: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
   }
 
   .color-picker-visual figcaption {
@@ -495,19 +490,23 @@
     grid-template-rows: 11rem 8rem;
     gap: var(--space-1);
   }
+  .project-wall figure,
   .project-wall span {
+    overflow: hidden;
     border-radius: var(--radius-content);
     background: linear-gradient(135deg, #82625f, #403943);
   }
-  .project-wall span:nth-child(1) {
+  .project-wall figure:nth-child(1) {
     grid-row: 1 / 3;
   }
-  .project-wall span:nth-child(2) {
-    background: linear-gradient(35deg, #8c8066, #4a3d4d);
-  }
-  .project-wall span:nth-child(3) {
+  .project-wall figure:nth-child(3) {
     grid-column: 2 / 4;
-    background: linear-gradient(120deg, #635a72, #29282b);
+  }
+  .project-wall img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center;
   }
   .project-wall .new-project {
     display: grid;
@@ -854,6 +853,7 @@
     }
 
     .landing-hero,
+    .feature-layout,
     .content-grid,
     .support-grid,
     .not-found {
@@ -862,6 +862,9 @@
 
     .landing-hero {
       min-block-size: auto;
+    }
+    .color-section {
+      grid-template-columns: 1fr;
     }
     .benefits {
       grid-template-columns: 1fr;
@@ -915,6 +918,10 @@
 
     .wordmark {
       font-size: var(--text-small);
+    }
+
+    .color-picker-visual {
+      grid-template-columns: 1fr;
     }
   }
 

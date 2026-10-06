@@ -682,6 +682,9 @@
   }
 
   .wordmark {
+    display: inline-flex;
+    gap: 0.65rem;
+    align-items: center;
     padding-inline: var(--space-2);
     border: 1px solid rgb(255 255 255 / 14%);
     border-radius: var(--radius-control);
@@ -690,6 +693,12 @@
     color: var(--color-text);
     font-weight: var(--font-weight-medium);
     letter-spacing: -0.04em;
+  }
+
+  .wordmark__icon {
+    inline-size: 2rem;
+    block-size: 2rem;
+    flex: 0 0 auto;
   }
 
   .language-switch {
@@ -886,7 +895,13 @@
     }
 
     .wordmark {
+      gap: 0.5rem;
       font-size: var(--text-small);
+    }
+
+    .wordmark__icon {
+      inline-size: 1.75rem;
+      block-size: 1.75rem;
     }
   }
 

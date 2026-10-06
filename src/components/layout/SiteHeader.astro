@@ -21,7 +21,8 @@ const storeIsLive = hasStoreDestination(releaseChannel);
     href={routeFor("home", locale)}
     aria-current={route === "home" ? "page" : undefined}
   >
-    Cozy Paint Studio
+    <img class="wordmark__icon" src="/favicon.svg" alt="" width="32" height="32" />
+    <span>Cozy Paint Studio</span>
   </a>
   <nav aria-label={t.navigationLabel}>
     {route === "home" ? (

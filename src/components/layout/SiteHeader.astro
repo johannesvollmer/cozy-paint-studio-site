@@ -16,13 +16,51 @@ const storeIsLive = hasStoreDestination(releaseChannel);
 ---
 
 <header class="site-header halftone-surface">
-  <a class="wordmark" href={routeFor("home", locale)}>
+  <a
+    class="wordmark"
+    href={routeFor("home", locale)}
+    aria-current={route === "home" ? "page" : undefined}
+  >
     Cozy Paint Studio
   </a>
   <nav aria-label={t.navigationLabel}>
-    <a href={routeFor("support", locale)}>{t.nav.support}</a>
-    <a href={routeFor("privacy", locale)}>{t.nav.privacy}</a>
-    <a href={routeFor("legalNotice", locale)}>{t.nav.legalNotice}</a>
+    {route === "home" ? (
+      <>
+        <a href="#why-cozy" data-scroll-link>
+          {t.landingNav.why}
+        </a>
+        <a href="#brushes" data-scroll-link>
+          {t.landingNav.brushes}
+        </a>
+        <a href="#community" data-scroll-link>
+          {t.landingNav.community}
+        </a>
+      </>
+    ) : (
+      <>
+        <a
+          href={routeFor("support", locale)}
+          class:list={{ "is-current": route === "support" }}
+          aria-current={route === "support" ? "page" : undefined}
+        >
+          {t.nav.support}
+        </a>
+        <a
+          href={routeFor("privacy", locale)}
+          class:list={{ "is-current": route === "privacy" }}
+          aria-current={route === "privacy" ? "page" : undefined}
+        >
+          {t.nav.privacy}
+        </a>
+        <a
+          href={routeFor("legalNotice", locale)}
+          class:list={{ "is-current": route === "legalNotice" }}
+          aria-current={route === "legalNotice" ? "page" : undefined}
+        >
+          {t.nav.legalNotice}
+        </a>
+      </>
+    )}
   </nav>
   <a
     class="language-switch"
@@ -43,3 +81,54 @@ const storeIsLive = hasStoreDestination(releaseChannel);
     </span>
   )}
 </header>
+
+<script>
+  import { getActiveSectionIndex } from "../../scripts/active-section";
+
+  const header = document.querySelector<HTMLElement>(".site-header");
+  const wordmark = header?.querySelector<HTMLAnchorElement>(".wordmark");
+  const sectionLinks = Array.from(
+    header?.querySelectorAll<HTMLAnchorElement>("[data-scroll-link]") ?? [],
+  );
+  const sections = sectionLinks.flatMap((link) => {
+    const section = document.querySelector<HTMLElement>(link.hash);
+    return section ? [{ link, section }] : [];
+  });
+
+  if (header && wordmark && sections.length > 0) {
+    let frame = 0;
+
+    const updateHeaderClearance = () => {
+      const clearance = header.getBoundingClientRect().bottom + 24;
+      document.documentElement.style.setProperty("--header-clearance", `${clearance}px`);
+      return clearance;
+    };
+
+    const updateCurrentSection = () => {
+      frame = 0;
+      const readingLine = updateHeaderClearance();
+      const activeIndex = getActiveSectionIndex(
+        sections.map(({ section }) => section.getBoundingClientRect().top),
+        readingLine,
+      );
+      const current = activeIndex >= 0 ? sections[activeIndex] : undefined;
+
+      if (current) wordmark.removeAttribute("aria-current");
+      else wordmark.setAttribute("aria-current", "page");
+      sectionLinks.forEach((link) => {
+        const isCurrent = link === current?.link;
+        link.classList.toggle("is-current", isCurrent);
+        if (isCurrent) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateCurrentSection);
+    };
+
+    updateCurrentSection();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+  }
+</script>

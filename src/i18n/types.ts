@@ -8,6 +8,12 @@ type PageCopy = {
   eyebrow?: string;
 };
 
+type LandingCopy = {
+  why: string;
+  brushes: string;
+  community: string;
+};
+
 export type Translation = {
   localeName: string;
   languageSwitchLabel: string;
@@ -17,6 +23,8 @@ export type Translation = {
   footer: {
     navigationLabel: string;
     status: string;
+    discordUnavailable: string;
   };
+  landingNav: LandingCopy;
   pages: Record<RouteKey, PageCopy>;
 };

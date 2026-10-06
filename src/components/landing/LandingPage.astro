@@ -1,0 +1,267 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ReleaseAction from "../ui/ReleaseAction.astro";
+import type { Locale } from "../../config/site";
+import { releaseChannel } from "../../config/release";
+import { routeFor } from "../../i18n/routes";
+import { useTranslations } from "../../i18n";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const page = t.pages.home;
+const de = locale === "de";
+const benefits = de
+  ? [
+      [
+        "Grenzenlose, adaptive Leinwand",
+        "Raum, dem Bild zu folgen.",
+        "Die Leinwand hat keinen Rand, den du vorher wählen musst. Zieh dich zurück, bewege dich nach außen und komm für Details wieder nah heran.",
+      ],
+      [
+        "Latenz ist ein Merkmal",
+        "Tinte nah am Stift.",
+        "Eine Mal-App lebt oder stirbt im Abstand zwischen Bewegung und Spur. Cozy Paint Studio misst diesen Abstand und baut darauf, ihn kleiner zu machen.",
+      ],
+      [
+        "Kontinuierliche lokale Speicherung",
+        "Deine Arbeit ist schon bewahrt.",
+        "Malen, schließen, zurückkehren. Die Zeichnung wird während der Arbeit aufgezeichnet, ohne dass Speichern zur Unterbrechung wird.",
+      ],
+    ]
+  : [
+      [
+        "Infinite, adaptive canvas",
+        "Room to follow the painting.",
+        "The canvas has no edge you need to choose in advance. Pull back to explore, move outward when the composition grows, and come close for detail.",
+      ],
+      [
+        "Latency is a feature",
+        "Ink close to the pen.",
+        "A painting app lives or dies in the space between motion and mark. Cozy Paint Studio measures that space and builds around making it smaller.",
+      ],
+      [
+        "Continuous local persistence",
+        "Your work, already kept.",
+        "Paint, close, return. The drawing is recorded as you work, without turning Save into another interruption.",
+      ],
+    ];
+---
+
+<BaseLayout {locale} route="home" title={page.title} description={page.description}>
+  <section class="landing-hero section-space">
+    <div class="hero-copy">
+      <p class="eyebrow">{page.eyebrow}</p>
+      <h1>{page.heading}</h1>
+      <p class="lead">
+        {page.intro}{" "}
+        {de
+          ? "Kein Größen-Dialog. Kein Speicher-Ritual. Weniger zwischen Idee und Hand."
+          : "No size dialog. No save ritual. Less between the idea and your hand."}
+      </p>
+      <div class="action-row">
+        <ReleaseAction {locale} />
+      </div>
+      <p class="availability">
+        {de
+          ? "Für Tablets entworfen. Erste Veröffentlichung: Windows. Android und Web sind spätere Richtungen, keine aktuellen Downloads."
+          : "Designed for tablets. First release: Windows. Android and web are later directions, not current downloads."}
+      </p>
+    </div>
+    <div
+      class="canvas-preview halftone-surface"
+      role="img"
+      aria-label={
+        de
+          ? "Abstrakte Vorschaufläche; echte App-Aufnahmen folgen in der Medienphase"
+          : "Abstract preview surface; real app captures arrive in the media phase"
+      }
+    >
+      <span class="paint-stroke paint-stroke--one"></span>
+      <span class="paint-stroke paint-stroke--two"></span>
+      <span class="preview-note">
+        {de ? "Echte App-Aufnahme folgt" : "Real app capture to come"}
+      </span>
+    </div>
+  </section>
+
+  <section id="why-cozy" class="statement section-space content-grid">
+    <p class="section-index">01 / {de ? "Anfangen" : "Begin"}</p>
+    <div>
+      <h2>
+        {de
+          ? "Die Idee sollte vor der Einrichtung kommen."
+          : "The idea should come before the setup."}
+      </h2>
+      <p class="lead">
+        {de
+          ? "Ein leeres Dokument sollte nicht mit Papierkram beginnen. Cozy Paint Studio überspringt Breite, Höhe, DPI, Dateiname und Speicherort. Ein neues Bild ist einfach da – bereit für die erste Linie."
+          : "A blank document should not begin with paperwork. Cozy Paint Studio skips the width, height, DPI, file name, and save location. A new painting is simply there—ready for the first line."}
+      </p>
+    </div>
+  </section>
+
+  <section
+    class="benefits section-space"
+    aria-label={de ? "Drei Kernvorteile" : "Three core benefits"}
+  >
+    {benefits.map(([label, heading, body], index) => (
+      <article class="benefit">
+        <span class="benefit-number">0{index + 1}</span>
+        <p class="eyebrow">{label}</p>
+        <h2>{heading}</h2>
+        <p>{body}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="feature-section section-space content-grid">
+    <div class="gesture-visual" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div>
+      <p class="eyebrow">{de ? "Stift + Berührung" : "Pen + touch"}</p>
+      <h2>
+        {de ? "Bedienelemente, wo die Hand schon ist." : "Controls where the hand already is."}
+      </h2>
+      <p class="lead">
+        {de
+          ? "Halte eine Pinseleigenschaft und ihre Einstellung erscheint unter dem Stift. Lege Favoriten an den Tablet-Rand und erreiche kürzlich genutzte Pinsel mit einer radialen Geste."
+          : "Hold a brush control and its adjustment appears beneath the pen. Keep favorite properties on the tablet edge and reach for a recent brush with a radial gesture."}
+      </p>
+    </div>
+  </section>
+
+  <section id="brushes" class="brush-section section-space">
+    <div class="section-heading">
+      <p class="eyebrow">{de ? "Pinsel-Engines" : "Brush engines"}</p>
+      <h2>
+        {de
+          ? "Ein Pinsel kann eine Idee sein, nicht nur ein Bild."
+          : "A brush can be an idea, not just an image."}
+      </h2>
+      <p>
+        {de
+          ? "Jeder Pinsel ist eine eigene Engine: strukturierter Bleistift, reliefreicher Farbauftrag, scharfes Polygon oder dynamische Farbe."
+          : "Each brush is an engine of its own: textured pencil, relief-rich paint, sharp polygon, or dynamic color."}
+      </p>
+    </div>
+    <div
+      class="brush-table"
+      aria-label={de ? "Illustrative Pinselspuren" : "Illustrative brush marks"}
+    >
+      <figure>
+        <span class="swatch swatch--pencil"></span>
+        <figcaption>{de ? "Bleistift · Druckbreite" : "Pencil · pressure width"}</figcaption>
+      </figure>
+      <figure>
+        <span class="swatch swatch--paint"></span>
+        <figcaption>{de ? "Farbe · Relief" : "Paint · relief"}</figcaption>
+      </figure>
+      <figure>
+        <span class="swatch swatch--polygon"></span>
+        <figcaption>{de ? "Polygon · Kanten" : "Polygon · edges"}</figcaption>
+      </figure>
+    </div>
+    <p class="future-note">
+      <strong>{de ? "Die Richtung:" : "The direction:"}</strong>{" "}
+      {de
+        ? "Austauschbare Pakete aus Pinselmodellen, Vorgaben und Texturen. Noch nicht zum Download verfügbar."
+        : "Exchangeable packs of brush models, presets, and textures. Not available to download yet."}
+    </p>
+  </section>
+
+  <section class="projects-section section-space content-grid">
+    <div>
+      <p class="eyebrow">{de ? "Projektwand" : "Project wall"}</p>
+      <h2>{de ? "Finde das Bild, indem du es siehst." : "Find the painting by seeing it."}</h2>
+      <p class="lead">
+        {de
+          ? "Cozy Paint Studio öffnet sich auf einer Wand aus Arbeiten. Das Bild – nicht ein erzeugter Dateiname – ist die Identität, nach der du greifst."
+          : "Cozy Paint Studio opens onto a wall of work. The image—not a generated file name—is the identity you reach for."}
+      </p>
+    </div>
+    <div class="project-wall" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span class="new-project">+</span>
+    </div>
+  </section>
+
+  <section class="windows-section section-space content-grid">
+    <p class="section-index">{de ? "Windows zuerst" : "Windows first"}</p>
+    <div>
+      <h2>
+        {de ? "Auf Glas geboren. Beginnend auf Windows." : "Born on glass. Beginning on Windows."}
+      </h2>
+      <p class="lead">
+        {de
+          ? "Die Oberfläche wurde für Stift, berührungsgroße Bedienelemente und die Reichweite zweier Hände auf einem Tablet entworfen. Windows ist die erste Plattform."
+          : "The interface was designed around a stylus, touch-sized controls, and the reach of two hands on a tablet. Windows is the first release platform."}
+      </p>
+    </div>
+  </section>
+
+  <section class="preview-disclosure section-space content-grid">
+    <p class="eyebrow">{releaseChannel.label[locale]}</p>
+    <div>
+      <h2>
+        {de
+          ? "Ein funktionierendes Studio, das noch gebaut wird."
+          : "A working studio, still being built."}
+      </h2>
+      <p>
+        {releaseChannel.disclosure[locale]}{" "}
+        {de
+          ? "Teile von Export, Touch-Navigation, Teilen, Paketierung und Feinschliff sind noch auf der Staffelei. Erwarte Änderungen und bewahre Kopien unersetzlicher Arbeiten auf."
+          : "Parts of export, touch navigation, sharing, packaging, and polish are still on the easel. Expect changes, and keep copies of work you cannot replace."}
+      </p>
+      <p>
+        <a href={routeFor("support", locale)}>
+          {de ? "Support und Hinweise für Fehlerberichte" : "Support and reporting guidance"}
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <section id="community" class="community-section section-space content-grid">
+    <div>
+      <p class="eyebrow">Community</p>
+      <h2>
+        {de
+          ? "Bring die Pinselspuren mit. Bleib für den Austausch."
+          : "Bring the brush marks. Stay for the exchange."}
+      </h2>
+    </div>
+    <div>
+      <p>
+        {de
+          ? "Teile, was du gemacht hast, vergleiche Pinsel, bitte um Hilfe und beeinflusse, was als Nächstes kommt. Eine verifizierte Discord-Einladung folgt."
+          : "Share what you made, compare brushes, ask for help, and influence what comes next. A verified Discord invitation is coming."}
+      </p>
+      <p class="fine-print">
+        {de
+          ? "Discord ist ein externer Dienst mit eigenen Bedingungen und Datenschutzregeln. Die App verbindet sich nicht mit Discord; offizieller Support erfolgt per E-Mail."
+          : "Discord is a third-party service with its own terms and privacy policy. The app does not connect to Discord; official support is by email."}
+      </p>
+    </div>
+  </section>
+
+  <section class="final-cta section-space halftone-surface">
+    <p class="eyebrow">Cozy Paint Studio</p>
+    <h2>{de ? "Mach die erste Linie." : "Make the first mark."}</h2>
+    <p>
+      {de
+        ? "Cozy Paint Studio kommt zuerst über den Microsoft Store zu Windows."
+        : "Cozy Paint Studio is coming first to Windows through the Microsoft Store."}
+    </p>
+    <div class="action-row">
+      <ReleaseAction {locale} />
+    </div>
+  </section>
+</BaseLayout>

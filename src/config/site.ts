@@ -6,6 +6,8 @@ export const SITE = {
   themeColor: "#454447",
 } as const;
 
+export const SUPPORT_EMAIL = "cozy-paint-studio@johannesvollmer.com";
+
 export type Locale = (typeof SITE.supportedLocales)[number];
 
 export function isLocale(value: string): value is Locale {

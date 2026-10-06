@@ -1,0 +1,87 @@
+---
+import LegalLayout from "../../layouts/LegalLayout.astro";
+import { SUPPORT_EMAIL, type Locale } from "../../config/site";
+import { useTranslations } from "../../i18n";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const page = useTranslations(locale).pages.privacy;
+const de = locale === "de";
+---
+
+<LegalLayout
+  {locale}
+  route="privacy"
+  title={page.title}
+  description={page.description}
+  heading={page.heading}
+  intro={page.intro}
+>
+  <div class="legal-meta">
+    <span>{de ? "Stand: 6. Oktober 2026" : "Effective: 6 October 2026"}</span>
+    <span>{de ? "Verantwortlicher: Johannes Vollmer" : "Controller: Johannes Vollmer"}</span>
+  </div>
+  <section>
+    <h2>{de ? "1. Geltungsbereich" : "1. Scope"}</h2>
+    <p>
+      {de
+        ? "Diese Hinweise gelten für die Cozy Paint Studio Desktop-Anwendung und diese Website unter cozy-paint-studio.johannesvollmer.com. Datenschutzanfragen kannst du an"
+        : "This notice covers the Cozy Paint Studio desktop application and this website at cozy-paint-studio.johannesvollmer.com. For privacy questions, contact"}{" "}
+      <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+    </p>
+  </section>
+  <section>
+    <h2>{de ? "2. Desktop-Anwendung" : "2. Desktop application"}</h2>
+    <p>
+      {de
+        ? "Cozy Paint Studio benötigt kein Konto und sendet Zeichnungen, Pinselinhalte, Nutzungsanalysen oder Telemetrie nicht an uns. Zeichnungen und Anwendungsdaten werden lokal auf deinem Gerät gespeichert. Sie verlassen das Gerät nur, wenn du bewusst eine Freigabe- oder Exportfunktion des Betriebssystems verwendest. Links öffnen den Systembrowser; die App selbst verbindet sich nicht mit Discord."
+        : "Cozy Paint Studio does not require an account and does not send drawings, brush content, usage analytics, or telemetry to us. Drawings and application data are stored locally on your device. They leave your device only when you deliberately use an operating-system sharing or export action. Links open your system browser; the app itself does not connect to Discord."}
+    </p>
+    <p class="notice">
+      {de
+        ? "Diese Beschreibung wird vor Veröffentlichung nochmals mit dem verpackten Vorschau-Build geprüft. Speicherorte, Löschung, mögliche Microsoft-Store-Zuverlässigkeitsdaten und Zielgruppenmitgliedschaft werden ergänzt, sobald der Vertriebskanal feststeht."
+        : "This description will be checked again against the packaged preview build before release. Storage locations, deletion, possible Microsoft Store reliability data, and audience membership will be added once distribution is finalized."}
+    </p>
+  </section>
+  <section>
+    <h2>{de ? "3. Diese Website" : "3. This website"}</h2>
+    <p>
+      {de
+        ? "Die Website verwendet keine Analysewerkzeuge, Werbung, Tracking-Pixel, Drittanbieter-Schriften, Kontaktformulare, Cookies oder eingebetteten sozialen Medien. Sie wird als statische Website über GitHub Pages bereitgestellt."
+        : "The website uses no analytics, advertising, tracking pixels, third-party fonts, contact forms, cookies, or embedded social media. It is served as a static website through GitHub Pages."}
+    </p>
+    <p>
+      {de
+        ? "Beim Aufruf verarbeitet GitHub technische Anfragedaten, die zur Auslieferung und Absicherung des Dienstes erforderlich sind. Dazu können IP-Adresse, Zeitpunkt, angefragter Pfad, Referrer, Browserkennung und Antwortstatus gehören. GitHub dokumentiert insbesondere die Protokollierung von IP-Adressen zu Sicherheitszwecken. Zweck ist die sichere Bereitstellung der Website; Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren, erreichbaren Webangebot (Art. 6 Abs. 1 lit. f DSGVO). Empfänger ist GitHub als Hostinganbieter. Für Aufbewahrung und internationale Übermittlungen gelten die Bedingungen von GitHub."
+        : "When you visit, GitHub processes technical request data needed to deliver and secure the service. This may include IP address, time, requested path, referrer, browser identifier, and response status. GitHub documents IP-address logging for security purposes in particular. The purpose is secure website delivery; the legal basis is our legitimate interest in a secure, available website (Article 6(1)(f) GDPR). GitHub is the hosting recipient. GitHub’s terms govern retention and international transfers."}
+    </p>
+    <p>
+      <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">
+        {de ? "GitHub-Datenschutzerklärung" : "GitHub General Privacy Statement"}
+      </a>
+    </p>
+  </section>
+  <section>
+    <h2>{de ? "4. Externe Ziele" : "4. External destinations"}</h2>
+    <p>
+      {de
+        ? "Microsoft Store und Discord sind eigenständige Dienste mit eigenen Datenschutzbedingungen. Ein normaler Link überträgt erst dann Daten an den jeweiligen Dienst, wenn du ihm folgst. Diese Website verwendet keine Einbettungen oder Vorabverbindungen zu diesen Diensten."
+        : "Microsoft Store and Discord are separate services with their own privacy terms. A plain link transfers data to them only when you follow it. This website uses no embeds or preconnections to those services."}
+    </p>
+  </section>
+  <section>
+    <h2>{de ? "5. Deine Rechte" : "5. Your rights"}</h2>
+    <p>
+      {de
+        ? "Soweit die gesetzlichen Voraussetzungen vorliegen, hast du Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch. Du kannst dich außerdem bei einer zuständigen Datenschutzaufsichtsbehörde beschweren. Nutze für eine Anfrage die oben genannte E-Mail-Adresse."
+        : "Where the legal conditions apply, you have rights of access, correction, deletion, restriction, portability, and objection. You may also complain to a competent data-protection authority. Use the email address above to make a request."}
+    </p>
+  </section>
+  <p class="legal-review-note">
+    {de
+      ? "Diese Vorabfassung muss vor einer öffentlichen Produktveröffentlichung rechtlich und gegen die endgültige Hosting- und App-Konfiguration geprüft werden."
+      : "This pre-release notice must be legally reviewed and checked against the final hosting and app configuration before public product release."}
+  </p>
+</LegalLayout>

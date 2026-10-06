@@ -22,6 +22,7 @@ const otherLocale = alternateLocale(locale);
     <a href={routeFor("support", locale)}>{t.nav.support}</a>
     <a href={routeFor("privacy", locale)}>{t.nav.privacy}</a>
     <a href={routeFor("legalNotice", locale)}>{t.nav.legalNotice}</a>
+    <span>{t.footer.discordUnavailable}</span>
     <a href={routeFor(route, otherLocale)} lang={otherLocale} hreflang={otherLocale}>
       {t.languageSwitchLabel}
     </a>

@@ -1,0 +1,56 @@
+---
+import LegalLayout from "../../layouts/LegalLayout.astro";
+import { SUPPORT_EMAIL, type Locale } from "../../config/site";
+import { useTranslations } from "../../i18n";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const page = useTranslations(locale).pages.legalNotice;
+const de = locale === "de";
+---
+
+<LegalLayout
+  {locale}
+  route="legalNotice"
+  title={page.title}
+  description={page.description}
+  heading={page.heading}
+  intro={page.intro}
+>
+  <section>
+    <h2>{de ? "Anbieter" : "Provider"}</h2>
+    <address>
+      <strong>Johannes Vollmer</strong>
+      <br />
+      Deutschland
+      <br />
+      <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+    </address>
+  </section>
+  <section class="notice">
+    <h2>{de ? "Hinweis zur Anschrift" : "Address notice"}</h2>
+    <p>
+      {de
+        ? "Für die gesetzlich erforderliche ladungsfähige Anschrift ist noch keine zur Veröffentlichung freigegebene Geschäftsanschrift bestimmt. Diese Website beschreibt ein nicht öffentlich vertriebenes, nicht monetarisiertes Vorabprojekt. Die Anschrift wird vor öffentlichem Angebot, Store-Veröffentlichung oder geschäftsmäßigem Betrieb ergänzt. Bis dahin ist diese Seite kein vollständiges Impressum nach § 5 DDG."
+        : "No serviceable business address has yet been approved for publication. This website describes a pre-release project that is not publicly distributed or monetized. The address will be added before any public offer, Store release, or commercial operation. Until then, this page is not a complete German legal notice under section 5 DDG."}
+    </p>
+  </section>
+  <section>
+    <h2>{de ? "Inhaltlich verantwortlich" : "Responsible for content"}</h2>
+    <p>Johannes Vollmer</p>
+  </section>
+  <section>
+    <h2>{de ? "Kontakt" : "Contact"}</h2>
+    <p>
+      {de ? "Elektronische Anfragen:" : "Electronic enquiries:"}{" "}
+      <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+    </p>
+  </section>
+  <p class="legal-review-note">
+    {de
+      ? "Register-, Steuer-, Aufsichts- oder Berufsangaben werden nur ergänzt, wenn sie tatsächlich anwendbar sind. Vor der öffentlichen Veröffentlichung ist eine rechtliche Prüfung erforderlich."
+      : "Register, tax, supervisory, or professional details will be added only if they actually apply. Legal review is required before public release."}
+  </p>
+</LegalLayout>

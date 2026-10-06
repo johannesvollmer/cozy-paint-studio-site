@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { releaseChannel } from "../../config/release";
+import { SUPPORT_EMAIL, type Locale } from "../../config/site";
+import { routeFor } from "../../i18n/routes";
+import { useTranslations } from "../../i18n";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const page = t.pages.support;
+const de = locale === "de";
+---
+
+<BaseLayout {locale} route="support" title={page.title} description={page.description}>
+  <article class="support-page section-space">
+    <header class="page-intro">
+      <p class="eyebrow">{releaseChannel.label[locale]}</p>
+      <h1>{page.heading}</h1>
+      <p class="lead">{page.intro}</p>
+      <a class="button button--primary" href={`mailto:${SUPPORT_EMAIL}`}>
+        {SUPPORT_EMAIL}
+      </a>
+    </header>
+    <section class="support-grid" aria-labelledby="report-heading">
+      <div>
+        <p class="section-index">01 / {de ? "Fehlerbericht" : "Report"}</p>
+        <h2 id="report-heading">
+          {de
+            ? "Hilf uns, den Weg zum Problem nachzugehen."
+            : "Help us retrace the path to the problem."}
+        </h2>
+        <p>
+          {de
+            ? "Schreib kurz, was passiert ist, was du erwartet hast und ob es wiederholt auftritt. Bitte sende kein privates Bild, außer wir fragen ausdrücklich danach und du entscheidest dich dafür."
+            : "Tell us what happened, what you expected, and whether it repeats. Never send a private drawing unless we explicitly ask and you choose to."}
+        </p>
+      </div>
+      <div class="report-card halftone-surface">
+        <h3>{de ? "Wenn möglich, füge hinzu" : "When possible, include"}</h3>
+        <ul>
+          <li>{de ? "App-Version" : "App version"}</li>
+          <li>{de ? "Windows-Version" : "Windows version"}</li>
+          <li>{de ? "Stift und Tablet- oder Displaymodell" : "Pen and tablet or display model"}</li>
+          <li>
+            {de
+              ? "GPU-Modell bei Bild- oder Leistungsproblemen"
+              : "GPU model for visual or performance issues"}
+          </li>
+          <li>
+            {de ? "Kürzeste Schrittfolge zur Wiederholung" : "Shortest steps that reproduce it"}
+          </li>
+          <li>
+            {de
+              ? "Sichere Screenshots oder kurze Aufnahme"
+              : "Safe screenshots or a short recording"}
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="support-grid">
+      <div>
+        <p class="section-index">02 / {de ? "Deine Arbeiten" : "Your work"}</p>
+        <h2>
+          {de ? "Bewahre Kopien wichtiger Bilder auf." : "Keep copies of important paintings."}
+        </h2>
+      </div>
+      <div>
+        <p>
+          {de
+            ? "Cozy Paint Studio speichert Anwendungsdaten lokal, aber Speicherorte und Sicherungsschritte müssen noch mit dem verpackten Vorschau-Build geprüft werden. Bis dahin veröffentlichen wir keine möglicherweise falschen Pfadangaben."
+            : "Cozy Paint Studio stores application data locally, but storage locations and backup steps still need verification against the packaged preview build. We will not publish a potentially incorrect path before then."}
+        </p>
+        <p>{releaseChannel.windowsRequirement[locale]}</p>
+      </div>
+    </section>
+    <aside class="community-callout">
+      <h2>
+        {de
+          ? "Community ist nicht der Support-Posteingang."
+          : "Community is not the support inbox."}
+      </h2>
+      <p>
+        {de
+          ? "Eine verifizierte Discord-Einladung folgt. Discord ist ein externer Dienst; poste dort keine Absturzprotokolle oder privaten Bilder. Offizielle Supportanfragen gehen an die oben genannte E-Mail-Adresse."
+          : "A verified Discord invitation is coming. Discord is a third-party service; do not post crash logs or private drawings there. Official support requests go to the email address above."}
+      </p>
+    </aside>
+    <nav class="related-links" aria-label={de ? "Verwandte Seiten" : "Related pages"}>
+      <a href={routeFor("privacy", locale)}>{t.nav.privacy}</a>
+      <a href={routeFor("legalNotice", locale)}>{t.nav.legalNotice}</a>
+    </nav>
+  </article>
+</BaseLayout>

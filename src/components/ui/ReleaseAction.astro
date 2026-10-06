@@ -1,0 +1,20 @@
+---
+import { hasStoreDestination, releaseChannel } from "../../config/release";
+import type { Locale } from "../../config/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const storeIsLive = hasStoreDestination(releaseChannel);
+---
+
+{storeIsLive ? (
+  <a class="button button--primary" href={releaseChannel.storeUrl}>
+    {releaseChannel.label[locale]}
+  </a>
+) : (
+  <span class="button button--primary button--disabled" aria-disabled="true">
+    {releaseChannel.label[locale]}
+  </span>
+)}

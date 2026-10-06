@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ReleaseAction from "../ui/ReleaseAction.astro";
+import { Image } from "astro:assets";
+import colorPickerColor from "../../assets/screenshots/color-picker-color.png";
+import colorPickerLuminance from "../../assets/screenshots/color-picker-luminance.png";
 import type { Locale } from "../../config/site";
 import { releaseChannel } from "../../config/release";
 import { routeFor } from "../../i18n/routes";
@@ -170,10 +173,43 @@ const benefits = de
   </section>
 
   <section class="feature-section section-space content-grid">
-    <div class="gesture-visual" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="color-picker-visual">
+      <figure>
+        <Image
+          src={colorPickerColor}
+          alt={
+            de
+              ? "Farbwähler von Cozy Paint Studio mit Farbfeld und Helligkeitsskala über einem gemalten roten Apfel"
+              : "Cozy Paint Studio color picker showing a color field and lightness scale over a painted red apple"
+          }
+          format="webp"
+          quality={45}
+          width={720}
+          widths={[360, 540, 720, 960]}
+          sizes="(max-width: 48rem) 100vw, 31vw"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>{de ? "Farbe" : "Color"}</figcaption>
+      </figure>
+      <figure>
+        <Image
+          src={colorPickerLuminance}
+          alt={
+            de
+              ? "Kreisförmiger Farbwähler von Cozy Paint Studio mit Helligkeitsfeld über einem gemalten roten Apfel"
+              : "Cozy Paint Studio circular color picker with a lightness field over a painted red apple"
+          }
+          format="webp"
+          quality={45}
+          width={720}
+          widths={[360, 540, 720, 960]}
+          sizes="(max-width: 48rem) 100vw, 31vw"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>{de ? "Helligkeit" : "Lightness"}</figcaption>
+      </figure>
     </div>
     <div>
       <p class="eyebrow">{de ? "Stift + Berührung" : "Pen + touch"}</p>

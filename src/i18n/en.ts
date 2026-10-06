@@ -17,19 +17,20 @@ export const en = {
     discordUnavailable: "Discord invite coming soon",
   },
   landingNav: {
-    why: "Why Cozy",
+    why: "Why it’s different",
     brushes: "Brushes",
+    story: "My story",
     community: "Community",
   },
   pages: {
     home: {
-      title: "Cozy Paint Studio — Stylus-first painting for Windows",
+      title: "Cozy Paint Studio — Organic brushes that scale like vector art",
       description:
-        "Open straight onto an endless canvas, paint with expressive pressure-sensitive brushes, and keep your flow. Cozy Paint Studio launches first on Windows.",
-      eyebrow: "Stylus-first painting for Windows",
-      heading: "Stay with the mark.",
+        "Soft, pressure-sensitive brush engines meet an endless, fully scalable canvas in an independently built painting app for Windows.",
+      eyebrow: "A different kind of painting app for Windows",
+      heading: "Organic like pixel painting. Scalable like vector art.",
       intro:
-        "Cozy Paint Studio opens straight onto an endless canvas, keeps your work as you paint, and puts expressive brushes close to your pen.",
+        "Pixel painting feels organic but has a fixed resolution. Vector art scales, but rarely feels like paint. Cozy Paint Studio brings both together: soft, pressure-sensitive brush engines on an endless canvas. Keep zooming in and keep painting.",
     },
     support: {
       title: "Support for Cozy Paint Studio",

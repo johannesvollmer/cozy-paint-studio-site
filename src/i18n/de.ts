@@ -11,16 +11,21 @@ export const de = {
     status: "Windows-Vorschau",
     discordUnavailable: "Discord-Einladung folgt",
   },
-  landingNav: { why: "Warum Cozy", brushes: "Pinsel", community: "Community" },
+  landingNav: {
+    why: "Der Unterschied",
+    brushes: "Pinsel",
+    story: "Meine Geschichte",
+    community: "Community",
+  },
   pages: {
     home: {
-      title: "Cozy Paint Studio — Malen mit Stift für Windows",
+      title: "Cozy Paint Studio — Organische Pinsel, skalierbar wie Vektorgrafik",
       description:
-        "Öffne direkt eine grenzenlose Leinwand, male mit ausdrucksstarken drucksensitiven Pinseln und bleib im Fluss. Cozy Paint Studio erscheint zuerst für Windows.",
-      eyebrow: "Malen mit Stift — zuerst für Windows",
-      heading: "Bleib bei der Linie.",
+        "Weiche, drucksensitive Pinsel-Engines treffen auf eine grenzenlose, vollständig skalierbare Leinwand — in einer unabhängig entwickelten Mal-App für Windows.",
+      eyebrow: "Eine andere Art Mal-App für Windows",
+      heading: "Organisch wie Pixelmalerei. Skalierbar wie Vektorgrafik.",
       intro:
-        "Cozy Paint Studio öffnet sich direkt auf einer grenzenlosen Leinwand, bewahrt dein Werk beim Malen und bringt ausdrucksstarke Pinsel nah an den Stift.",
+        "Pixelmalerei fühlt sich organisch an, ist aber an eine feste Auflösung gebunden. Vektorgrafik skaliert, fühlt sich aber selten wie Malen an. Cozy Paint Studio bringt beides zusammen: weiche, drucksensitive Pinsel-Engines auf einer grenzenlosen Leinwand. Zoome weiter hinein und male einfach weiter.",
     },
     support: {
       title: "Support für Cozy Paint Studio",

@@ -13,12 +13,47 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 const page = t.pages.home;
 const de = locale === "de";
+const approaches = de
+  ? [
+      [
+        "Die meisten Pixel-Malprogramme",
+        "Organische Spuren, feste Auflösung",
+        "Sie können sich wie Farbe anfühlen — verlangen aber vorab eine Auflösung. Zoomst du weit genug hinein, werden gezackte Kanten sichtbar.",
+      ],
+      [
+        "Die meisten Vektor-Zeichenprogramme",
+        "Saubere Skalierung, konstruierte Spuren",
+        "Sie bleiben in jeder Größe scharf — doch ihre Pinsel fühlen sich oft geometrisch statt organisch an.",
+      ],
+      [
+        "Cozy Paint Studio",
+        "Organisch und skalierbar",
+        "Programmierbare, organische Pinsel auf einer Leinwand, die nicht an eine feste Pixelauflösung gebunden ist.",
+      ],
+    ]
+  : [
+      [
+        "Most pixel-painting apps",
+        "Organic marks, fixed resolution",
+        "They can feel like paint—but ask you to choose a resolution up front. Zoom in far enough, and jagged edges show.",
+      ],
+      [
+        "Most vector-drawing apps",
+        "Clean scaling, constructed marks",
+        "They stay crisp at every size—but their brushes often feel geometric rather than organic.",
+      ],
+      [
+        "Cozy Paint Studio",
+        "Organic and scalable",
+        "Programmable, organic brushes on a canvas that is not bound to one fixed pixel resolution.",
+      ],
+    ];
 const benefits = de
   ? [
       [
-        "Grenzenlose, adaptive Leinwand",
-        "Raum, dem Bild zu folgen.",
-        "Die Leinwand hat keinen Rand, den du vorher wählen musst. Zieh dich zurück, bewege dich nach außen und komm für Details wieder nah heran.",
+        "Kein Einrichtungsritual",
+        "Die erste Linie kommt zuerst.",
+        "Keine Breite, Höhe, DPI, kein Dateiname und kein Speicherort stehen zwischen dir und einem neuen Bild.",
       ],
       [
         "Latenz ist ein Merkmal",
@@ -33,9 +68,9 @@ const benefits = de
     ]
   : [
       [
-        "Infinite, adaptive canvas",
-        "Room to follow the painting.",
-        "The canvas has no edge you need to choose in advance. Pull back to explore, move outward when the composition grows, and come close for detail.",
+        "No setup ritual",
+        "The first mark comes first.",
+        "No width, height, DPI, file name, or save location stands between you and a new painting.",
       ],
       [
         "Latency is a feature",
@@ -55,12 +90,7 @@ const benefits = de
     <div class="hero-copy">
       <p class="eyebrow">{page.eyebrow}</p>
       <h1>{page.heading}</h1>
-      <p class="lead">
-        {page.intro}{" "}
-        {de
-          ? "Kein Größen-Dialog. Kein Speicher-Ritual. Weniger zwischen Idee und Hand."
-          : "No size dialog. No save ritual. Less between the idea and your hand."}
-      </p>
+      <p class="lead">{page.intro}</p>
       <div class="action-row">
         <ReleaseAction {locale} />
       </div>
@@ -68,6 +98,11 @@ const benefits = de
         {de
           ? "Für Tablets entworfen. Erste Veröffentlichung: Windows. Android und Web sind spätere Richtungen, keine aktuellen Downloads."
           : "Designed for tablets. First release: Windows. Android and web are later directions, not current downloads."}
+      </p>
+      <p class="maker-line">
+        {de
+          ? "Unabhängig entwickelt von Johannes Vollmer — Ölmaler, Designer und professioneller Softwareentwickler."
+          : "Independently built by Johannes Vollmer—oil painter, designer, and professional software engineer."}
       </p>
     </div>
     <div
@@ -88,19 +123,36 @@ const benefits = de
   </section>
 
   <section id="why-cozy" class="statement section-space content-grid">
-    <p class="section-index">01 / {de ? "Anfangen" : "Begin"}</p>
+    <p class="section-index">01 / {de ? "Der Unterschied" : "The difference"}</p>
     <div>
       <h2>
         {de
-          ? "Die Idee sollte vor der Einrichtung kommen."
-          : "The idea should come before the setup."}
+          ? "Die fehlende Mitte zwischen Pixel und Vektor."
+          : "The missing middle between pixel and vector."}
       </h2>
       <p class="lead">
         {de
-          ? "Ein leeres Dokument sollte nicht mit Papierkram beginnen. Cozy Paint Studio überspringt Breite, Höhe, DPI, Dateiname und Speicherort. Ein neues Bild ist einfach da – bereit für die erste Linie."
-          : "A blank document should not begin with paperwork. Cozy Paint Studio skips the width, height, DPI, file name, and save location. A new painting is simply there—ready for the first line."}
+          ? "Digitale Malprogramme sind erstaunlich gut darin geworden, Pigmente nachzuahmen — und trotzdem verlangen sie, dass du dich zu Beginn auf ein festes Pixelraster festlegst. Cozy Paint Studio nimmt diese Grenze weg und behält das Gefühl pixelbasierter Malprogramme: ausdrucksstarke, strukturierte Spuren auf einer grenzenlosen Leinwand, in die du immer weiter hineinzoomen und weiter malen kannst. Das hier ist kein chirurgisch präziser Bézierkurven-Editor. Es darf so dreckig und chaotisch werden, wie du willst — und genau das liebe ich daran."
+          : "Digital painting apps have become remarkably good at imitating pigment, yet they still ask you to choose a fixed pixel grid up front. Cozy Paint Studio removes that limit while keeping the feel of pixel-based painting: expressive, textured marks on an endless canvas you can keep zooming into and painting on. This is not a surgical Bézier-shape editor. It gets as messy as you want it to—and I love that."}
       </p>
     </div>
+  </section>
+
+  <section
+    class="approach-grid section-space"
+    aria-label={
+      de
+        ? "Vergleich von Pixel, Vektor und Cozy Paint Studio"
+        : "Pixel, vector, and Cozy Paint Studio compared"
+    }
+  >
+    {approaches.map(([label, heading, body], index) => (
+      <article class:list={["approach", { "approach--cozy": index === 2 }]}>
+        <p class="eyebrow">{label}</p>
+        <h3>{heading}</h3>
+        <p>{body}</p>
+      </article>
+    ))}
   </section>
 
   <section
@@ -139,15 +191,11 @@ const benefits = de
   <section id="brushes" class="brush-section section-space">
     <div class="section-heading">
       <p class="eyebrow">{de ? "Pinsel-Engines" : "Brush engines"}</p>
-      <h2>
-        {de
-          ? "Ein Pinsel kann eine Idee sein, nicht nur ein Bild."
-          : "A brush can be an idea, not just an image."}
-      </h2>
+      <h2>{de ? "Ein Pinsel ist programmierbar." : "A brush can be programmed."}</h2>
       <p>
         {de
-          ? "Jeder Pinsel ist eine eigene Engine: strukturierter Bleistift, reliefreicher Farbauftrag, scharfes Polygon oder dynamische Farbe."
-          : "Each brush is an engine of its own: textured pencil, relief-rich paint, sharp polygon, or dynamic color."}
+          ? "Ein Pinsel ist nicht bloß ein Stempel aus Texturen. Seine Engine kann mit eigenem Rendering-Code auf Druck, Form, Textur, Farbe, Abstand und Drehung reagieren."
+          : "A brush is not merely a stamp made from textures. Its engine can use its own rendering code to respond to pressure, shape, texture, color, spacing, and rotation."}
       </p>
     </div>
     <div
@@ -173,6 +221,49 @@ const benefits = de
         ? "Austauschbare Pakete aus Pinselmodellen, Vorgaben und Texturen. Noch nicht zum Download verfügbar."
         : "Exchangeable packs of brush models, presets, and textures. Not available to download yet."}
     </p>
+    <p class="scope-note">
+      <strong>{de ? "Bewusster Fokus:" : "A deliberate focus:"}</strong>{" "}
+      {de
+        ? "Cozy Paint Studio soll wahrscheinlich nie eine physikalische Flüssigkeitssimulation sein. Es geht um ausdrucksstarke programmierbare Pinsel und direktes Malen, nicht darum, jede Eigenschaft nasser Farbe nachzubilden."
+        : "Cozy Paint Studio will probably never be a physical fluid simulator. Its focus is expressive programmable brushes and direct painting, not reproducing every behavior of wet paint."}
+    </p>
+  </section>
+
+  <section id="story" class="founder-section section-space content-grid">
+    <div class="founder-aside">
+      <p class="section-index">02 / {de ? "Meine Geschichte" : "My story"}</p>
+      <p class="founder-signature">Johannes Vollmer</p>
+    </div>
+    <div class="founder-copy">
+      <h2>
+        {de
+          ? "Das ist die Mal-App, die ich seit meinem zwölften Lebensjahr bauen wollte."
+          : "This is the painting app I have wanted since I was twelve."}
+      </h2>
+      <p class="lead">
+        {de
+          ? "Hallo, ich bin Johannes. Als Kind Photoshop und Blender zu lernen, führte mich zu Grafikprogrammierung, generativer Kunst, UX-Design und schließlich in die professionelle Softwareentwicklung. Abseits vom Bildschirm male ich mit Öl."
+          : "Hi, I’m Johannes. Learning Photoshop and Blender as a kid led me into graphics programming, generative art, UX design, and eventually professional software engineering. Away from the screen, I paint in oils."}
+      </p>
+      <p>
+        {de
+          ? "Als ich Mischief zum ersten Mal ausprobierte, fühlte sich digitales Malen ungewöhnlich direkt und frei an. Als es eingestellt wurde, blieb dieses Gefühl bei mir. Ich wollte die Idee weiterführen — aber mit strukturierten, farbigen Pinseln, die sich wie vollständige Instrumente verhalten können statt wie einfache Vektorspuren."
+          : "When I first tried Mischief, digital painting felt unusually direct and free. When it was discontinued, that feeling stayed with me. I wanted to carry the idea forward—but with textured, colored brushes that could behave like complete instruments rather than simple vector marks."}
+      </p>
+      <p>
+        {de
+          ? "Cozy Paint Studio ist das Ergebnis. Ich entwickle es unabhängig und in meiner Freizeit als das fokussierte Malwerkzeug, das ich selbst benutzen möchte. Es ist kein venture-finanzierter Versuch, die nächste Kreativplattform zu bauen. Es ist meine Traum-App."
+          : "Cozy Paint Studio is the result. I am building it independently, in my free time, as the focused painting tool I want to use myself. It is not a venture-backed attempt to build another creative-software platform. It is my dream app."}
+      </p>
+      <aside class="studio-note">
+        <p class="eyebrow">{de ? "Wie es entsteht" : "How it is built"}</p>
+        <p>
+          {de
+            ? "Ich nutze bei der Entwicklung von Cozy Paint Studio auch KI-Werkzeuge. Sie beschleunigen Teile der Arbeit. Produktrichtung, Architektur, Interaktionsdesign und die finalen technischen Entscheidungen liegen bei mir und bauen auf meiner professionellen Erfahrung in Software und UX auf. Ich übernehme die volle Verantwortung für diese Software."
+            : "I use AI-assisted development tools while building Cozy Paint Studio. They accelerate parts of the work. I own the product direction, architecture, interaction design, and final engineering decisions, grounded in my professional software and UX experience. I take full responsibility for this software."}
+        </p>
+      </aside>
+    </div>
   </section>
 
   <section class="projects-section section-space content-grid">

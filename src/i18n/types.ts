@@ -11,6 +11,7 @@ type PageCopy = {
 type LandingCopy = {
   why: string;
   brushes: string;
+  story: string;
   community: string;
 };
 

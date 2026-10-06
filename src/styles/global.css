@@ -658,6 +658,7 @@
   }
 
   .site-header nav a,
+  .brand-icon,
   .wordmark,
   .language-switch {
     min-block-size: var(--target-min);
@@ -691,9 +692,6 @@
   }
 
   .wordmark {
-    display: inline-flex;
-    gap: 0.65rem;
-    align-items: center;
     padding-inline: var(--space-2);
     border: 1px solid rgb(255 255 255 / 14%);
     border-radius: var(--radius-control);
@@ -704,10 +702,22 @@
     letter-spacing: -0.04em;
   }
 
-  .wordmark__icon {
-    inline-size: 2rem;
-    block-size: 2rem;
-    flex: 0 0 auto;
+  .site-brand {
+    display: flex;
+    gap: var(--space-1);
+    align-items: stretch;
+  }
+
+  .brand-icon {
+    display: grid;
+    inline-size: var(--target-min);
+    padding: 0;
+    place-items: center;
+  }
+
+  .brand-icon img {
+    inline-size: auto;
+    block-size: var(--target-min);
   }
 
   .language-switch {
@@ -904,13 +914,7 @@
     }
 
     .wordmark {
-      gap: 0.5rem;
       font-size: var(--text-small);
-    }
-
-    .wordmark__icon {
-      inline-size: 1.75rem;
-      block-size: 1.75rem;
     }
   }
 

@@ -16,14 +16,18 @@ const storeIsLive = hasStoreDestination(releaseChannel);
 ---
 
 <header class="site-header halftone-surface">
-  <a
-    class="wordmark"
-    href={routeFor("home", locale)}
-    aria-current={route === "home" ? "page" : undefined}
-  >
-    <img class="wordmark__icon" src="/favicon.svg" alt="" width="32" height="32" />
-    <span>Cozy Paint Studio</span>
-  </a>
+  <div class="site-brand">
+    <a class="brand-icon" href={routeFor("home", locale)} aria-label="Cozy Paint Studio">
+      <img src="/favicon.svg" alt="" width="177" height="178" />
+    </a>
+    <a
+      class="wordmark"
+      href={routeFor("home", locale)}
+      aria-current={route === "home" ? "page" : undefined}
+    >
+      Cozy Paint Studio
+    </a>
+  </div>
   <nav aria-label={t.navigationLabel}>
     {route === "home" ? (
       <>

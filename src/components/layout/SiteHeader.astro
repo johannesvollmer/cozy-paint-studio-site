@@ -31,16 +31,16 @@ const storeIsLive = hasStoreDestination(releaseChannel);
   <nav aria-label={t.navigationLabel}>
     {route === "home" ? (
       <>
-        <a href="#why-cozy" data-scroll-link>
+        <a href={`${routeFor("home", locale)}#why-cozy`} data-scroll-link>
           {t.landingNav.why}
         </a>
-        <a href="#brushes" data-scroll-link>
+        <a href={`${routeFor("home", locale)}#brushes`} data-scroll-link>
           {t.landingNav.brushes}
         </a>
-        <a href="#story" data-scroll-link>
+        <a href={`${routeFor("home", locale)}#story`} data-scroll-link>
           {t.landingNav.story}
         </a>
-        <a href="#community" data-scroll-link>
+        <a href={`${routeFor("home", locale)}#community`} data-scroll-link>
           {t.landingNav.community}
         </a>
       </>

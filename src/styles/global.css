@@ -510,6 +510,9 @@
     background: var(--color-active);
     color: var(--color-ground-deep);
   }
+  .windows-section .section-index {
+    color: #454047;
+  }
   .windows-section .lead {
     color: #454047;
   }

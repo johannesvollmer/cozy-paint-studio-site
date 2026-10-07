@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://cozy-paint-studio.johannesvollmer.com/sitemap-index.xml

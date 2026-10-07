@@ -4,6 +4,7 @@ export const SITE = {
   defaultLocale: "en",
   supportedLocales: ["en", "de"],
   themeColor: "#454447",
+  socialImage: "/images/social-preview.jpg",
 } as const;
 
 export const SUPPORT_EMAIL = "cozy-paint-studio@johannesvollmer.com";

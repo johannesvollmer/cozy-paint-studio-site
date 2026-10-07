@@ -923,7 +923,7 @@ The website cannot be finished from code alone. The owner must supply or approve
 - Support and privacy email addresses on the domain.
 - Microsoft Partner Center account type.
 - Store product URL for each live channel.
-- Final pricing decision.
+- [ ] Finalize the full-version price and public pricing copy. The alpha and beta are free; a later full release is intended to have a consumer-friendly price, currently expected to be in the 5–30 EUR/USD range.
 - Final system requirements.
 - Stable Discord invite and moderation owner.
 - Product logo and Store icon under the **Cozy Paint Studio** name.
@@ -975,7 +975,7 @@ The website is ready when all of the following are true:
 These questions cannot be answered from the repository and materially affect the site:
 
 1. What domain will be registered? -> cozy-paint-studio.johannesvollmer.com first, published via github pages, later then cozy-paint-studio.com
-2. Is the publisher an individual or a company, and is the app free, paid, or intended for later monetization? -> Individual. No monetization during beta/alpha. Perhaps later.
+2. Is the publisher an individual or a company, and is the app free, paid, or intended for later monetization? -> Individual. Alpha and beta are free. The full version is intended to be paid later at a consumer-friendly price, currently expected to be in the 5–30 EUR/USD range; the exact price remains to be finalized.
 3. What serviceable address may be published in the Impressum?
 4. Which static host will be used, in which region, with what log retention? -> github pages
 5. Is the first public channel called alpha, beta, preview, or early access in both Store and website? -> preview

@@ -19,6 +19,7 @@ export const en = {
   landingNav: {
     why: "Why it’s different",
     brushes: "Brushes",
+    roadmap: "Roadmap",
     story: "My story",
     community: "Community",
   },

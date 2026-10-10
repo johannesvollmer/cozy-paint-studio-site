@@ -40,6 +40,9 @@ const storeIsLive = hasStoreDestination(releaseChannel);
         <a href={`${routeFor("home", locale)}#story`} data-scroll-link>
           {t.landingNav.story}
         </a>
+        <a href={`${routeFor("home", locale)}#roadmap`} data-scroll-link>
+          {t.landingNav.roadmap}
+        </a>
         <a href={`${routeFor("home", locale)}#community`} data-scroll-link>
           {t.landingNav.community}
         </a>
@@ -135,6 +138,8 @@ const storeIsLive = hasStoreDestination(releaseChannel);
       if (!frame) frame = window.requestAnimationFrame(updateCurrentSection);
     };
 
+    const headerResizeObserver = new ResizeObserver(scheduleUpdate);
+    headerResizeObserver.observe(header);
     updateCurrentSection();
     window.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate);

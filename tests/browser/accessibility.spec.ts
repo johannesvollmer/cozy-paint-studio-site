@@ -40,12 +40,43 @@ test("keyboard navigation starts with a working skip link and exposes focus", as
 test("the 404 header links back to real home-page sections", async ({ page }) => {
   await page.goto("/404.html");
   const sectionLinks = page.locator("header [data-scroll-link]");
-  await expect(sectionLinks).toHaveCount(4);
+  await expect(sectionLinks).toHaveCount(5);
   await Promise.all(
     (await sectionLinks.all()).map((link) =>
       expect(link).toHaveAttribute("href", /^\/(?:de\/)?#\S+$/u),
     ),
   );
+});
+
+test("landing navigation follows document order and activates the clicked section", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+
+  const sectionLinks = page.locator("header [data-scroll-link]");
+  const targetIds = await sectionLinks.evaluateAll((links) =>
+    links.map((link) => new URL((link as HTMLAnchorElement).href).hash.slice(1)),
+  );
+  const targetOffsets = await page.evaluate((ids) => {
+    return ids.map(
+      (id) => document.querySelector<HTMLElement>(`#${CSS.escape(id)}`)?.offsetTop ?? -1,
+    );
+  }, targetIds);
+
+  expect(targetOffsets).toEqual(targetOffsets.toSorted((a, b) => a - b));
+
+  const assertLinkActivatesItsSection = async (index: number): Promise<void> => {
+    if (index >= (await sectionLinks.count())) return;
+    const link = sectionLinks.nth(index);
+    const targetId = new URL((await link.getAttribute("href"))!, "http://localhost").hash.slice(1);
+    await link.click();
+    await expect(page.locator(`#${targetId}`)).toBeInViewport();
+    await expect(link).toHaveAttribute("aria-current", "location");
+    await assertLinkActivatesItsSection(index + 1);
+  };
+
+  await assertLinkActivatesItsSection(0);
 });
 
 test("landmarks and headings provide a screen-reader document outline", async ({ page }) => {

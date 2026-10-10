@@ -10,6 +10,10 @@ test("activates a section exactly when its top reaches the reading line", () => 
   assert.equal(getActiveSectionIndex([120, 600, 1200], 120), 0);
 });
 
+test("treats subpixel rounding at the reading line as reached", () => {
+  assert.equal(getActiveSectionIndex([120.25, 600, 1200], 120), 0);
+});
+
 test("keeps the current section active until the next section reaches the line", () => {
   assert.equal(getActiveSectionIndex([-400, 121, 700], 120), 0);
 });

@@ -14,6 +14,7 @@ export const de = {
   landingNav: {
     why: "Der Unterschied",
     brushes: "Pinsel",
+    roadmap: "Roadmap",
     story: "Meine Geschichte",
     community: "Community",
   },

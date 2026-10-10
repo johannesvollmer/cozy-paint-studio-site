@@ -474,7 +474,7 @@ Heading:
 
 Recommended alpha copy:
 
-> The Windows alpha is for painters who enjoy trying an early tool and telling us where it breaks the flow. Core painting works; parts of export, touch navigation, sharing, packaging, and polish are still on the easel. Expect changes, and keep copies of work you cannot replace.
+> The Windows alpha is for painters who enjoy trying an early tool and telling us where it breaks the flow. Core painting works; parts of export, touch navigation, sharing, packaging, and polish are still on the easel. Expect changes.
 
 Recommended beta copy:
 

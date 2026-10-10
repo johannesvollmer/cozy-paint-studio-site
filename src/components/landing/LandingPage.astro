@@ -37,9 +37,9 @@ const benefits = de
         "Immer reaktionsschnell, unabhängig von Zoomstufe oder Auflösung. Unmittelbares Malen ist unser Versprechen.",
       ],
       [
-        "Dateien, Ebenen und Verlauf",
-        "Dein Studio wird für dich verwaltet.",
-        "Cozy Paint Studio verwaltet Dateien, Ebenen, Auflösung, Sicherungen und Kontrollpunkte, damit du einfach malen kannst. Keine Dateien wie painting_v12.psd mehr.",
+        "Malen vor Papierkram",
+        "Dein Studio öffnet sich bereit für den ersten Strich.",
+        "Cozy Paint Studio überspringt den Dialog zur Leinwandgröße, damit du sofort zeichnen kannst. Weitere Studiowerkzeuge entstehen noch.",
       ],
     ]
   : [
@@ -54,9 +54,9 @@ const benefits = de
         "Always responsive, no matter the zoom or resolution. Immediate painting is our promise.",
       ],
       [
-        "Files, layers, and history",
-        "Your studio, managed for you.",
-        "Cozy Paint Studio manages files, layers, resolution, backups, and checkpoints so you can just draw. No more painting_v12.psd files.",
+        "Painting before paperwork",
+        "Your studio opens ready for a mark.",
+        "Cozy Paint Studio skips the canvas-size dialog so you can start drawing immediately. More studio tools are still being built.",
       ],
     ];
 ---
@@ -72,8 +72,8 @@ const benefits = de
       </div>
       <p class="availability">
         {de
-          ? "Für Tablets entworfen. Erste Veröffentlichung: Windows. Android und Web sind spätere Richtungen, keine aktuellen Downloads."
-          : "Designed for tablets. First release: Windows. Android and web are later directions, not current downloads."}
+          ? "Für Tablets entworfen. Zuerst für Windows; iPad, vielleicht macOS und später Android sind Richtungen, keine aktuellen Downloads."
+          : "Designed for tablets. Windows first; iPad, perhaps macOS, and later Android are directions, not current downloads."}
       </p>
       <p class="maker-line">
         {de
@@ -242,8 +242,8 @@ const benefits = de
     <p class="scope-note">
       <strong>{de ? "Bewusster Fokus:" : "A deliberate focus:"}</strong>{" "}
       {de
-        ? "Cozy Paint Studio soll wahrscheinlich nie eine physikalische Flüssigkeitssimulation sein. Es geht um ausdrucksstarke programmierbare Pinsel und direktes Malen, nicht darum, jede Eigenschaft nasser Farbe nachzubilden."
-        : "Cozy Paint Studio will probably never be a physical fluid simulator. Its focus is expressive programmable brushes and direct painting, not reproducing every behavior of wet paint."}
+        ? "Das geplante nasse Malen soll Farben überzeugend auf der Leinwand mischen. Es ist kein Versprechen, jede physikalische Eigenschaft echter Farbe zu simulieren."
+        : "The planned wet-painting tool is intended to mix colors convincingly on the canvas. It is not a promise to simulate every physical property of real paint."}
     </p>
   </section>
 
@@ -316,9 +316,164 @@ const benefits = de
       </h2>
       <p class="lead">
         {de
-          ? "Die Oberfläche wurde für Stift, berührungsgroße Bedienelemente und die Reichweite zweier Hände auf einem Tablet entworfen. Windows ist die erste Plattform."
-          : "The interface was designed around a stylus, touch-sized controls, and the reach of two hands on a tablet. Windows is the first release platform."}
+          ? "Die Oberfläche wurde für Stift, berührungsgroße Bedienelemente und die Reichweite zweier Hände auf einem Tablet entworfen. Zuerst soll die Windows-Version richtig funktionieren."
+          : "The interface was designed around a stylus, touch-sized controls, and the reach of two hands on a tablet. The first goal is to make the Windows version work well."}
       </p>
+    </div>
+  </section>
+
+  <section id="roadmap" class="roadmap-section section-space">
+    <header class="roadmap-heading">
+      <p class="section-index">{de ? "Roadmap / ohne Termine" : "Roadmap / no dates"}</p>
+      <div>
+        <h2>{de ? "Eine Richtung, kein Zeitplan." : "A direction, not a timeline."}</h2>
+        <p class="lead">
+          {de
+            ? "Diese Roadmap ist eine lose Sammlung der nächsten großen Themen. Die Reihenfolge zeigt die heutige Priorität, nicht feste Zusagen oder Veröffentlichungstermine. Sie kann sich mit der Entwicklung und dem Feedback von Malerinnen und Malern ändern."
+            : "This roadmap is a loose collection of the next big things. The order reflects today’s priorities, not commitments or release dates, and may change as the app develops and painters weigh in."}
+        </p>
+      </div>
+    </header>
+
+    <div class="roadmap-now" aria-label={de ? "Was jetzt funktioniert" : "What works now"}>
+      <p class="eyebrow">{de ? "Funktioniert jetzt" : "Working now"}</p>
+      <ul>
+        <li>{de ? "Zeichnen" : "Drawing"}</li>
+        <li>{de ? "Eigene Pinsel" : "Custom brushes"}</li>
+        <li>{de ? "Eigene Pinseltexturen" : "Custom brush textures"}</li>
+        <li>
+          {de ? "Grenzenlose Leinwand & skalierbare Pinsel" : "Infinite canvas & scalable brushes"}
+        </li>
+        <li>{de ? "Unbegrenztes Rückgängigmachen & Wiederholen" : "Unlimited undo & redo"}</li>
+        <li>{de ? "Lokal gespeicherte Pinselvorgaben" : "Locally saved brush presets"}</li>
+        <li>{de ? "Automatisch gespeichert nach jedem Strich" : "Autosaved after every stroke"}</li>
+      </ul>
+    </div>
+
+    <div class="roadmap-grid">
+      <div class="roadmap-priorities">
+        <p class="eyebrow">{de ? "Große Funktionsprioritäten" : "Big feature priorities"}</p>
+        <ol class="priority-list">
+          <li>
+            <span>01</span>
+            <div>
+              <h3>{de ? "Lasso: auswählen & malen" : "Lasso select & paint"}</h3>
+              <p>
+                {de
+                  ? "Einen Bereich frei umreißen und das Malen darauf begrenzen."
+                  : "Draw a freeform selection and keep painting inside it."}
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <h3>{de ? "Verschieben, skalieren & drehen" : "Move, scale & rotate"}</h3>
+              <p>
+                {de
+                  ? "Bildbereiche mit einem Lasso oder Pinsel auswählen und transformieren."
+                  : "Select parts of a painting with a lasso or brush, then transform them."}
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <h3>{de ? "Konfigurierbare Tastenkürzel" : "Configurable keybindings"}</h3>
+              <p>
+                {de
+                  ? "Tastaturbefehle an den eigenen Arbeitsablauf anpassen."
+                  : "Adapt keyboard commands to your own workflow."}
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>04</span>
+            <div>
+              <h3>{de ? "Nasses Malen" : "Wet painting"}</h3>
+              <p>
+                {de
+                  ? "Farben direkt auf der Leinwand mischen — eher wie Ölfarbe."
+                  : "Mix colors directly on the canvas, more like working in oils."}
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>05</span>
+            <div>
+              <h3>{de ? "Ebenen" : "Layers"}</h3>
+              <p>
+                {de
+                  ? "Bildelemente getrennt organisieren und bearbeiten."
+                  : "Organize and edit parts of a painting separately."}
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>06</span>
+            <div>
+              <h3>{de ? "Rahmen für Rasterexport" : "Frames for raster export"}</h3>
+              <p>
+                {de
+                  ? "Auf der grenzenlosen Leinwand festlegen, welcher Ausschnitt in welcher Auflösung exportiert wird."
+                  : "Define which part of the endless canvas exports, and at what resolution."}
+              </p>
+            </div>
+          </li>
+          <li>
+            <span>07</span>
+            <div>
+              <h3>
+                {de
+                  ? "Pinsel-Engines & Texturpakete aus der Community"
+                  : "Community brush engines & texture packs"}
+              </h3>
+              <p>
+                {de
+                  ? "Pinsel und Texturen als vollständige kreative Werkzeuge austauschen."
+                  : "Exchange brushes and textures as complete creative tools."}
+              </p>
+            </div>
+          </li>
+        </ol>
+        <p class="performance-note">
+          <strong>{de ? "Außerdem geplant:" : "Also planned:"}</strong>{" "}
+          {de
+            ? "Verschiedene Performance-Optimierungen sind vorgesehen, vorerst aber aufgeschoben, während die Kernwerkzeuge Vorrang haben."
+            : "Various performance optimizations are planned, but postponed for now while the core tools take priority."}
+        </p>
+      </div>
+
+      <aside class="platform-path">
+        <p class="eyebrow">{de ? "Plattformrichtung" : "Platform direction"}</p>
+        <ol>
+          <li>
+            <span>{de ? "Zuerst" : "First"}</span>
+            <strong>Windows</strong>
+            <p>
+              {de ? "Die erste voll funktionsfähige Version." : "The first fully working version."}
+            </p>
+          </li>
+          <li>
+            <span>{de ? "Danach" : "Then"}</span>
+            <strong>iPad {de ? "und vielleicht macOS" : "and perhaps macOS"}</strong>
+            <p>
+              {de
+                ? "Apple-Versionen können folgen, sobald Windows steht."
+                : "Apple versions can follow once Windows is in good shape."}
+            </p>
+          </li>
+          <li>
+            <span>{de ? "Später" : "Later"}</span>
+            <strong>Android</strong>
+            <p>
+              {de
+                ? "Dafür brauche ich zuerst ein Android-Tablet mit Stift zum Entwickeln und Testen."
+                : "That starts with getting an Android tablet with a stylus for development and testing."}
+            </p>
+          </li>
+        </ol>
+      </aside>
     </div>
   </section>
 
@@ -330,12 +485,15 @@ const benefits = de
           ? "Ein funktionierendes Studio, das noch gebaut wird."
           : "A working studio, still being built."}
       </h2>
-      <p>
-        {releaseChannel.disclosure[locale]}{" "}
-        {de
-          ? "Teile von Export, Touch-Navigation, Teilen, Paketierung und Feinschliff sind noch auf der Staffelei. Erwarte Änderungen und bewahre Kopien unersetzlicher Arbeiten auf."
-          : "Parts of export, touch navigation, sharing, packaging, and polish are still on the easel. Expect changes, and keep copies of work you cannot replace."}
-      </p>
+      <p>{releaseChannel.disclosure[locale]}</p>
+      <aside class="compatibility-warning">
+        <p>
+          <strong>{de ? "Wichtig zu deinen Dateien:" : "Important about your files:"}</strong>{" "}
+          {de
+            ? "Zeichnungen aus diesem Prototyp lassen sich möglicherweise in keiner späteren Version öffnen — nicht einmal im nächsten Prototyp und mit großer Sicherheit nicht in der fertigen Version. Wir versprechen, die alten ausführbaren Dateien verfügbar zu halten, damit du alte Zeichnungen immer mit der jeweils alten Studio-Version öffnen kannst."
+            : "Drawings made with this prototype may not open in any later version—not even the next prototype, and almost certainly not the finished version. We promise to keep the old executables available, so you can always open old drawings with the matching old Studio."}
+        </p>
+      </aside>
       <p>
         <a href={routeFor("support", locale)}>
           {de ? "Support und Hinweise für Fehlerberichte" : "Support and reporting guidance"}

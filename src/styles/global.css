@@ -620,13 +620,6 @@
     line-height: 1.15;
   }
 
-  .preview-disclosure {
-    border-block: 1px solid var(--color-outline);
-  }
-  .preview-disclosure p + p {
-    margin-block-start: var(--space-2);
-  }
-
   .compatibility-warning {
     margin-block-start: var(--space-3);
     padding: var(--space-3);
@@ -642,6 +635,11 @@
   .compatibility-warning strong {
     color: var(--color-text);
   }
+
+  .roadmap-support-link {
+    margin-block-start: var(--space-2);
+  }
+
   .community-section {
     background: rgb(95 64 61 / 20%);
   }

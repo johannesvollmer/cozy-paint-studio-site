@@ -471,31 +471,20 @@ const benefits = de
         </ol>
       </aside>
     </div>
-  </section>
 
-  <section class="preview-disclosure section-space content-grid">
-    <p class="eyebrow">{releaseChannel.label[locale]}</p>
-    <div>
-      <h2>
-        {de
-          ? "Ein funktionierendes Studio, das noch gebaut wird."
-          : "A working studio, still being built."}
-      </h2>
-      <p>{releaseChannel.disclosure[locale]}</p>
-      <aside class="compatibility-warning">
-        <p>
-          <strong>{de ? "Wichtig zu deinen Dateien:" : "Important about your files:"}</strong>{" "}
-          {de
-            ? "Zeichnungen aus diesem Prototyp lassen sich möglicherweise in keiner späteren Version öffnen — nicht einmal im nächsten Prototyp und mit großer Sicherheit nicht in der fertigen Version. Wir versprechen, die alten ausführbaren Dateien verfügbar zu halten, damit du alte Zeichnungen immer mit der jeweils alten Studio-Version öffnen kannst."
-            : "Drawings made with this prototype may not open in any later version—not even the next prototype, and almost certainly not the finished version. We promise to keep the old executables available, so you can always open old drawings with the matching old Studio."}
-        </p>
-      </aside>
+    <aside class="compatibility-warning">
       <p>
-        <a href={routeFor("support", locale)}>
-          {de ? "Support und Hinweise für Fehlerberichte" : "Support and reporting guidance"}
-        </a>
+        <strong>{de ? "Wichtig zu deinen Dateien:" : "Important about your files:"}</strong>{" "}
+        {de
+          ? "Zeichnungen aus diesem Prototyp lassen sich möglicherweise in keiner späteren Version öffnen — nicht einmal im nächsten Prototyp und mit großer Sicherheit nicht in der fertigen Version. Wir versprechen, die alten ausführbaren Dateien verfügbar zu halten, damit du alte Zeichnungen immer mit der jeweils alten Studio-Version öffnen kannst."
+          : "Drawings made with this prototype may not open in any later version—not even the next prototype, and almost certainly not the finished version. We promise to keep the old executables available, so you can always open old drawings with the matching old Studio."}
       </p>
-    </div>
+    </aside>
+    <p class="roadmap-support-link">
+      <a href={routeFor("support", locale)}>
+        {de ? "Support und Hinweise für Fehlerberichte" : "Support and reporting guidance"}
+      </a>
+    </p>
   </section>
 
   <section id="community" class="community-section section-space content-grid">

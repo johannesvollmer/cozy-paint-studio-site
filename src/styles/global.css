@@ -260,11 +260,14 @@
   }
 
   .statement {
+    grid-template-columns: minmax(8rem, 0.35fr) minmax(18rem, 0.8fr) minmax(18rem, 1.2fr);
+    align-items: start;
     background: rgb(99 90 114 / 18%);
   }
 
   .difference-visual {
-    grid-column: 2;
+    grid-column: 3;
+    grid-row: 1;
     overflow: hidden;
     border: 1px solid rgb(255 255 255 / 12%);
     border-radius: clamp(1.25rem, 3vw, 3rem);
@@ -857,6 +860,7 @@
     }
     .difference-visual {
       grid-column: 1;
+      grid-row: auto;
     }
     .color-section {
       grid-template-columns: 1fr;

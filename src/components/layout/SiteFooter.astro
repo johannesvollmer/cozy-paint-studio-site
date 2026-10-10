@@ -1,5 +1,6 @@
 ---
 import type { Locale } from "../../config/site";
+import { hasStoreDestination, releaseChannel } from "../../config/release";
 import { alternateLocale, routeFor, type RouteKey } from "../../i18n/routes";
 import { useTranslations } from "../../i18n";
 
@@ -11,6 +12,7 @@ interface Props {
 const { locale, route } = Astro.props;
 const t = useTranslations(locale);
 const otherLocale = alternateLocale(locale);
+const storeIsLive = hasStoreDestination(releaseChannel);
 ---
 
 <footer class="site-footer">
@@ -22,6 +24,7 @@ const otherLocale = alternateLocale(locale);
     <a href={routeFor("support", locale)}>{t.nav.support}</a>
     <a href={routeFor("privacy", locale)}>{t.nav.privacy}</a>
     <a href={routeFor("legalNotice", locale)}>{t.nav.legalNotice}</a>
+    {storeIsLive && <a href={releaseChannel.storeUrl}>{releaseChannel.label[locale]}</a>}
     <span>{t.footer.discordUnavailable}</span>
     <a href={routeFor(route, otherLocale)} lang={otherLocale} hreflang={otherLocale}>
       {t.languageSwitchLabel}

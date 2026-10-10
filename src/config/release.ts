@@ -1,6 +1,6 @@
 import type { Locale } from "./site";
 
-export type ReleaseState = "coming-soon" | "alpha" | "beta" | "stable";
+export type ReleaseState = "coming-soon" | "preview" | "alpha" | "beta" | "stable";
 export type ReleaseAccess = "none" | "invite-only" | "unlisted" | "public";
 
 export interface ReleaseChannel {
@@ -14,22 +14,23 @@ export interface ReleaseChannel {
 
 /**
  * The single source of truth for every Store-facing surface.
- * Keep the action disabled until a durable HTTPS Store or access URL exists.
+ * Keep Store-facing copy and destinations synchronized across the site.
  */
 export const releaseChannel: ReleaseChannel = {
-  state: "coming-soon",
-  access: "none",
+  state: "preview",
+  storeUrl: "https://apps.microsoft.com/detail/9PPM8C4ZT882",
+  access: "public",
   label: {
-    en: "Windows preview coming soon",
-    de: "Windows-Vorschau kommt bald",
+    en: "Get the free preview from Microsoft Store",
+    de: "Kostenlose Vorschau im Microsoft Store",
   },
   disclosure: {
-    en: "Cozy Paint Studio is a working prototype preparing for a Windows preview.",
-    de: "Cozy Paint Studio ist ein funktionsfähiger Prototyp in Vorbereitung auf eine Windows-Vorschau.",
+    en: "The Windows preview is available now and free while it remains in preview.",
+    de: "Die Windows-Vorschau ist jetzt verfügbar und bleibt während der Vorschauphase kostenlos.",
   },
   windowsRequirement: {
-    en: "Windows requirements will be confirmed against the release build.",
-    de: "Die Windows-Anforderungen werden mit der Veröffentlichungsversion bestätigt.",
+    en: "The preview is available for Windows through Microsoft Store.",
+    de: "Die Vorschau ist für Windows im Microsoft Store verfügbar.",
   },
 };
 

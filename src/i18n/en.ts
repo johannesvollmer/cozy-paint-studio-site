@@ -13,7 +13,7 @@ export const en = {
   },
   footer: {
     navigationLabel: "Legal and support",
-    status: "Windows preview",
+    status: "Free Windows preview",
     discordUnavailable: "Discord invite coming soon",
   },
   landingNav: {

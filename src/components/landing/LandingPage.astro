@@ -24,6 +24,20 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 const page = t.pages.home;
 const de = locale === "de";
+const softwareApplicationData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Cozy Paint Studio",
+  applicationCategory: "GraphicsApplication",
+  operatingSystem: "Windows",
+  url: releaseChannel.storeUrl,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+    description: de ? "Während der Vorschauphase kostenlos" : "Free while the app is in preview",
+  },
+};
 const benefits = de
   ? [
       [
@@ -37,9 +51,9 @@ const benefits = de
         "Immer reaktionsschnell, unabhängig von Zoomstufe oder Auflösung. Unmittelbares Malen ist unser Versprechen.",
       ],
       [
-        "Malen vor Papierkram",
-        "Dein Studio öffnet sich bereit für den ersten Strich.",
-        "Cozy Paint Studio überspringt den Dialog zur Leinwandgröße, damit du sofort zeichnen kannst. Weitere Studiowerkzeuge entstehen noch.",
+        "Dateien, Ebenen und Verlauf",
+        "Dein Studio wird für dich verwaltet.",
+        "Cozy Paint Studio verwaltet Dateien, Ebenen, Auflösung und Sicherungen, damit du einfach malen kannst. Keine Dateien wie painting_v12.psd mehr.",
       ],
     ]
   : [
@@ -54,14 +68,15 @@ const benefits = de
         "Always responsive, no matter the zoom or resolution. Immediate painting is our promise.",
       ],
       [
-        "Painting before paperwork",
-        "Your studio opens ready for a mark.",
-        "Cozy Paint Studio skips the canvas-size dialog so you can start drawing immediately. More studio tools are still being built.",
+        "Files, layers, and history",
+        "Your studio, managed for you.",
+        "Cozy Paint Studio manages files, layers, resolution, and backups so you can just draw. No more painting_v12.psd files.",
       ],
     ];
 ---
 
 <BaseLayout {locale} route="home" title={page.title} description={page.description}>
+  <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationData)} />
   <section class="landing-hero section-space">
     <div class="hero-copy">
       <p class="eyebrow">{page.eyebrow}</p>
@@ -71,9 +86,7 @@ const benefits = de
         <ReleaseAction {locale} />
       </div>
       <p class="availability">
-        {de
-          ? "Für Tablets entworfen. Zuerst für Windows; iPad, vielleicht macOS und später Android sind Richtungen, keine aktuellen Downloads."
-          : "Designed for tablets. Windows first; iPad, perhaps macOS, and later Android are directions, not current downloads."}
+        {de ? "Android und iOS kommen bald." : "Android and iOS will come soon."}
       </p>
       <p class="maker-line">
         {de
@@ -308,20 +321,6 @@ const benefits = de
     </div>
   </section>
 
-  <section class="windows-section section-space content-grid">
-    <p class="section-index">{de ? "Windows zuerst" : "Windows first"}</p>
-    <div>
-      <h2>
-        {de ? "Auf Glas geboren. Beginnend auf Windows." : "Born on glass. Beginning on Windows."}
-      </h2>
-      <p class="lead">
-        {de
-          ? "Die Oberfläche wurde für Stift, berührungsgroße Bedienelemente und die Reichweite zweier Hände auf einem Tablet entworfen. Zuerst soll die Windows-Version richtig funktionieren."
-          : "The interface was designed around a stylus, touch-sized controls, and the reach of two hands on a tablet. The first goal is to make the Windows version work well."}
-      </p>
-    </div>
-  </section>
-
   <section id="roadmap" class="roadmap-section section-space">
     <header class="roadmap-heading">
       <p class="section-index">{de ? "Roadmap / ohne Termine" : "Roadmap / no dates"}</p>
@@ -527,8 +526,8 @@ const benefits = de
     <h2>{de ? "Mach die erste Linie." : "Make the first mark."}</h2>
     <p>
       {de
-        ? "Cozy Paint Studio kommt zuerst über den Microsoft Store zu Windows."
-        : "Cozy Paint Studio is coming first to Windows through the Microsoft Store."}
+        ? "Cozy Paint Studio ist jetzt als kostenlose Vorschau im Microsoft Store verfügbar."
+        : "Cozy Paint Studio is now available as a free preview from Microsoft Store."}
     </p>
     <div class="action-row">
       <ReleaseAction {locale} />

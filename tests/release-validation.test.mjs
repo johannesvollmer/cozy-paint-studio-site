@@ -3,12 +3,15 @@ import test from "node:test";
 import { releaseChannel } from "../src/config/release.ts";
 import { validateReleaseChannel } from "../scripts/lib/release-validation.mjs";
 
-test("accepts the checked-in coming-soon configuration", () => {
+test("accepts the checked-in public preview configuration", () => {
   assert.deepEqual(validateReleaseChannel(releaseChannel), []);
+  assert.equal(releaseChannel.storeUrl, "https://apps.microsoft.com/detail/9PPM8C4ZT882");
+  assert.match(releaseChannel.disclosure.en, /free while .* preview/iu);
+  assert.match(releaseChannel.disclosure.de, /kostenlos/iu);
 });
 
 test("rejects an enabled release without a Store URL", () => {
-  const channel = { ...releaseChannel, state: "beta", access: "public" };
+  const channel = { ...releaseChannel, state: "beta", access: "public", storeUrl: undefined };
   assert.match(
     validateReleaseChannel(channel).join("\n"),
     /requires an HTTPS Microsoft Store URL/u,

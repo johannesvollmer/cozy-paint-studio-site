@@ -8,7 +8,7 @@ export const de = {
   nav: { home: "Startseite", support: "Support", privacy: "Datenschutz", legalNotice: "Impressum" },
   footer: {
     navigationLabel: "Rechtliches und Support",
-    status: "Windows-Vorschau",
+    status: "Kostenlose Windows-Vorschau",
     discordUnavailable: "Discord-Einladung folgt",
   },
   landingNav: {

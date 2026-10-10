@@ -1,5 +1,6 @@
 ---
 import LegalLayout from "../../layouts/LegalLayout.astro";
+import { releaseChannel } from "../../config/release";
 import { SUPPORT_EMAIL, type Locale } from "../../config/site";
 import { useTranslations } from "../../i18n";
 
@@ -41,8 +42,8 @@ const de = locale === "de";
     </p>
     <p class="notice">
       {de
-        ? "Diese Beschreibung wird vor Veröffentlichung nochmals mit dem verpackten Vorschau-Build geprüft. Speicherorte, Löschung, mögliche Microsoft-Store-Zuverlässigkeitsdaten und Zielgruppenmitgliedschaft werden ergänzt, sobald der Vertriebskanal feststeht."
-        : "This description will be checked again against the packaged preview build before release. Storage locations, deletion, possible Microsoft Store reliability data, and audience membership will be added once distribution is finalized."}
+        ? "Diese Beschreibung gilt für die aktuelle öffentliche Vorschau. Speicherorte und Löschschritte werden weiterhin mit dem verpackten Vorschau-Build geprüft. Microsoft kann Store-Erwerb, Installation, Updates, Lizenzierung und Zuverlässigkeitsdaten eigenständig nach seinen Bedingungen verarbeiten."
+        : "This description applies to the current public preview. Storage locations and deletion steps are still being verified against the packaged preview build. Microsoft may independently process Store acquisition, installation, updates, licensing, and reliability data under its terms."}
     </p>
   </section>
   <section>
@@ -68,7 +69,10 @@ const de = locale === "de";
     <p>
       {de
         ? "Microsoft Store und Discord sind eigenständige Dienste mit eigenen Datenschutzbedingungen. Ein normaler Link überträgt erst dann Daten an den jeweiligen Dienst, wenn du ihm folgst. Diese Website verwendet keine Einbettungen oder Vorabverbindungen zu diesen Diensten."
-        : "Microsoft Store and Discord are separate services with their own privacy terms. A plain link transfers data to them only when you follow it. This website uses no embeds or preconnections to those services."}
+        : "Microsoft Store and Discord are separate services with their own privacy terms. A plain link transfers data to them only when you follow it. This website uses no embeds or preconnections to those services."}{" "}
+      <a href={releaseChannel.storeUrl}>
+        {de ? "Kostenlose Vorschau im Microsoft Store" : "Free preview on Microsoft Store"}
+      </a>
     </p>
   </section>
   <section>
@@ -81,7 +85,7 @@ const de = locale === "de";
   </section>
   <p class="legal-review-note">
     {de
-      ? "Diese Vorabfassung muss vor einer öffentlichen Produktveröffentlichung rechtlich und gegen die endgültige Hosting- und App-Konfiguration geprüft werden."
-      : "This pre-release notice must be legally reviewed and checked against the final hosting and app configuration before public product release."}
+      ? "Diese Datenschutzhinweise werden während der Vorschau weiter gegen die tatsächliche Hosting- und App-Konfiguration geprüft und bei Änderungen aktualisiert."
+      : "This privacy notice will continue to be checked against the actual hosting and app configuration during the preview and updated when they change."}
   </p>
 </LegalLayout>

@@ -22,8 +22,8 @@ export const de = {
       title: "Cozy Paint Studio — Organische Pinsel, skalierbar wie Vektorgrafik",
       description:
         "Weiche, drucksensitive Pinsel-Engines treffen auf eine grenzenlose, vollständig skalierbare Leinwand — in einer unabhängig entwickelten Mal-App für Windows.",
-      eyebrow: "Eine andere Art Mal-App für Windows",
-      heading: "Organisch wie Pixelmalerei. Skalierbar wie Vektorgrafik.",
+      eyebrow: "Eine Mal-App die dir nicht im Weg steht, egal wohin du gehst",
+      heading: "So organisch wie Pixel. So skalierbar wie Vektoren.",
       intro:
         "Pixelmalerei fühlt sich organisch an, ist aber an eine feste Auflösung gebunden. Vektorgrafik skaliert, fühlt sich aber selten wie Malen an. Cozy Paint Studio bringt beides zusammen: weiche, drucksensitive Pinsel-Engines auf einer grenzenlosen Leinwand. Zoome weiter hinein und male einfach weiter.",
     },

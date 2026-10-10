@@ -28,8 +28,8 @@ const benefits = de
   ? [
       [
         "Steht dir nicht im Weg",
-        "Ein Klick, und du kannst losmalen.",
-        "Keine Breite, Höhe, DPI, kein Dateiname und kein Speicherort stehen zwischen dir und einem neuen Bild. Die Bürokratie kommt später.",
+        "Jetzt malen. Die Auflösung später wählen.",
+        "Das ist der eigentliche Gewinn der grenzenlosen Leinwand: Du musst dich am Anfang nicht auf Breite, Höhe oder DPI festlegen. Fang einfach mit dem Bild an und entscheide dich erst dann für eine Auflösung, wenn du sie brauchst.",
       ],
       [
         "Geringe Latenz ist ein Merkmal",
@@ -37,16 +37,16 @@ const benefits = de
         "Immer reaktionsschnell, unabhängig von Zoomstufe oder Auflösung. Unmittelbares Malen ist unser Versprechen.",
       ],
       [
-        "Alle Dateien werden automatisch verwaltet",
-        "Automatisches Speichern bei jedem Pinselstrich",
-        "Alles wird während der Arbeit aufgezeichnet, ohne dass Speichern zu einer weiteren Verwaltungsaufgabe wird. Der Verlauf macht manuelle Sicherungskopien überflüssig.",
+        "Dateien, Ebenen und Verlauf",
+        "Dein Studio wird für dich verwaltet.",
+        "Cozy Paint Studio verwaltet Dateien, Ebenen, Auflösung, Sicherungen und Kontrollpunkte, damit du einfach malen kannst. Keine Dateien wie painting_v12.psd mehr.",
       ],
     ]
   : [
       [
         "Gets out of your way",
-        "One click to start a painting. ",
-        "No width, height, DPI, file name, or save location stands between you and a new painting. Bureaucracy comes later.",
+        "Paint now. Choose resolution later.",
+        "That is the real win of an infinite canvas: no width, height, or DPI decision before the first mark. Start with the painting and choose a resolution only when you need one.",
       ],
       [
         "Low latency is a feature",
@@ -54,9 +54,9 @@ const benefits = de
         "Always responsive, no matter the zoom or resolution. Immediate painting is our promise.",
       ],
       [
-        "All files handled automatically",
-        "Autosave on every stroke",
-        "Everything is recorded as you work, without turning Save into another management task. The history makes manual backups obsolete.",
+        "Files, layers, and history",
+        "Your studio, managed for you.",
+        "Cozy Paint Studio manages files, layers, resolution, backups, and checkpoints so you can just draw. No more painting_v12.psd files.",
       ],
     ];
 ---
@@ -95,8 +95,13 @@ const benefits = de
       </h2>
       <p class="lead">
         {de
-          ? "Digitale Malprogramme sind erstaunlich gut darin geworden, Pigmente nachzuahmen — und trotzdem verlangen sie, dass du dich zu Beginn auf ein festes Pixelraster festlegst. Cozy Paint Studio nimmt diese Grenze weg und behält das Gefühl pixelbasierter Malprogramme: ausdrucksstarke, strukturierte Spuren auf einer grenzenlosen Leinwand, in die du immer weiter hineinzoomen und weiter malen kannst. Das hier ist kein chirurgisch präziser Bézierkurven-Editor. Es darf so dreckig und chaotisch werden, wie du willst — und genau das liebe ich daran."
-          : "Digital painting apps have become remarkably good at imitating pigment, yet they still ask you to choose a fixed pixel grid up front. Cozy Paint Studio removes that limit while keeping the feel of pixel-based painting: expressive, textured marks on an endless canvas you can keep zooming into and painting on. This is not a surgical Bézier-shape editor. It gets as messy as you want it to—and I love that."}
+          ? "Pixelbilder bestehen aus einem einzigen großen Raster: einem festen Gitter aus Farbwerten. Vektorbilder sind dagegen eine Liste aus einfachen Formen und Kurven mit Strichstärke, die in jeder Auflösung gerendert werden können."
+          : "Pixel images are one large raster: a fixed grid of color values. Vector images are a list of simple shapes and curves with thickness, which can be rendered at any resolution."}
+      </p>
+      <p class="lead">
+        {de
+          ? "Cozy Paint Studio etabliert einen neuen grundlegenden Bildtyp zwischen diesen beiden. Ein Bild wird durch beliebige Formeln pro Pixel beschrieben, die in jeder Auflösung ausgewertet werden können. Eine Formel kann Rasterbilder abtasten, Schleifen ausführen oder beim Auswerten jedes Pixels beliebige Formen erzeugen. So kann sie ein Fraktal oder eine Unschärfe rendern — oder dynamisch auf Stiftdruck, Winkel, Neigung, Strichstärke, Strichfarbe und mehr reagieren."
+          : "Cozy Paint Studio establishes a new fundamental image type between the two. An image is described by arbitrary per-pixel formulas that can be evaluated at any resolution. A formula can sample raster images, run loops, or generate arbitrary shapes as it evaluates each pixel. It can render a fractal or a blur, or change its result dynamically with pen pressure, angle, tilt, stroke thickness, stroke color, and more."}
       </p>
     </div>
     <figure class="difference-visual">
@@ -258,12 +263,12 @@ const benefits = de
           ? "Hallo, ich bin Johannes. Als Kind Photoshop und Blender zu lernen, führte mich zu Grafikprogrammierung, generativer Kunst, UX-Design und schließlich in die professionelle Softwareentwicklung. Abseits vom Bildschirm male ich mit Öl."
           : "Hi, I’m Johannes. Learning Photoshop and Blender as a kid led me into graphics programming, generative art, UX design, and eventually professional software engineering. Away from the screen, I paint in oils."}
       </p>
-      <p>
+      <p class="lead">
         {de
           ? "Als ich Mischief zum ersten Mal ausprobierte, fühlte sich digitales Malen ungewöhnlich direkt und frei an. Als es eingestellt wurde, blieb dieses Gefühl bei mir. Ich wollte die Idee weiterführen — aber mit strukturierten, farbigen Pinseln, die sich wie vollständige Instrumente verhalten können statt wie einfache Vektorspuren."
           : "When I first tried Mischief, digital painting felt unusually direct and free. When it was discontinued, that feeling stayed with me. I wanted to carry the idea forward—but with textured, colored brushes that could behave like complete instruments rather than simple vector marks."}
       </p>
-      <p>
+      <p class="lead">
         {de
           ? "Cozy Paint Studio ist das Ergebnis. Ich entwickle es unabhängig und in meiner Freizeit als das fokussierte Malwerkzeug, das ich selbst benutzen möchte. Es ist kein venture-finanzierter Versuch, die nächste Kreativplattform zu bauen. Es ist meine Traum-App."
           : "Cozy Paint Studio is the result. I am building it independently, in my free time, as the focused painting tool I want to use myself. It is not a venture-backed attempt to build another creative-software platform. It is my dream app."}

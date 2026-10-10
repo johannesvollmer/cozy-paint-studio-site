@@ -27,8 +27,8 @@ export const en = {
       title: "Cozy Paint Studio — Organic brushes that scale like vector art",
       description:
         "Soft, pressure-sensitive brush engines meet an endless, fully scalable canvas in an independently built painting app for Windows.",
-      eyebrow: "A different kind of painting app for Windows",
-      heading: "Organic like pixel painting. Scalable like vector art.",
+      eyebrow: "A painting app that gets ouf of your way, all the way",
+      heading: "As organic as pixels. As scalable as vectors.",
       intro:
         "Pixel painting feels organic but has a fixed resolution. Vector art scales, but rarely feels like paint. Cozy Paint Studio brings both together: soft, pressure-sensitive brush engines on an endless canvas. Keep zooming in and keep painting.",
     },

@@ -1,8 +1,8 @@
 ---
 import LegalLayout from "../../layouts/LegalLayout.astro";
-import { releaseChannel } from "../../config/release";
 import { SUPPORT_EMAIL, type Locale } from "../../config/site";
 import { useTranslations } from "../../i18n";
+import StoreLink from "../ui/StoreLink.astro";
 
 interface Props {
   locale: Locale;
@@ -70,9 +70,10 @@ const de = locale === "de";
       {de
         ? "Microsoft Store und Discord sind eigenständige Dienste mit eigenen Datenschutzbedingungen. Ein normaler Link überträgt erst dann Daten an den jeweiligen Dienst, wenn du ihm folgst. Diese Website verwendet keine Einbettungen oder Vorabverbindungen zu diesen Diensten."
         : "Microsoft Store and Discord are separate services with their own privacy terms. A plain link transfers data to them only when you follow it. This website uses no embeds or preconnections to those services."}{" "}
-      <a href={releaseChannel.storeUrl}>
-        {de ? "Kostenlose Vorschau im Microsoft Store" : "Free preview on Microsoft Store"}
-      </a>
+      <StoreLink
+        {locale}
+        label={de ? "Kostenlose Vorschau im Microsoft Store" : "Free preview on Microsoft Store"}
+      />
     </p>
   </section>
   <section>

@@ -1,0 +1,19 @@
+---
+import { hasStoreDestination, releaseChannel } from "../../config/release";
+import type { Locale } from "../../config/site";
+
+interface Props {
+  locale: Locale;
+  class?: string;
+  label?: string;
+}
+
+const { locale, class: className, label = releaseChannel.label[locale] } = Astro.props;
+const storeIsLive = hasStoreDestination(releaseChannel);
+---
+
+{storeIsLive && (
+  <a class={className} href={releaseChannel.storeUrl} target="_blank" rel="noopener noreferrer">
+    {label}
+  </a>
+)}

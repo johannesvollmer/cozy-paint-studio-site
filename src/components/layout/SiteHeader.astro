@@ -1,8 +1,8 @@
 ---
-import { hasStoreDestination, releaseChannel } from "../../config/release";
 import type { Locale } from "../../config/site";
 import { alternateLocale, routeFor, type RouteKey } from "../../i18n/routes";
 import { useTranslations } from "../../i18n";
+import ReleaseAction from "../ui/ReleaseAction.astro";
 
 interface Props {
   locale: Locale;
@@ -12,7 +12,6 @@ interface Props {
 const { locale, route } = Astro.props;
 const t = useTranslations(locale);
 const otherLocale = alternateLocale(locale);
-const storeIsLive = hasStoreDestination(releaseChannel);
 ---
 
 <header class="site-header halftone-surface">
@@ -82,15 +81,7 @@ const storeIsLive = hasStoreDestination(releaseChannel);
   >
     {otherLocale.toUpperCase()}
   </a>
-  {storeIsLive ? (
-    <a class="button button--primary" href={releaseChannel.storeUrl}>
-      {releaseChannel.label[locale]}
-    </a>
-  ) : (
-    <span class="button button--primary button--disabled" aria-disabled="true">
-      {releaseChannel.label[locale]}
-    </span>
-  )}
+  <ReleaseAction {locale} />
 </header>
 
 <script>

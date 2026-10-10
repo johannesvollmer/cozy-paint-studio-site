@@ -222,28 +222,97 @@ const benefits = de
   <section id="brushes" class="brush-section section-space">
     <div class="section-heading">
       <p class="eyebrow">{de ? "Pinsel-Engines" : "Brush engines"}</p>
-      <h2>{de ? "Ein Pinsel ist programmierbar." : "A brush can be programmed."}</h2>
+      <h2>
+        {de
+          ? "Jeder Pinsel kann anders programmiert werden."
+          : "Each brush can be programmed differently."}
+      </h2>
       <p>
         {de
           ? "Ein Pinsel ist nicht bloß ein Stempel aus Texturen. Seine Engine kann mit eigenem Rendering-Code auf Druck, Form, Textur, Farbe, Abstand und Drehung reagieren."
           : "A brush is not merely a stamp made from textures. Its engine can use its own rendering code to respond to pressure, shape, texture, color, spacing, and rotation."}
       </p>
     </div>
+    <p class="brush-formula-note">
+      {de
+        ? "Dieselben oben beschriebenen Formeln pro Pixel arbeiten auch in jedem Pinsel: Eine kann ein sauberes Polygon formen, eine andere Tinte aufbauen oder Druck in Farbe übersetzen."
+        : "The same per-pixel formulas described above live inside each brush: one can shape a clean polygon, while another builds up ink or turns pressure into color."}
+    </p>
     <div
       class="brush-table"
-      aria-label={de ? "Illustrative Pinselspuren" : "Illustrative brush marks"}
+      aria-label={de ? "Auszüge aus dem Pinsel-Shader" : "Brush shader excerpts"}
     >
       <figure>
-        <span class="swatch swatch--pencil"></span>
-        <figcaption>{de ? "Bleistift · Druckbreite" : "Pencil · pressure width"}</figcaption>
+        <div class="code-card" aria-hidden="true">
+          <div class="code-card__bar">
+            <span>shape.wgsl</span>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+          <pre><code><span class="syntax-comment">// Hold the short axis at the pixel floor.</span>
+<span class="syntax-keyword">fn</span> <span class="syntax-function">squish</span>(amount: <span class="syntax-type">f32</span>) -&gt; <span class="syntax-type">Squish</span> &#123;
+  <span class="syntax-keyword">let</span> s = <span class="syntax-function">clamp</span>(amount, -<span class="syntax-number">1.0</span>, <span class="syntax-number">1.0</span>);
+  <span class="syntax-keyword">let</span> s2 = s * s;
+  <span class="syntax-keyword">let</span> wanted = (<span class="syntax-number">1.0</span> - s2) / (<span class="syntax-number">1.0</span> + s2);
+
+  <span class="syntax-keyword">let</span> scale = <span class="syntax-function">select</span>(
+    <span class="syntax-type">vec2&lt;f32&gt;</span>(<span class="syntax-number">1.0</span> / wanted, <span class="syntax-number">1.0</span>),
+    <span class="syntax-type">vec2&lt;f32&gt;</span>(<span class="syntax-number">1.0</span>, <span class="syntax-number">1.0</span> / wanted),
+    s &lt; <span class="syntax-number">0.0</span>
+  );
+  <span class="syntax-keyword">return</span> <span class="syntax-type">Squish</span>(scale, <span class="syntax-number">1.0</span>);
+&#125;</code></pre>
+        </div>
+        <figcaption>{de ? "Form · Quetschung" : "Shape · squish"}</figcaption>
       </figure>
       <figure>
-        <span class="swatch swatch--paint"></span>
-        <figcaption>{de ? "Farbe · Relief" : "Paint · relief"}</figcaption>
-      </figure>
-      <figure>
-        <span class="swatch swatch--polygon"></span>
+        <div class="code-card" aria-hidden="true">
+          <div class="code-card__bar">
+            <span>shape.wgsl</span>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+          <pre><code><span class="syntax-comment">// The squished outline, counter-clockwise.</span>
+<span class="syntax-keyword">var</span> vertex: <span class="syntax-type">array&lt;vec2&lt;f32&gt;, MAX_SIDES&gt;</span>;
+
+<span class="syntax-keyword">for</span> (<span class="syntax-keyword">var</span> k = <span class="syntax-number">0</span>; k &lt; n; k++) &#123;
+  <span class="syntax-keyword">let</span> angle = <span class="syntax-number">2.0</span> * PI * <span class="syntax-type">f32</span>(k)
+    / <span class="syntax-type">f32</span>(n);
+
+  vertex[k] = outer * <span class="syntax-type">vec2&lt;f32&gt;</span>(
+    <span class="syntax-function">cos</span>(angle),
+    <span class="syntax-function">sin</span>(angle)
+  ) / squished.scale;
+&#125;</code></pre>
+        </div>
         <figcaption>{de ? "Polygon · Kanten" : "Polygon · edges"}</figcaption>
+      </figure>
+      <figure>
+        <div class="code-card" aria-hidden="true">
+          <div class="code-card__bar">
+            <span>shape.wgsl</span>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+          <pre><code><span class="syntax-comment">// Soften the edge by exactly one screen pixel.</span>
+<span class="syntax-keyword">let</span> width = <span class="syntax-function">max</span>(
+  band,
+  <span class="syntax-function">max</span>(s.screen_pixel, <span class="syntax-number">1e-6</span>)
+);
+<span class="syntax-keyword">let</span> grow = (width - band) * <span class="syntax-number">0.5</span>;
+
+<span class="syntax-keyword">let</span> coverage = <span class="syntax-number">1.0</span> - <span class="syntax-function">smoothstep</span>(
+  -grow,
+  band + grow,
+  distance
+);
+
+<span class="syntax-keyword">return</span> <span class="syntax-type">vec4&lt;f32&gt;</span>(s.ink, coverage * s.strength);</code></pre>
+        </div>
+        <figcaption>{de ? "Kante · Deckkraft" : "Edge · coverage"}</figcaption>
       </figure>
     </div>
     <p class="future-note">
@@ -258,6 +327,29 @@ const benefits = de
         ? "Das geplante nasse Malen soll Farben überzeugend auf der Leinwand mischen. Es ist kein Versprechen, jede physikalische Eigenschaft echter Farbe zu simulieren."
         : "The planned wet-painting tool is intended to mix colors convincingly on the canvas. It is not a promise to simulate every physical property of real paint."}
     </p>
+  </section>
+
+  <section id="community" class="community-section section-space content-grid">
+    <div>
+      <p class="eyebrow">Community</p>
+      <h2>
+        {de
+          ? "Bring die Pinselspuren mit. Bleib für den Austausch."
+          : "Bring the brush marks. Stay for the exchange."}
+      </h2>
+    </div>
+    <div>
+      <p>
+        {de
+          ? "Teile, was du gemacht hast, vergleiche Pinsel, bitte um Hilfe und beeinflusse, was als Nächstes kommt. Eine verifizierte Discord-Einladung folgt."
+          : "Share what you made, compare brushes, ask for help, and influence what comes next. A verified Discord invitation is coming."}
+      </p>
+      <p class="fine-print">
+        {de
+          ? "Discord ist ein externer Dienst mit eigenen Bedingungen und Datenschutzregeln. Die App verbindet sich nicht mit Discord; offizieller Support erfolgt per E-Mail."
+          : "Discord is a third-party service with its own terms and privacy policy. The app does not connect to Discord; official support is by email."}
+      </p>
+    </div>
   </section>
 
   <section id="story" class="founder-section section-space content-grid">
@@ -485,29 +577,6 @@ const benefits = de
         {de ? "Support und Hinweise für Fehlerberichte" : "Support and reporting guidance"}
       </a>
     </p>
-  </section>
-
-  <section id="community" class="community-section section-space content-grid">
-    <div>
-      <p class="eyebrow">Community</p>
-      <h2>
-        {de
-          ? "Bring die Pinselspuren mit. Bleib für den Austausch."
-          : "Bring the brush marks. Stay for the exchange."}
-      </h2>
-    </div>
-    <div>
-      <p>
-        {de
-          ? "Teile, was du gemacht hast, vergleiche Pinsel, bitte um Hilfe und beeinflusse, was als Nächstes kommt. Eine verifizierte Discord-Einladung folgt."
-          : "Share what you made, compare brushes, ask for help, and influence what comes next. A verified Discord invitation is coming."}
-      </p>
-      <p class="fine-print">
-        {de
-          ? "Discord ist ein externer Dienst mit eigenen Bedingungen und Datenschutzregeln. Die App verbindet sich nicht mit Discord; offizieller Support erfolgt per E-Mail."
-          : "Discord is a third-party service with its own terms and privacy policy. The app does not connect to Discord; official support is by email."}
-      </p>
-    </div>
   </section>
 
   <section class="final-cta section-space halftone-surface">

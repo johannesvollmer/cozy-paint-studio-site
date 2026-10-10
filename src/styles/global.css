@@ -391,6 +391,14 @@
   .section-heading > p:last-child {
     color: var(--color-text-muted);
   }
+
+  .brush-formula-note {
+    max-inline-size: 78ch;
+    margin-block-start: var(--space-3);
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+  }
+
   .brush-table {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -400,30 +408,93 @@
   .brush-table figure {
     display: grid;
     gap: var(--space-2);
+    min-inline-size: 0;
   }
-  .swatch {
-    display: block;
-    min-block-size: 13rem;
+
+  .code-card {
+    overflow: hidden;
+    min-inline-size: 0;
+    border: 1px solid rgb(221 191 191 / 18%);
     border-radius: var(--radius-surface);
-    background-color: #ddd1c7;
+    background: linear-gradient(145deg, rgb(255 255 255 / 3%), transparent 42%), #211f23;
+    box-shadow:
+      0 1.25rem 3rem rgb(14 12 15 / 24%),
+      inset 0 1px rgb(255 255 255 / 4%);
   }
-  .swatch--pencil {
-    background-image: repeating-linear-gradient(
-      166deg,
-      transparent 0 9px,
-      #484248 10px 13px,
-      transparent 14px 20px
-    );
+
+  .code-card__bar {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 0.38rem;
+    align-items: center;
+    min-block-size: 2.35rem;
+    padding-inline: var(--space-2);
+    border-block-end: 1px solid rgb(221 191 191 / 12%);
+    background: rgb(255 255 255 / 2%);
+    color: rgb(214 203 204 / 62%);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
   }
-  .swatch--paint {
-    background-image:
-      radial-gradient(ellipse at 30% 55%, #865e5a 0 12%, transparent 13%),
-      radial-gradient(ellipse at 60% 43%, #aa7972 0 19%, transparent 20%),
-      radial-gradient(ellipse at 75% 65%, #635a72 0 15%, transparent 16%);
+
+  .code-card__bar span {
+    margin-inline-end: auto;
   }
-  .swatch--polygon {
-    background-image: conic-gradient(from 20deg at 45% 48%, #29282b, #695353, #ddbfbf, #29282b);
-    clip-path: polygon(4% 65%, 21% 22%, 52% 5%, 96% 41%, 77% 91%, 28% 82%);
+
+  .code-card__bar i {
+    inline-size: 0.48rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #726971;
+  }
+
+  .code-card__bar i:nth-of-type(2) {
+    background: #8c746f;
+  }
+
+  .code-card__bar i:nth-of-type(3) {
+    background: #796f87;
+  }
+
+  .code-card pre {
+    overflow: hidden;
+    min-block-size: 17.5rem;
+    padding: var(--space-3);
+    color: #d9d0d4;
+    font: inherit;
+    font-size: clamp(0.68rem, 0.9vw, 0.82rem);
+    line-height: 1.65;
+    tab-size: 2;
+  }
+
+  .code-card code {
+    font: inherit;
+  }
+
+  .syntax-comment {
+    color: #777078;
+    font-style: italic;
+  }
+
+  .syntax-keyword {
+    color: #d99a91;
+  }
+
+  .syntax-function {
+    color: #d6b5d7;
+  }
+
+  .syntax-type {
+    color: #aeb5d8;
+  }
+
+  .syntax-number {
+    color: #c9b783;
+  }
+
+  .brush-table figcaption {
+    padding-inline: var(--space-1);
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
   }
   .future-note {
     max-inline-size: 72ch;
@@ -641,7 +712,7 @@
   }
 
   .community-section {
-    background: rgb(95 64 61 / 20%);
+    background: #353337;
   }
 
   .final-cta {

@@ -1,0 +1,174 @@
+---
+import { Image } from "astro:assets";
+import {
+  appCanvasLandscape,
+  appCanvasPortrait,
+  appCanvasTall,
+  brushSelectionFull,
+  colorPickerColor,
+  colorPickerLuminance,
+} from "../../assets/screenshots";
+import type { Locale } from "../../config/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const de = locale === "de";
+const benefits = de
+  ? [
+      [
+        "Steht dir nicht im Weg",
+        "Jetzt malen. Die Auflösung später wählen.",
+        "Das ist der eigentliche Gewinn der grenzenlosen Leinwand: Du musst dich am Anfang nicht auf Breite, Höhe oder DPI festlegen. Fang einfach mit dem Bild an und entscheide dich erst dann für eine Auflösung, wenn du sie brauchst.",
+      ],
+      [
+        "Geringe Latenz ist ein Merkmal",
+        "Tinte nah am Stift.",
+        "Immer reaktionsschnell, unabhängig von Zoomstufe oder Auflösung. Unmittelbares Malen ist unser Versprechen.",
+      ],
+      [
+        "Dateien, Ebenen und Verlauf",
+        "Dein Studio wird für dich verwaltet.",
+        "Cozy Paint Studio verwaltet Dateien, Ebenen, Auflösung und Sicherungen, damit du einfach malen kannst. Keine Dateien wie painting_v12.psd mehr.",
+      ],
+    ]
+  : [
+      [
+        "Gets out of your way",
+        "Paint now. Choose resolution later.",
+        "That is the real win of an infinite canvas: no width, height, or DPI decision before the first mark. Start with the painting and choose a resolution only when you need one.",
+      ],
+      [
+        "Low latency is a feature",
+        "Ink close to the pen.",
+        "Always responsive, no matter the zoom or resolution. Immediate painting is our promise.",
+      ],
+      [
+        "Files, layers, and history",
+        "Your studio, managed for you.",
+        "Cozy Paint Studio manages files, layers, resolution, and backups so you can just draw. No more painting_v12.psd files.",
+      ],
+    ];
+---
+
+<section
+  class="benefits section-space"
+  aria-label={de ? "Drei Kernvorteile" : "Three core benefits"}
+>
+  {benefits.map(([label, heading, body], index) => (
+    <article class="benefit">
+      <span class="benefit-number">0{index + 1}</span>
+      <p class="eyebrow">{label}</p>
+      <h2>{heading}</h2>
+      <p>{body}</p>
+    </article>
+  ))}
+</section>
+
+<section class="feature-section interaction-section section-space feature-layout">
+  <figure class="interface-visual">
+    <Image
+      src={brushSelectionFull}
+      alt={
+        de
+          ? "Ein gemalter roter Apfel mit der direkt auf der Leinwand geöffneten Pinselauswahl"
+          : "A painted red apple with the brush selection open directly on the canvas"
+      }
+      format="webp"
+      quality={62}
+      width={1200}
+      widths={[640, 960, 1200, 1600]}
+      sizes="(max-width: 56rem) 100vw, 58vw"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
+  <div class="feature-copy">
+    <p class="eyebrow">{de ? "Stift + Berührung" : "Pen + touch"}</p>
+    <h2>{de ? "Regler, direkt unter dem Stift." : "Sliders, right under your pen."}</h2>
+    <p class="lead">
+      {de
+        ? "Halte eine Pinseleigenschaft und ihre Einstellung erscheint unter dem Stift. Lege Favoriten an den Tablet-Rand und erreiche kürzlich genutzte Pinsel mit einer radialen Geste."
+        : "Hold a brush control and its adjustment appears beneath the pen. Keep favorite properties on the tablet edge and reach for a recent brush with a radial gesture."}
+    </p>
+  </div>
+</section>
+
+<section class="color-section section-space feature-layout">
+  <div class="feature-copy">
+    <p class="eyebrow">{de ? "Farbe auf der Leinwand" : "Color on canvas"}</p>
+    <h2>
+      {de
+        ? "Farben dort, wo die Augen sind — direkt auf dem Bild."
+        : "Colors where the eyes are—right on the painting."}
+    </h2>
+    <p class="lead">
+      {de
+        ? "Drücke die Farbtaste und der Oklab-Farbwähler erscheint direkt unter dem Stift. Du vergleichst die nächste Farbe mit dem Bild, statt den Blick in eine abgetrennte Seitenleiste zu schicken."
+        : "Press the color control and the Oklab picker appears directly beneath the pen. Compare the next color with the painting itself instead of sending your eyes to an isolated pane on the right."}
+    </p>
+  </div>
+  <div class="color-picker-visual">
+    <figure>
+      <Image
+        src={colorPickerColor}
+        alt={
+          de
+            ? "Farbwähler von Cozy Paint Studio direkt über einem gemalten roten Apfel"
+            : "Cozy Paint Studio color picker directly over a painted red apple"
+        }
+        format="webp"
+        quality={50}
+        width={720}
+        widths={[360, 540, 720, 960]}
+        sizes="(max-width: 56rem) 48vw, 31vw"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>{de ? "Farbe" : "Color"}</figcaption>
+    </figure>
+    <figure>
+      <Image
+        src={colorPickerLuminance}
+        alt={
+          de
+            ? "Kreisförmiger Farbwähler von Cozy Paint Studio direkt über einem gemalten roten Apfel"
+            : "Cozy Paint Studio circular color picker directly over a painted red apple"
+        }
+        format="webp"
+        quality={50}
+        width={720}
+        widths={[360, 540, 720, 960]}
+        sizes="(max-width: 56rem) 48vw, 31vw"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>{de ? "Helligkeit" : "Lightness"}</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="projects-section section-space content-grid">
+  <div>
+    <p class="eyebrow">{de ? "Projektwand" : "Project wall"}</p>
+    <h2>{de ? "Finde das Bild, indem du es siehst." : "Find the painting by seeing it."}</h2>
+    <p class="lead">
+      {de
+        ? "Cozy Paint Studio öffnet sich auf einer Wand aus Arbeiten. Das Bild – nicht ein erzeugter Dateiname – ist die Identität, nach der du greifst."
+        : "Cozy Paint Studio opens onto a wall of work. The image—not a generated file name—is the identity you reach for."}
+    </p>
+  </div>
+  <div class="project-wall" aria-hidden="true">
+    <figure>
+      <Image src={appCanvasPortrait} alt="" format="webp" quality={45} width={520} />
+    </figure>
+    <figure>
+      <Image src={appCanvasLandscape} alt="" format="webp" quality={45} width={520} />
+    </figure>
+    <figure>
+      <Image src={appCanvasTall} alt="" format="webp" quality={45} width={520} />
+    </figure>
+    <span class="new-project">+</span>
+  </div>
+</section>

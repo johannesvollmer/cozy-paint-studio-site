@@ -1,0 +1,32 @@
+---
+import ZoomDemoVideo from "./ZoomDemoVideo.astro";
+import type { Locale } from "../../config/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const de = locale === "de";
+---
+
+<p class="section-index">01 / {de ? "Der Unterschied" : "The difference"}</p>
+<div>
+  <h2>
+    {de
+      ? "Die fehlende Mitte zwischen Pixel und Vektor."
+      : "The missing middle between pixel and vector."}
+  </h2>
+  <p class="lead">
+    {de
+      ? "Pixelbilder bestehen aus einem einzigen großen Raster: einem festen Gitter aus Farbwerten. Vektorbilder sind dagegen eine Liste aus einfachen Formen und Kurven mit Strichstärke, die in jeder Auflösung gerendert werden können."
+      : "Pixel images are one large raster: a fixed grid of color values. Vector images are a list of simple shapes and curves with thickness, which can be rendered at any resolution."}
+  </p>
+  <p class="lead">
+    {de
+      ? "Cozy Paint Studio etabliert einen neuen grundlegenden Bildtyp zwischen diesen beiden. Ein Bild wird durch beliebige Formeln pro Pixel beschrieben, die in jeder Auflösung ausgewertet werden können. Eine Formel kann Rasterbilder abtasten, Schleifen ausführen oder beim Auswerten jedes Pixels beliebige Formen erzeugen. So kann sie ein Fraktal oder eine Unschärfe rendern — oder dynamisch auf Stiftdruck, Winkel, Neigung, Strichstärke, Strichfarbe und mehr reagieren."
+      : "Cozy Paint Studio establishes a new fundamental image type between the two. An image is described by arbitrary per-pixel formulas that can be evaluated at any resolution. A formula can sample raster images, run loops, or generate arbitrary shapes as it evaluates each pixel. It can render a fractal or a blur, or change its result dynamically with pen pressure, angle, tilt, stroke thickness, stroke color, and more."}
+  </p>
+</div>
+<figure class="difference-visual">
+  <ZoomDemoVideo {locale} />
+</figure>

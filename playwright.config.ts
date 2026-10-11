@@ -4,6 +4,7 @@ export default defineConfig({
   testDir: "./tests/browser",
   outputDir: "./test-results",
   fullyParallel: true,
+  workers: process.env["CI"] ? 2 : 4,
   forbidOnly: Boolean(process.env["CI"]),
   retries: process.env["CI"] ? 2 : 0,
   reporter: process.env["CI"] ? [["github"], ["html", { open: "never" }]] : "list",
@@ -25,6 +26,7 @@ export default defineConfig({
   webServer: {
     command: "node ./node_modules/astro/bin/astro.mjs preview --host 127.0.0.1",
     url: "http://127.0.0.1:4321",
-    reuseExistingServer: !process.env["CI"],
+    // Never validate a stale build or an unrelated dev server.
+    reuseExistingServer: false,
   },
 });

@@ -1,0 +1,44 @@
+---
+import type { Locale } from "../../config/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const de = locale === "de";
+---
+
+<div class="founder-aside">
+  <p class="section-index">02 / {de ? "Meine Geschichte" : "My story"}</p>
+  <p class="founder-signature">Johannes Vollmer</p>
+</div>
+<div class="founder-copy">
+  <h2>
+    {de
+      ? "Das ist die Mal-App, die ich seit meinem zwölften Lebensjahr bauen wollte."
+      : "This is the painting app I have wanted since I was twelve."}
+  </h2>
+  <p class="lead">
+    {de
+      ? "Hallo, ich bin Johannes. Als Kind Photoshop und Blender zu lernen, führte mich zu Grafikprogrammierung, generativer Kunst, UX-Design und schließlich in die professionelle Softwareentwicklung. Abseits vom Bildschirm male ich mit Öl."
+      : "Hi, I’m Johannes. Learning Photoshop and Blender as a kid led me into graphics programming, generative art, UX design, and eventually professional software engineering. Away from the screen, I paint in oils."}
+  </p>
+  <p class="lead">
+    {de
+      ? "Als ich Mischief zum ersten Mal ausprobierte, fühlte sich digitales Malen ungewöhnlich direkt und frei an. Als es eingestellt wurde, blieb dieses Gefühl bei mir. Ich wollte die Idee weiterführen — aber mit strukturierten, farbigen Pinseln, die sich wie vollständige Instrumente verhalten können statt wie einfache Vektorspuren."
+      : "When I first tried Mischief, digital painting felt unusually direct and free. When it was discontinued, that feeling stayed with me. I wanted to carry the idea forward—but with textured, colored brushes that could behave like complete instruments rather than simple vector marks."}
+  </p>
+  <p class="lead">
+    {de
+      ? "Cozy Paint Studio ist das Ergebnis. Ich entwickle es unabhängig und in meiner Freizeit als das fokussierte Malwerkzeug, das ich selbst benutzen möchte. Es ist kein venture-finanzierter Versuch, die nächste Kreativplattform zu bauen. Es ist meine Traum-App."
+      : "Cozy Paint Studio is the result. I am building it independently, in my free time, as the focused painting tool I want to use myself. It is not a venture-backed attempt to build another creative-software platform. It is my dream app."}
+  </p>
+  <aside class="studio-note">
+    <p class="eyebrow">{de ? "Wie es entsteht" : "How it is built"}</p>
+    <p>
+      {de
+        ? "Ich nutze bei der Entwicklung von Cozy Paint Studio auch KI-Werkzeuge. Sie beschleunigen Teile der Arbeit. Produktrichtung, Architektur, Interaktionsdesign und die finalen technischen Entscheidungen liegen bei mir und bauen auf meiner professionellen 15-jährigen Erfahrung in Softwareentwicklung und UX Design auf. Ich übernehme die volle Verantwortung für diese Software."
+        : "I use AI-assisted development tools while building Cozy Paint Studio. They accelerate parts of the work. I own the product direction, architecture, interaction design, and final engineering decisions, grounded in my 15+ years of professional software engineering and UX design experience. I take full responsibility for this software."}
+    </p>
+  </aside>
+</div>

@@ -3,6 +3,7 @@ import type { Locale } from "../../config/site";
 import { alternateLocale, routeFor, type RouteKey } from "../../i18n/routes";
 import { useTranslations } from "../../i18n";
 import ReleaseAction from "../ui/ReleaseAction.astro";
+import { landingSections } from "../landing/sections";
 
 interface Props {
   locale: Locale;
@@ -29,42 +30,27 @@ const otherLocale = alternateLocale(locale);
   </div>
   <nav aria-label={t.navigationLabel}>
     {route === "home" ? (
-      <>
-        <a href={`${routeFor("home", locale)}#why-cozy`} data-scroll-link>
-          {t.landingNav.why}
+      landingSections.map(({ id, label }) => (
+        <a href={`${routeFor("home", locale)}#${id}`} data-scroll-link>
+          {t.landingNav[label]}
         </a>
-        <a href={`${routeFor("home", locale)}#brushes`} data-scroll-link>
-          {t.landingNav.brushes}
-        </a>
-        <a href={`${routeFor("home", locale)}#story`} data-scroll-link>
-          {t.landingNav.story}
-        </a>
-        <a href={`${routeFor("home", locale)}#roadmap`} data-scroll-link>
-          {t.landingNav.roadmap}
-        </a>
-        <a href={`${routeFor("home", locale)}#community`} data-scroll-link>
-          {t.landingNav.community}
-        </a>
-      </>
+      ))
     ) : (
       <>
         <a
           href={routeFor("support", locale)}
-          class:list={{ "is-current": route === "support" }}
           aria-current={route === "support" ? "page" : undefined}
         >
           {t.nav.support}
         </a>
         <a
           href={routeFor("privacy", locale)}
-          class:list={{ "is-current": route === "privacy" }}
           aria-current={route === "privacy" ? "page" : undefined}
         >
           {t.nav.privacy}
         </a>
         <a
           href={routeFor("legalNotice", locale)}
-          class:list={{ "is-current": route === "legalNotice" }}
           aria-current={route === "legalNotice" ? "page" : undefined}
         >
           {t.nav.legalNotice}
@@ -93,15 +79,23 @@ const otherLocale = alternateLocale(locale);
     header?.querySelectorAll<HTMLAnchorElement>("[data-scroll-link]") ?? [],
   );
   const sections = sectionLinks.flatMap((link) => {
-    const section = document.querySelector<HTMLElement>(link.hash);
+    const section = document.querySelector<HTMLElement>(
+      `#${CSS.escape(decodeURIComponent(link.hash.slice(1)))}`,
+    );
     return section ? [{ link, section }] : [];
   });
 
   if (header && wordmark && sections.length > 0) {
     let frame = 0;
+    const fragmentTarget = () => sections.find(({ link }) => link.hash === window.location.hash);
+    // Keep an explicit destination aligned while layout settles. User scrolling
+    // releases it; the underline always comes from actual geometry.
+    let anchorTarget = fragmentTarget();
 
     const updateHeaderClearance = () => {
-      const clearance = header.getBoundingClientRect().bottom + 24;
+      // Native scrolling rounds to CSS pixels. Use one integer boundary for
+      // both scroll-padding and active-section selection.
+      const clearance = Math.ceil(header.getBoundingClientRect().bottom + 24);
       document.documentElement.style.setProperty("--header-clearance", `${clearance}px`);
       return clearance;
     };
@@ -119,7 +113,6 @@ const otherLocale = alternateLocale(locale);
       else wordmark.setAttribute("aria-current", "page");
       sectionLinks.forEach((link) => {
         const isCurrent = link === current?.link;
-        link.classList.toggle("is-current", isCurrent);
         if (isCurrent) link.setAttribute("aria-current", "location");
         else link.removeAttribute("aria-current");
       });
@@ -129,8 +122,59 @@ const otherLocale = alternateLocale(locale);
       if (!frame) frame = window.requestAnimationFrame(updateCurrentSection);
     };
 
-    const headerResizeObserver = new ResizeObserver(scheduleUpdate);
+    const alignFragment = (behavior: ScrollBehavior) => {
+      if (!anchorTarget) return;
+      updateHeaderClearance();
+      anchorTarget.section.scrollIntoView({ behavior, block: "start" });
+      scheduleUpdate();
+    };
+
+    // Native links still own navigation, focus, smooth scrolling, and history.
+    sections.forEach((target) =>
+      target.link.addEventListener("click", (event) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.ctrlKey ||
+          event.metaKey ||
+          event.shiftKey ||
+          event.altKey
+        )
+          return;
+        anchorTarget = target;
+        updateHeaderClearance();
+      }),
+    );
+    window.addEventListener("hashchange", () => {
+      anchorTarget = fragmentTarget();
+      window.requestAnimationFrame(() => alignFragment("auto"));
+    });
+
+    const releaseAnchor = () => {
+      anchorTarget = undefined;
+    };
+    (["pointerdown", "touchstart", "wheel", "keydown"] as const).forEach((event) =>
+      window.addEventListener(event, releaseAnchor, { passive: true }),
+    );
+    const loaded = new Promise<void>((resolve) => {
+      if (document.readyState === "complete") resolve();
+      else window.addEventListener("load", () => resolve(), { once: true });
+    });
+    // Awaiting load at module scope would prevent that event from firing.
+    // oxlint-disable-next-line unicorn/prefer-top-level-await
+    void Promise.all([loaded, document.fonts.ready]).then(() => {
+      window.requestAnimationFrame(() => alignFragment("instant"));
+    });
+
+    const headerResizeObserver = new ResizeObserver(() => {
+      alignFragment("instant");
+      scheduleUpdate();
+    });
     headerResizeObserver.observe(header);
+    // Content/font/image changes can move section boundaries without a scroll.
+    sections.forEach(({ section }) => headerResizeObserver.observe(section));
+    const main = document.querySelector("main");
+    if (main) headerResizeObserver.observe(main);
     updateCurrentSection();
     window.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate);

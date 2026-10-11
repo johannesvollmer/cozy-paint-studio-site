@@ -1,0 +1,172 @@
+---
+import { routeFor } from "../../i18n/routes";
+import type { Locale } from "../../config/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const de = locale === "de";
+---
+
+<header class="roadmap-heading">
+  <p class="section-index">{de ? "Roadmap" : "Roadmap"}</p>
+  <div>
+    <h2>{de ? "Es gibt viel zu tun!" : "There's lots to do!"}</h2>
+    <p class="lead">
+      {de
+        ? "Diese Roadmap ist eine lose Sammlung der nächsten großen Themen. Die Reihenfolge zeigt die heutige Priorität, nicht feste Zusagen oder Veröffentlichungstermine. Sie kann sich mit der Entwicklung und dem Feedback von Malerinnen und Malern ändern."
+        : "This roadmap is a loose collection of the next big things. The order reflects today’s priorities, not commitments or release dates, and may change as the app develops and painters weigh in."}
+    </p>
+  </div>
+</header>
+
+<div class="roadmap-now" aria-label={de ? "Was jetzt funktioniert" : "What works now"}>
+  <p class="eyebrow">{de ? "Funktioniert Heute" : "Working today"}</p>
+  <ul>
+    <li>{de ? "Grenzenlose Leinwand " : "Infinite canvas"}</li>
+    <li>{de ? "Unbegrenztes Rückgängigmachen & Wiederholen" : "Unlimited undo & redo"}</li>
+    <li>{de ? "Automatisch gespeichert nach jedem Strich" : "Autosaved after every stroke"}</li>
+    <li>{de ? "Skalierbare Pinsel" : "Scalable brushes"}</li>
+    <li>{de ? "Pinseleinstellungen und -texturen" : "Brush settings & textures"}</li>
+    <li>{de ? "Lokal gespeicherte Pinseleinstellungen" : "Locally saved brush presets"}</li>
+  </ul>
+</div>
+
+<div class="roadmap-grid">
+  <div class="roadmap-priorities">
+    <p class="eyebrow">{de ? "Große Funktionsprioritäten" : "Big feature priorities"}</p>
+    <ol class="priority-list">
+      <li>
+        <span>01</span>
+        <div>
+          <h3>{de ? "Lasso: auswählen & malen" : "Lasso select & paint"}</h3>
+          <p>
+            {de
+              ? "Einen Bereich frei umreißen und das Malen darauf begrenzen."
+              : "Draw a freeform selection and keep painting inside it."}
+          </p>
+        </div>
+      </li>
+      <li>
+        <span>02</span>
+        <div>
+          <h3>{de ? "Verschieben, skalieren & drehen" : "Move, scale & rotate"}</h3>
+          <p>
+            {de
+              ? "Bildbereiche mit einem Lasso oder Pinsel auswählen und transformieren."
+              : "Select parts of a painting with a lasso or brush, then transform them."}
+          </p>
+        </div>
+      </li>
+      <li>
+        <span>03</span>
+        <div>
+          <h3>{de ? "Konfigurierbare Tastenkürzel" : "Configurable keybindings"}</h3>
+          <p>
+            {de
+              ? "Tastaturbefehle an den eigenen Arbeitsablauf anpassen."
+              : "Adapt keyboard commands to your own workflow."}
+          </p>
+        </div>
+      </li>
+      <li>
+        <span>04</span>
+        <div>
+          <h3>{de ? "Nasses Malen" : "Wet painting"}</h3>
+          <p>
+            {de
+              ? "Farben direkt auf der Leinwand mischen — eher wie Ölfarbe."
+              : "Mix colors directly on the canvas, more like working in oils."}
+          </p>
+        </div>
+      </li>
+      <li>
+        <span>05</span>
+        <div>
+          <h3>{de ? "Ebenen" : "Layers"}</h3>
+          <p>
+            {de
+              ? "Bildelemente getrennt organisieren und bearbeiten."
+              : "Organize and edit parts of a painting separately."}
+          </p>
+        </div>
+      </li>
+      <li>
+        <span>06</span>
+        <div>
+          <h3>{de ? "Rahmen für Rasterexport" : "Frames for raster export"}</h3>
+          <p>
+            {de
+              ? "Auf der grenzenlosen Leinwand festlegen, welcher Ausschnitt in welcher Auflösung exportiert wird."
+              : "Define which part of the endless canvas exports, and at what resolution."}
+          </p>
+        </div>
+      </li>
+      <li>
+        <span>07</span>
+        <div>
+          <h3>
+            {de
+              ? "Pinsel-Engines & Texturpakete aus der Community"
+              : "Community brush engines & texture packs"}
+          </h3>
+          <p>
+            {de
+              ? "Pinsel und Texturen als vollständige kreative Werkzeuge austauschen."
+              : "Exchange brushes and textures as complete creative tools."}
+          </p>
+        </div>
+      </li>
+    </ol>
+    <p class="performance-note">
+      <strong>{de ? "Außerdem geplant:" : "Also planned:"}</strong>{" "}
+      {de
+        ? "Verschiedene Performance-Optimierungen sind vorgesehen, vorerst aber aufgeschoben, während die Kernwerkzeuge Vorrang haben."
+        : "Various performance optimizations are planned, but postponed for now while the core tools take priority."}
+    </p>
+  </div>
+
+  <aside class="platform-path">
+    <p class="eyebrow">{de ? "Plattformrichtung" : "Platform direction"}</p>
+    <ol>
+      <li>
+        <span>{de ? "Zuerst" : "First"}</span>
+        <strong>Windows</strong>
+        <p>{de ? "Die erste voll funktionsfähige Version." : "The first fully working version."}</p>
+      </li>
+      <li>
+        <span>{de ? "Danach" : "Then"}</span>
+        <strong>iPad {de ? "und vielleicht macOS" : "and perhaps macOS"}</strong>
+        <p>
+          {de
+            ? "Apple-Versionen können folgen, sobald Windows steht."
+            : "Apple versions can follow once Windows is in good shape."}
+        </p>
+      </li>
+      <li>
+        <span>{de ? "Später" : "Later"}</span>
+        <strong>Android</strong>
+        <p>
+          {de
+            ? "Dafür brauche ich zuerst ein Android-Tablet mit Stift zum Entwickeln und Testen."
+            : "That starts with getting an Android tablet with a stylus for development and testing."}
+        </p>
+      </li>
+    </ol>
+  </aside>
+</div>
+
+<aside class="compatibility-warning">
+  <p>
+    <strong>{de ? "Wichtig zu deinen Dateien:" : "Important about your files:"}</strong>{" "}
+    {de
+      ? "Zeichnungen aus diesem Prototyp lassen sich möglicherweise in keiner späteren Version öffnen — nicht einmal im nächsten Prototyp und mit großer Sicherheit nicht in der fertigen Version. Wir versprechen, die alten ausführbaren Dateien verfügbar zu halten, damit du alte Zeichnungen immer mit der jeweils alten Studio-Version öffnen kannst."
+      : "Drawings made with this prototype may not open in any later version—not even the next prototype, and almost certainly not the finished version. We promise to keep the old executables available, so you can always open old drawings with the matching old Studio."}
+  </p>
+</aside>
+<p class="roadmap-support-link">
+  <a href={routeFor("support", locale)}>
+    {de ? "Support und Hinweise für Fehlerberichte" : "Support and reporting guidance"}
+  </a>
+</p>

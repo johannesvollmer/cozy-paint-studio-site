@@ -1,0 +1,30 @@
+---
+import type { Locale } from "../../config/site";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const de = locale === "de";
+---
+
+<div>
+  <p class="eyebrow">Community</p>
+  <h2>
+    {de
+      ? "Bring die Pinselspuren mit. Bleib für den Austausch."
+      : "Bring the brush marks. Stay for the exchange."}
+  </h2>
+</div>
+<div>
+  <p>
+    {de
+      ? "Teile, was du gemacht hast, vergleiche Pinsel, bitte um Hilfe und beeinflusse, was als Nächstes kommt. Eine verifizierte Discord-Einladung folgt."
+      : "Share what you made, compare brushes, ask for help, and influence what comes next. A verified Discord invitation is coming."}
+  </p>
+  <p class="fine-print">
+    {de
+      ? "Discord ist ein externer Dienst mit eigenen Bedingungen und Datenschutzregeln. Die App verbindet sich nicht mit Discord; offizieller Support erfolgt per E-Mail."
+      : "Discord is a third-party service with its own terms and privacy policy. The app does not connect to Discord; official support is by email."}
+  </p>
+</div>

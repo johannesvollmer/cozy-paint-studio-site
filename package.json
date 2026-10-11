@@ -14,12 +14,12 @@
     "optimize:hero-video": "node scripts/optimize-videos.mjs apple-hero",
     "optimize:videos": "node scripts/optimize-videos.mjs",
     "test": "node --test tests/**/*.test.mjs",
-    "test:browser": "playwright test",
+    "test:browser": "pnpm run build && node ./node_modules/@playwright/test/cli.js test",
     "test:links": "node scripts/check-links.mjs",
     "test:performance": "lhci autorun --config=lighthouserc.cjs",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:release": "node scripts/validate-release.mjs",
-    "validate": "pnpm run format:check && pnpm run lint && pnpm run check && pnpm run validate:content && pnpm run validate:release && pnpm run test && pnpm run build && pnpm run test:links",
+    "validate": "pnpm run format:check && pnpm run lint && pnpm run check && pnpm run validate:content && pnpm run test && pnpm run test:browser && pnpm run test:links && pnpm run validate:release",
     "preview": "astro preview"
   },
   "dependencies": {

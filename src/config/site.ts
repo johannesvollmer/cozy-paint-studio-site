@@ -8,6 +8,11 @@ export const SITE = {
 } as const;
 
 export const SUPPORT_EMAIL = "cozy-paint-studio@johannesvollmer.com";
+export const ADDRESS = `
+  Johannes Vollmer,
+  Stuttgarter Str. 106,
+  70736 Fellbach, Deutschland.
+`;
 
 export type Locale = (typeof SITE.supportedLocales)[number];
 

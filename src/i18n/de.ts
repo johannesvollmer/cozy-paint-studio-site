@@ -46,7 +46,7 @@ export const de = {
       title: "Impressum — Cozy Paint Studio",
       description: "Anbieterkennzeichnung für Cozy Paint Studio.",
       heading: "Impressum",
-      intro: "Anbieter- und Kontaktinformationen für diese Vorab-Website.",
+      intro: "Anbieter- und Kontaktinformationen.",
     },
   },
 } as const satisfies Translation;

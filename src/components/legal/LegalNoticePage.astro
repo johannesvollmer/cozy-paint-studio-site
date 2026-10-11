@@ -1,6 +1,6 @@
 ---
 import LegalLayout from "../../layouts/LegalLayout.astro";
-import { SUPPORT_EMAIL, type Locale } from "../../config/site";
+import { SUPPORT_EMAIL, ADDRESS, type Locale } from "../../config/site";
 import { useTranslations } from "../../i18n";
 
 interface Props {
@@ -20,26 +20,14 @@ const de = locale === "de";
   intro={page.intro}
 >
   <section>
-    <h2>{de ? "Anbieter" : "Provider"}</h2>
+    <h2>
+      {de ? "Anbieter und für Inhalte verantwortlich" : "Provider and responsible for content"}
+    </h2>
     <address>
-      <strong>Johannes Vollmer</strong>
-      <br />
-      Deutschland
+      <strong>{ADDRESS}</strong>
       <br />
       <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
     </address>
-  </section>
-  <section class="notice">
-    <h2>{de ? "Hinweis zur Anschrift" : "Address notice"}</h2>
-    <p>
-      {de
-        ? "Cozy Paint Studio wird öffentlich als kostenlose Vorschau vertrieben. Für die gesetzlich erforderliche ladungsfähige Anschrift ist jedoch noch keine zur Veröffentlichung freigegebene Geschäftsanschrift bestimmt. Bis sie ergänzt ist, ist diese Seite kein vollständiges Impressum nach § 5 DDG."
-        : "Cozy Paint Studio is publicly distributed as a free preview. However, no serviceable business address has yet been approved for publication. Until one is added, this page is not a complete German legal notice under section 5 DDG."}
-    </p>
-  </section>
-  <section>
-    <h2>{de ? "Inhaltlich verantwortlich" : "Responsible for content"}</h2>
-    <p>Johannes Vollmer</p>
   </section>
   <section>
     <h2>{de ? "Kontakt" : "Contact"}</h2>
@@ -50,7 +38,7 @@ const de = locale === "de";
   </section>
   <p class="legal-review-note">
     {de
-      ? "Register-, Steuer-, Aufsichts- oder Berufsangaben werden nur ergänzt, wenn sie tatsächlich anwendbar sind. Die fehlende ladungsfähige Anschrift muss unverzüglich geklärt und rechtlich geprüft werden."
-      : "Register, tax, supervisory, or professional details will be added only if they actually apply. The missing serviceable address requires prompt resolution and legal review."}
+      ? "Register-, Steuer-, Aufsichts- oder Berufsangaben werden nur ergänzt, wenn sie tatsächlich anwendbar sind."
+      : "Register, tax, supervisory, or professional details will be added only if they actually apply."}
   </p>
 </LegalLayout>

@@ -49,7 +49,7 @@ export const en = {
       title: "Legal notice — Cozy Paint Studio",
       description: "Legal provider information for Cozy Paint Studio.",
       heading: "Legal notice",
-      intro: "Provider and contact information for this pre-release website.",
+      intro: "Provider and contact information.",
     },
   },
 } as const satisfies Translation;

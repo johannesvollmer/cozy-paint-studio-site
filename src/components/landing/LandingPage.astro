@@ -219,25 +219,53 @@ const benefits = de
     </div>
   </section>
 
-  <section id="brushes" class="brush-section section-space">
-    <div class="section-heading">
-      <p class="eyebrow">{de ? "Pinsel-Engines" : "Brush engines"}</p>
-      <h2>
+  <section class="projects-section section-space content-grid">
+    <div>
+      <p class="eyebrow">{de ? "Projektwand" : "Project wall"}</p>
+      <h2>{de ? "Finde das Bild, indem du es siehst." : "Find the painting by seeing it."}</h2>
+      <p class="lead">
         {de
-          ? "Jeder Pinsel kann anders programmiert werden."
-          : "Each brush can be programmed differently."}
-      </h2>
-      <p>
-        {de
-          ? "Ein Pinsel ist nicht bloß ein Stempel aus Texturen. Seine Engine kann mit eigenem Rendering-Code auf Druck, Form, Textur, Farbe, Abstand und Drehung reagieren."
-          : "A brush is not merely a stamp made from textures. Its engine can use its own rendering code to respond to pressure, shape, texture, color, spacing, and rotation."}
+          ? "Cozy Paint Studio öffnet sich auf einer Wand aus Arbeiten. Das Bild – nicht ein erzeugter Dateiname – ist die Identität, nach der du greifst."
+          : "Cozy Paint Studio opens onto a wall of work. The image—not a generated file name—is the identity you reach for."}
       </p>
     </div>
-    <p class="brush-formula-note">
-      {de
-        ? "Dieselben oben beschriebenen Formeln pro Pixel arbeiten auch in jedem Pinsel: Eine kann ein sauberes Polygon formen, eine andere Tinte aufbauen oder Druck in Farbe übersetzen."
-        : "The same per-pixel formulas described above live inside each brush: one can shape a clean polygon, while another builds up ink or turns pressure into color."}
-    </p>
+    <div class="project-wall" aria-hidden="true">
+      <figure>
+        <Image src={appCanvasPortrait} alt="" format="webp" quality={45} width={520} />
+      </figure>
+      <figure>
+        <Image src={appCanvasLandscape} alt="" format="webp" quality={45} width={520} />
+      </figure>
+      <figure>
+        <Image src={appCanvasTall} alt="" format="webp" quality={45} width={520} />
+      </figure>
+      <span class="new-project">+</span>
+    </div>
+  </section>
+
+  <section id="brushes" class="brush-section section-space">
+    <header class="section-heading">
+      <div class="brush-heading-copy">
+        <p class="eyebrow">{de ? "Pinsel-Engines" : "Brush engines"}</p>
+        <h2>
+          {de
+            ? "Jeder Pinsel kann anders programmiert werden."
+            : "Each brush can be programmed differently."}
+        </h2>
+      </div>
+      <div class="brush-intro">
+        <p>
+          {de
+            ? "Ein Pinsel ist nicht bloß ein Stempel aus Texturen. Seine Engine kann mit eigenem Rendering-Code auf Druck, Form, Textur, Farbe, Abstand und Drehung reagieren."
+            : "A brush is not merely a stamp made from textures. Its engine can use its own rendering code to respond to pressure, shape, texture, color, spacing, and rotation."}
+        </p>
+        <p class="brush-formula-note">
+          {de
+            ? "Dieselben oben beschriebenen Formeln pro Pixel arbeiten auch in jedem Pinsel: Eine kann ein sauberes Polygon formen, eine andere Tinte aufbauen oder Druck in Farbe übersetzen."
+            : "The same per-pixel formulas described above live inside each brush: one can shape a clean polygon, while another builds up ink or turns pressure into color."}
+        </p>
+      </div>
+    </header>
     <div
       class="brush-table"
       aria-label={de ? "Auszüge aus dem Pinsel-Shader" : "Brush shader excerpts"}
@@ -315,18 +343,20 @@ const benefits = de
         <figcaption>{de ? "Kante · Deckkraft" : "Edge · coverage"}</figcaption>
       </figure>
     </div>
-    <p class="future-note">
-      <strong>{de ? "Die Richtung:" : "The direction:"}</strong>{" "}
-      {de
-        ? "Austauschbare Pakete aus Pinselmodellen, Vorgaben und Texturen. Noch nicht zum Download verfügbar."
-        : "Exchangeable packs of brush models, presets, and textures. Not available to download yet."}
-    </p>
-    <p class="scope-note">
-      <strong>{de ? "Bewusster Fokus:" : "A deliberate focus:"}</strong>{" "}
-      {de
-        ? "Das geplante nasse Malen soll Farben überzeugend auf der Leinwand mischen. Es ist kein Versprechen, jede physikalische Eigenschaft echter Farbe zu simulieren."
-        : "The planned wet-painting tool is intended to mix colors convincingly on the canvas. It is not a promise to simulate every physical property of real paint."}
-    </p>
+    <div class="brush-notes">
+      <p class="future-note">
+        <strong>{de ? "Die Richtung:" : "The direction:"}</strong>{" "}
+        {de
+          ? "Austauschbare Pakete aus Pinselmodellen, Vorgaben und Texturen. Noch nicht zum Download verfügbar."
+          : "Exchangeable packs of brush models, presets, and textures. Not available to download yet."}
+      </p>
+      <p class="scope-note">
+        <strong>{de ? "Bewusster Fokus:" : "A deliberate focus:"}</strong>{" "}
+        {de
+          ? "Das geplante nasse Malen soll Farben überzeugend auf der Leinwand mischen. Es ist kein Versprechen, jede physikalische Eigenschaft echter Farbe zu simulieren."
+          : "The planned wet-painting tool is intended to mix colors convincingly on the canvas. It is not a promise to simulate every physical property of real paint."}
+      </p>
+    </div>
   </section>
 
   <section id="community" class="community-section section-space content-grid">
@@ -389,35 +419,11 @@ const benefits = de
     </div>
   </section>
 
-  <section class="projects-section section-space content-grid">
-    <div>
-      <p class="eyebrow">{de ? "Projektwand" : "Project wall"}</p>
-      <h2>{de ? "Finde das Bild, indem du es siehst." : "Find the painting by seeing it."}</h2>
-      <p class="lead">
-        {de
-          ? "Cozy Paint Studio öffnet sich auf einer Wand aus Arbeiten. Das Bild – nicht ein erzeugter Dateiname – ist die Identität, nach der du greifst."
-          : "Cozy Paint Studio opens onto a wall of work. The image—not a generated file name—is the identity you reach for."}
-      </p>
-    </div>
-    <div class="project-wall" aria-hidden="true">
-      <figure>
-        <Image src={appCanvasPortrait} alt="" format="webp" quality={45} width={520} />
-      </figure>
-      <figure>
-        <Image src={appCanvasLandscape} alt="" format="webp" quality={45} width={520} />
-      </figure>
-      <figure>
-        <Image src={appCanvasTall} alt="" format="webp" quality={45} width={520} />
-      </figure>
-      <span class="new-project">+</span>
-    </div>
-  </section>
-
   <section id="roadmap" class="roadmap-section section-space">
     <header class="roadmap-heading">
-      <p class="section-index">{de ? "Roadmap / ohne Termine" : "Roadmap / no dates"}</p>
+      <p class="section-index">{de ? "Roadmap" : "Roadmap"}</p>
       <div>
-        <h2>{de ? "Eine Richtung, kein Zeitplan." : "A direction, not a timeline."}</h2>
+        <h2>{de ? "Es gibt viel zu tun!" : "There's lots to do!"}</h2>
         <p class="lead">
           {de
             ? "Diese Roadmap ist eine lose Sammlung der nächsten großen Themen. Die Reihenfolge zeigt die heutige Priorität, nicht feste Zusagen oder Veröffentlichungstermine. Sie kann sich mit der Entwicklung und dem Feedback von Malerinnen und Malern ändern."

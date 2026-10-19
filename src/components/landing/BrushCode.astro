@@ -1,0 +1,65 @@
+---
+import { Code } from "astro:components";
+import type { ComponentProps } from "astro/types";
+
+interface Props {
+  code: string;
+}
+const { code } = Astro.props;
+
+const colors = {
+  comment: "#999099",
+  keyword: "#d99a91",
+  function: "#d6b5d7",
+  type: "#aeb5d8",
+  number: "#c9b783",
+};
+const theme = {
+  name: "cozy-brush",
+  type: "dark" as const,
+  colors: { "editor.background": "#211f23", "editor.foreground": "#d9d0d4" },
+  tokenColors: [
+    { scope: "comment", settings: { foreground: colors.comment } },
+    { scope: "keyword", settings: { foreground: colors.keyword } },
+    { scope: "entity.name.function,support.function", settings: { foreground: colors.function } },
+    { scope: "entity.name.type,support.type,storage.type", settings: { foreground: colors.type } },
+    { scope: "constant.numeric", settings: { foreground: colors.number } },
+  ],
+};
+
+// Use CSS classes so highlighting works with the site's strict CSP.
+const transformers: ComponentProps<typeof Code>["transformers"] = [
+  {
+    pre(node) {
+      delete node.properties.style;
+    },
+    span(node) {
+      const style = String(node.properties.style ?? "");
+      const token = Object.entries(colors).find(([, color]) => style.toLowerCase().includes(color));
+      if (token) this.addClassToHast(node, `brush-code-${token[0]}`);
+      delete node.properties.style;
+    },
+  },
+];
+---
+
+<Code code={code} lang="wgsl" theme={theme} transformers={transformers} wrap={null} />
+
+<style is:global>
+  .brush-code-comment {
+    color: #999099;
+    font-style: italic;
+  }
+  .brush-code-keyword {
+    color: #d99a91;
+  }
+  .brush-code-function {
+    color: #d6b5d7;
+  }
+  .brush-code-type {
+    color: #aeb5d8;
+  }
+  .brush-code-number {
+    color: #c9b783;
+  }
+</style>

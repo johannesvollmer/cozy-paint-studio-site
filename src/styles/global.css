@@ -468,8 +468,9 @@
   }
 
   .code-card pre {
-    overflow: hidden;
-    min-block-size: 17.5rem;
+    overflow-x: auto;
+    min-block-size: 14rem;
+    margin: 0;
     padding: var(--space-3);
     color: #d9d0d4;
     font: inherit;
@@ -480,27 +481,6 @@
 
   .code-card code {
     font: inherit;
-  }
-
-  .syntax-comment {
-    color: #777078;
-    font-style: italic;
-  }
-
-  .syntax-keyword {
-    color: #d99a91;
-  }
-
-  .syntax-function {
-    color: #d6b5d7;
-  }
-
-  .syntax-type {
-    color: #aeb5d8;
-  }
-
-  .syntax-number {
-    color: #c9b783;
   }
 
   .brush-table figcaption {

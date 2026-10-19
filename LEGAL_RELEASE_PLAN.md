@@ -8,7 +8,7 @@ This is a working implementation plan, not legal or tax advice. Requirements mus
 
 ## Confirmed project facts
 
-- Publisher: Johannes Vollmer, acting as one individual in Düsseldorf, North Rhine-Westphalia, Germany.
+- Publisher: Johannes Vollmer, acting as one individual in Germany.
 - Product name: **Cozy Paint Studio**.
 - The app is developed privately and part-time.
 - Alpha and beta releases will be free.
@@ -88,7 +88,7 @@ Suggested activity description:
 
 > Entwicklung, Veröffentlichung und Vertrieb von Software, insbesondere einer digitalen Malanwendung.
 
-The Gewerbe should be registered no later than the start of paid distribution. Because a public free preview supports a continuing product with an explicit later profit intention, confirm with the Düsseldorf Gewerbemeldestelle whether it considers the public-preview date the start of commercial operation. Register at that point if advised.
+The Gewerbe should be registered no later than the start of paid distribution. Because a public free preview supports a continuing product with an explicit later profit intention, confirm with the local Gewerbemeldestelle whether it considers the public-preview date the start of commercial operation. Register at that point if advised.
 
 The Gewerbe registration is made under the proprietor's legal first and last name. `Cozy Paint Studio` remains the product name and must not be presented as a separate legal entity.
 
@@ -108,9 +108,9 @@ Anschrift.net is the likely low-cost choice but is not yet contracted. Before pu
 - Clear rules for address use after cancellation and forwarding of late-arriving legal mail.
 - Permission for relevant business correspondence and registrations, where needed.
 
-Ask Anschrift.net and the Düsseldorf Gewerbemeldestelle:
+Ask Anschrift.net and the local Gewerbemeldestelle:
 
-> Ich entwickle als Einzelperson nebenberuflich eine Software und möchte die Anschrift für das Impressum nach § 5 DDG sowie für förmliche Zustellungen nutzen. Die tatsächliche Geschäftsleitung und Entwicklung befinden sich in Düsseldorf. Kann die Anschrift als öffentliche Impressumsanschrift genutzt werden, während das Gewerbe in Düsseldorf unter meiner nicht veröffentlichten Wohnanschrift angemeldet bleibt?
+> Ich entwickle als Einzelperson nebenberuflich eine Software und möchte die Anschrift für das Impressum nach § 5 DDG sowie für förmliche Zustellungen nutzen. Die tatsächliche Geschäftsleitung und Entwicklung befinden sich an meinem Wohnort. Kann die Anschrift als öffentliche Impressumsanschrift genutzt werden, während das Gewerbe an meinem Wohnort unter meiner nicht veröffentlichten Wohnanschrift angemeldet bleibt?
 
 Do not assume that a remote address automatically becomes the correct business establishment for the Gewerbeanmeldung. Avoid creating an unintended registration in another municipality or a later fee for relocating the business.
 
@@ -248,7 +248,7 @@ Do not create generic custom terms unless a concrete need arises, such as:
 The website and public preview must not launch until all of the following are true:
 
 - [ ] A valid public service/business address has been activated and contractually verified.
-- [ ] The address arrangement has been checked with the relevant provider and, if necessary, the Düsseldorf Gewerbemeldestelle.
+- [ ] The address arrangement has been checked with the relevant provider and, if necessary, the local Gewerbemeldestelle.
 - [ ] The timing of the Gewerbeanmeldung has been confirmed.
 - [ ] The Gewerbe has been registered if public operation has begun or the authority requires it for the public preview.
 - [ ] A separate telephone number or legally sufficient alternative direct-contact method is active.
@@ -266,7 +266,6 @@ The website and public preview must not launch until all of the following are tr
 - [§ 18 Medienstaatsvertrag](https://www.gesetze-bayern.de/Content/Document/MStV-18)
 - [§ 14 Gewerbeordnung](https://www.gesetze-im-internet.de/gewo/__14.html)
 - [NRW online Gewerbeanmeldung](https://service.wirtschaft.nrw/unternehmensgruendung/gewerbe-anmelden-online/)
-- [Düsseldorf Gewerbemeldestelle](https://service.duesseldorf.de/suche/-/vr-bis-detail/dienstleistung/405/show)
 - [Article 13 GDPR](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A02016R0679-20160504)
 - [GitHub Pages data collection](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
 - [GitHub General Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)

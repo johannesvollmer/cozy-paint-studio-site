@@ -936,16 +936,11 @@ The website cannot be finished from code alone. The owner must supply or approve
 
 ## Recommended build sequence
 
-1. Reserve the domain and Cozy Paint Studio Store name; decide publisher identity and release model.
-2. Establish design tokens, local font assets, base layout, language routing, and legal-page templates.
-3. Build the static landing page with placeholder-safe release states.
-4. Capture the actual release candidate and replace all provisional imagery and feature statements.
-5. Finalize Support, Privacy or Datenschutz, and Impressum or Legal notice with hosting facts and legal review.
-6. Open and moderate Discord; install the non-expiring invite.
-7. Run accessibility, performance, metadata, broken-link, placeholder, and no-tracker checks.
-8. Deploy to the final HTTPS domain.
-9. Enter the live URLs in the app About page and Partner Center.
-10. After Store certification, switch the release configuration and verify every call to action from a clean device and both languages.
+1. Finalize Support, Privacy or Datenschutz, and Impressum or Legal notice with verified hosting facts and legal review.
+2. Open and moderate Discord; install the non-expiring invite.
+3. Verify the live HTTPS domain, Store destination, and support URLs immediately before release.
+4. Enter the live URLs in the app About page and Partner Center.
+5. After Store certification, verify every call to action from a clean device and in both languages.
 
 ## Acceptance criteria
 

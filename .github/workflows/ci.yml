@@ -44,11 +44,19 @@ jobs:
       - uses: actions/checkout@v4
       - uses: lycheeverse/lychee-action@v2
         with:
+          lycheeVersion: v0.24.2
+          # Internal links are checked against dist by the quality job.
+          # The site's own origin may not resolve before its first deployment.
+          # TODO: Remove the Store exclusion once the listing is activated;
+          # Microsoft requires the website to be live before activation.
           args: >-
             --no-progress
             --include-mail=false
             --accept 200,204,206,429
-            './src/**/*.{astro,ts}'
+            --exclude '^https://cozy-paint-studio\.johannesvollmer\.com(?:/|$)'
+            --exclude '^https://apps\.microsoft\.com/detail/9PPM8C4ZT882/?$'
+            './src/**/*.astro'
+            './src/**/*.ts'
           fail: true
 
   deploy:

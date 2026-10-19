@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
+import raphaelPainting from "../../assets/paintings/painting-by-raphael-bernal-tejedor.jpg";
 import {
   appCanvasLandscape,
-  appCanvasPortrait,
   appCanvasTall,
   brushSelectionFull,
   colorPickerColor,
@@ -159,9 +159,22 @@ const benefits = de
         : "Cozy Paint Studio opens onto a wall of work. The image—not a generated file name—is the identity you reach for."}
     </p>
   </div>
-  <div class="project-wall" aria-hidden="true">
-    <figure>
-      <Image src={appCanvasPortrait} alt="" format="webp" quality={45} width={520} />
+  <div class="project-wall">
+    <figure class="credited-painting">
+      <Image
+        src={raphaelPainting}
+        alt={
+          de ? "Porträt von Raphael Bernal Tejedor" : "Portrait painted by Raphael Bernal Tejedor"
+        }
+        format="webp"
+        quality={85}
+        width={640}
+        loading="lazy"
+      />
+      <figcaption>
+        <span class="artist-credit">{de ? "Von" : "By"} Raphael Bernal Tejedor</span>
+        <p>{de ? "Gemalt in Cozy Paint Studio." : "Painted in Cozy Paint Studio."}</p>
+      </figcaption>
     </figure>
     <figure>
       <Image src={appCanvasLandscape} alt="" format="webp" quality={45} width={520} />
@@ -169,6 +182,8 @@ const benefits = de
     <figure>
       <Image src={appCanvasTall} alt="" format="webp" quality={45} width={520} />
     </figure>
-    <span class="new-project">+</span>
+    <span class="new-project" aria-hidden="true">
+      +
+    </span>
   </div>
 </section>

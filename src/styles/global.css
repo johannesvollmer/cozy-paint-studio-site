@@ -350,7 +350,8 @@
     min-inline-size: 0;
   }
 
-  .color-picker-visual figure {
+  .color-picker-visual figure,
+  .project-wall .credited-painting {
     position: relative;
     overflow: hidden;
     border: 1px solid rgb(255 255 255 / 12%);
@@ -366,7 +367,8 @@
     object-fit: cover;
   }
 
-  .color-picker-visual figcaption {
+  .color-picker-visual figcaption,
+  .credited-painting figcaption {
     position: absolute;
     inset-block-end: var(--space-1);
     inset-inline-end: var(--space-1);
@@ -527,11 +529,14 @@
   .project-wall {
     display: grid;
     grid-template-columns: 1.4fr 0.8fr 1fr;
-    grid-template-rows: 11rem 8rem;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
     gap: var(--space-1);
   }
   .project-wall figure,
-  .project-wall span {
+  .project-wall > span {
+    position: relative;
+    min-inline-size: 0;
+    min-block-size: 0;
     overflow: hidden;
     border-radius: var(--radius-content);
     background: linear-gradient(135deg, #82625f, #403943);
@@ -543,6 +548,8 @@
     grid-column: 2 / 4;
   }
   .project-wall img {
+    position: absolute;
+    inset: 0;
     inline-size: 100%;
     block-size: 100%;
     object-fit: cover;
@@ -555,6 +562,33 @@
     border: 1px dashed var(--color-outline);
     color: var(--color-active);
     font-size: 3rem;
+  }
+
+  .project-wall .credited-painting {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-surface);
+    background: var(--color-ground-deep);
+  }
+
+  .credited-painting figcaption {
+    inset-inline-start: var(--space-1);
+    inset-inline-end: auto;
+    max-inline-size: calc(100% - 2 * var(--space-1));
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: var(--radius-control);
+    padding: 0.5rem 0.65rem;
+    font-size: 0.75rem;
+    text-align: start;
+  }
+
+  .artist-credit {
+    display: block;
+    color: var(--color-text);
+  }
+
+  .credited-painting figcaption p {
+    margin: 0.2rem 0 0;
+    font-size: 0.625rem;
   }
 
   .roadmap-section {

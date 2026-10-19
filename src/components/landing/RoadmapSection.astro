@@ -34,16 +34,20 @@ const de = locale === "de";
         <li>{de ? "Lokal gespeicherte Pinseleinstellungen" : "Locally saved brush presets"}</li>
         <li>{de ? "Stiftglättung" : "Stylus smoothing"}</li>
         <li
-          title={de
-            ? "Jede Eigenschaft durch Druck, Zufall oder beides modulieren"
-            : "Modulate any property by pressure, jitter, or both"}
+          title={
+            de
+              ? "Jede Eigenschaft durch Druck, Zufall oder beides modulieren"
+              : "Modulate any property by pressure, jitter, or both"
+          }
         >
           {de ? "Druck & Zufall" : "Pressure & jitter"}
         </li>
         <li
-          title={de
-            ? "Einfache nasse Farbe (wie Kritas Dulling, kein pixelweises Verwischen)"
-            : "Simple wet paint (Krita-style dulling, no per-pixel smudge)"}
+          title={
+            de
+              ? "Einfache nasse Farbe (wie Kritas Dulling, kein pixelweises Verwischen)"
+              : "Simple wet paint (Krita-style dulling, no per-pixel smudge)"
+          }
         >
           {de ? "Einfache nasse Farbe" : "Simple wet paint"}
         </li>
@@ -131,6 +135,17 @@ const de = locale === "de";
             {de
               ? "Pinsel und Texturen als vollständige kreative Werkzeuge austauschen."
               : "Exchange brushes and textures as complete creative tools."}
+          </p>
+        </div>
+      </li>
+      <li>
+        <span>08</span>
+        <div>
+          <h3>{de ? "Pinsel-Engine-Editor" : "Brush engine editor"}</h3>
+          <p>
+            {de
+              ? "Eigene Pinsel in einem Editor coden und mit der Community teilen. Oder lass deine KI Pinsel coden. Du malst jeden Strich selbst, dies ist keine Bildgenerierungsapp!"
+              : "Code your own brushes in an editor and share them with the community. Or let the AI code a brush for you. You paint every stroke yourself, this is not an image generation app!"}
           </p>
         </div>
       </li>

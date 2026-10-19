@@ -65,8 +65,8 @@ fn shade(stamp: Stamp) -> vec4f {
     </p>
     <p class="brush-formula-note">
       {de
-        ? "Eine klare Kante, ein strukturierter Abdruck oder Farbe, die in der Körnung hängen bleibt: Schon eine kleine Idee kann einen ganz eigenen Pinsel ergeben."
-        : "A crisp edge, a textured tip, or paint catching the canvas grain: even a small idea can give a brush its own character."}
+        ? "Eine klare Kante, ein strukturierter Abdruck oder Farbe, die in der Körnung hängen bleibt: Schon eine kleine Idee kann einen ganz eigenen Pinsel ergeben. Oder lass eine KI einen einzigartigen Pinsel nur für dich programmieren! Die KI wird aber nie für dich malen ;)"
+        : "A crisp edge, a textured tip, or paint catching the canvas grain: even a small idea can give a brush its own character. Or let AI code up a unique brush just for you! It will never paint for you though ;)"}
     </p>
   </div>
 </header>
@@ -88,18 +88,4 @@ fn shade(stamp: Stamp) -> vec4f {
       <figcaption>{caption}</figcaption>
     </figure>
   ))}
-</div>
-<div class="brush-notes">
-  <p class="future-note">
-    <strong>{de ? "Die Richtung:" : "The direction:"}</strong>{" "}
-    {de
-      ? "Austauschbare Pakete aus Pinselmodellen, Vorgaben und Texturen. Noch nicht zum Download verfügbar."
-      : "Exchangeable packs of brush models, presets, and textures. Not available to download yet."}
-  </p>
-  <p class="scope-note">
-    <strong>{de ? "Keine physikalische Simulation:" : "Not a physical simulation:"}</strong>{" "}
-    {de
-      ? "Das geplante nasse Malen soll Farben überzeugend auf der Leinwand mischen. Es ist kein Versprechen, jede physikalische Eigenschaft echter Farbe zu simulieren."
-      : "The planned wet-painting tool is intended to mix colors convincingly on the canvas. It is not a promise to simulate every physical property of real paint."}
-  </p>
 </div>

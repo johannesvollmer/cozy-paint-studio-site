@@ -91,6 +91,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - name: Test the deployed site under mobile throttling
+        # lighthouserc.cjs targets the canonical HTTPS custom domain. The Pages
+        # deployment output can point at the legacy project URL, where this
+        # site's root-relative assets do not exist.
         run: pnpm test:performance
-        env:
-          LHCI_URL: ${{ needs.deploy.outputs.page_url }}

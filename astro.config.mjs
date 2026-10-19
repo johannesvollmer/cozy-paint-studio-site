@@ -13,7 +13,8 @@ export default defineConfig({
       directives: [
         "default-src 'self'",
         "base-uri 'self'",
-        "connect-src 'none'",
+        // Allow same-origin resource checks, including Lighthouse's robots.txt fetch.
+        "connect-src 'self'",
         "font-src 'self'",
         "form-action 'none'",
         "frame-src 'none'",

@@ -1,6 +1,8 @@
 ---
 import "@fontsource/iosevka-charon-mono/latin-400.css";
 import "@fontsource/iosevka-charon-mono/latin-500.css";
+import bodyFont from "@fontsource/iosevka-charon-mono/files/iosevka-charon-mono-latin-400-normal.woff2?url";
+import headingFont from "@fontsource/iosevka-charon-mono/files/iosevka-charon-mono-latin-500-normal.woff2?url";
 import SiteFooter from "../components/layout/SiteFooter.astro";
 import SiteHeader from "../components/layout/SiteHeader.astro";
 import { SITE, type Locale } from "../config/site";
@@ -43,6 +45,8 @@ const socialImage = new URL(SITE.socialImage, SITE.origin);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={headingFont} as="font" type="font/woff2" crossorigin />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content={SITE.themeColor} />
     <meta name="color-scheme" content="dark" />

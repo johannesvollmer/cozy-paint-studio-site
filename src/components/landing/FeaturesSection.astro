@@ -66,6 +66,45 @@ const benefits = de
   ))}
 </section>
 
+<section class="projects-section section-space content-grid">
+  <div>
+    <p class="eyebrow">{de ? "Visuell durch die ganze App" : "Visual throughout"}</p>
+    <h2>{de ? "Erst das Bild. Namen sind optional." : "Thumbnails first. Names optional."}</h2>
+    <p class="lead">
+      {de
+        ? "Die Augen sind der direkte Weg zum Kopf. Cozy Paint Studio nimmt das ernst und geht sorgsam mit deiner Zeit und Aufmerksamkeit um. Dieses Prinzip steckt in der ganzen App, damit du im kreativen Fluss bleibst. Pinsel, Voreinstellungen, Bilder, Projekte, alles ohne Namen. Bleib cozy."
+        : "Eyes are the highway to the brain. Cozy Paint Studio takes that seriously and respects your time and attention. That philosophy shapes the whole app, so you can stay in your creative flow. Brushes, Presets, Images, Files, nothing needs a name. Stay cozy."}
+    </p>
+  </div>
+  <div class="project-wall">
+    <figure class="credited-painting">
+      <Image
+        src={raphaelPainting}
+        alt={
+          de ? "Porträt von Raphael Bernal Tejedor" : "Portrait painted by Raphael Bernal Tejedor"
+        }
+        format="webp"
+        quality={85}
+        width={640}
+        loading="lazy"
+      />
+      <figcaption>
+        <span class="artist-credit">{de ? "Von" : "By"} Raphael Bernal Tejedor</span>
+        <p>{de ? "Gemalt in Cozy Paint Studio." : "Painted in Cozy Paint Studio."}</p>
+      </figcaption>
+    </figure>
+    <figure>
+      <Image src={appCanvasLandscape} alt="" format="webp" quality={45} width={520} />
+    </figure>
+    <figure>
+      <Image src={appCanvasTall} alt="" format="webp" quality={45} width={520} />
+    </figure>
+    <span class="new-project" aria-hidden="true">
+      +
+    </span>
+  </div>
+</section>
+
 <section class="feature-section interaction-section section-space feature-layout">
   <figure class="interface-visual">
     <Image
@@ -146,44 +185,5 @@ const benefits = de
       />
       <figcaption>{de ? "Helligkeit" : "Lightness"}</figcaption>
     </figure>
-  </div>
-</section>
-
-<section class="projects-section section-space content-grid">
-  <div>
-    <p class="eyebrow">{de ? "Visuell durch die ganze App" : "Visual throughout"}</p>
-    <h2>{de ? "Erst das Bild. Namen sind optional." : "Thumbnails first. Names optional."}</h2>
-    <p class="lead">
-      {de
-        ? "Die Augen sind der direkte Weg zum Kopf. Cozy Paint Studio nimmt das ernst und geht sorgsam mit deiner Zeit und Aufmerksamkeit um. Dieses Prinzip steckt in der ganzen App, damit du im kreativen Fluss bleibst. Pinsel, Voreinstellungen, Bilder, Projekte, alles ohne Namen. Bleib cozy."
-        : "Eyes are the highway to the brain. Cozy Paint Studio takes that seriously and respects your time and attention. That philosophy shapes the whole app, so you can stay in your creative flow. Brushes, Presets, Images, Files, nothing needs a name. Stay cozy."}
-    </p>
-  </div>
-  <div class="project-wall">
-    <figure class="credited-painting">
-      <Image
-        src={raphaelPainting}
-        alt={
-          de ? "Porträt von Raphael Bernal Tejedor" : "Portrait painted by Raphael Bernal Tejedor"
-        }
-        format="webp"
-        quality={85}
-        width={640}
-        loading="lazy"
-      />
-      <figcaption>
-        <span class="artist-credit">{de ? "Von" : "By"} Raphael Bernal Tejedor</span>
-        <p>{de ? "Gemalt in Cozy Paint Studio." : "Painted in Cozy Paint Studio."}</p>
-      </figcaption>
-    </figure>
-    <figure>
-      <Image src={appCanvasLandscape} alt="" format="webp" quality={45} width={520} />
-    </figure>
-    <figure>
-      <Image src={appCanvasTall} alt="" format="webp" quality={45} width={520} />
-    </figure>
-    <span class="new-project" aria-hidden="true">
-      +
-    </span>
   </div>
 </section>

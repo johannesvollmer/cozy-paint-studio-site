@@ -21,20 +21,36 @@ const de = locale === "de";
   </div>
 </header>
 
-<div class="roadmap-now" aria-label={de ? "Was jetzt funktioniert" : "What works now"}>
-  <p class="eyebrow">{de ? "Funktioniert Heute" : "Working today"}</p>
-  <ul>
-    <li>{de ? "Grenzenlose Leinwand " : "Infinite canvas"}</li>
-    <li>{de ? "Unbegrenztes Rückgängigmachen & Wiederholen" : "Unlimited undo & redo"}</li>
-    <li>{de ? "Automatisch gespeichert nach jedem Strich" : "Autosaved after every stroke"}</li>
-    <li>{de ? "Skalierbare Pinsel" : "Scalable brushes"}</li>
-    <li>{de ? "Pinseleinstellungen und -texturen" : "Brush settings & textures"}</li>
-    <li>{de ? "Lokal gespeicherte Pinseleinstellungen" : "Locally saved brush presets"}</li>
-  </ul>
-</div>
-
 <div class="roadmap-grid">
   <div class="roadmap-priorities">
+    <div class="roadmap-now" aria-label={de ? "Was jetzt funktioniert" : "What works now"}>
+      <p class="eyebrow">{de ? "Funktioniert Heute" : "Working today"}</p>
+      <ul>
+        <li>{de ? "Grenzenlose Leinwand " : "Infinite canvas"}</li>
+        <li>{de ? "Unbegrenztes Rückgängigmachen & Wiederholen" : "Unlimited undo & redo"}</li>
+        <li>{de ? "Automatisch gespeichert nach jedem Strich" : "Autosaved after every stroke"}</li>
+        <li>{de ? "Skalierbare Pinsel" : "Scalable brushes"}</li>
+        <li>{de ? "Pinseleinstellungen und -texturen" : "Brush settings & textures"}</li>
+        <li>{de ? "Lokal gespeicherte Pinseleinstellungen" : "Locally saved brush presets"}</li>
+        <li>{de ? "Stiftglättung" : "Stylus smoothing"}</li>
+        <li
+          title={de
+            ? "Jede Eigenschaft durch Druck, Zufall oder beides modulieren"
+            : "Modulate any property by pressure, jitter, or both"}
+        >
+          {de ? "Druck & Zufall" : "Pressure & jitter"}
+        </li>
+        <li
+          title={de
+            ? "Einfache nasse Farbe (wie Kritas Dulling, kein pixelweises Verwischen)"
+            : "Simple wet paint (Krita-style dulling, no per-pixel smudge)"}
+        >
+          {de ? "Einfache nasse Farbe" : "Simple wet paint"}
+        </li>
+        <li>{de ? "Radierer" : "Eraser"}</li>
+      </ul>
+    </div>
+
     <p class="eyebrow">{de ? "Große Funktionsprioritäten" : "Big feature priorities"}</p>
     <ol class="priority-list">
       <li>
@@ -131,7 +147,7 @@ const de = locale === "de";
     <p class="eyebrow">{de ? "Plattformrichtung" : "Platform direction"}</p>
     <ol>
       <li>
-        <span>{de ? "Zuerst" : "First"}</span>
+        <span>{de ? "Funktioniert heute" : "Working today"}</span>
         <strong>Windows</strong>
         <p>{de ? "Die erste voll funktionsfähige Version." : "The first fully working version."}</p>
       </li>

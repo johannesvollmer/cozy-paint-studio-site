@@ -614,24 +614,14 @@
   }
 
   .roadmap-now {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2) var(--space-4);
-    align-items: center;
-    margin-block: var(--space-4);
-    padding-block: var(--space-3);
-    border-block: 1px solid var(--color-outline);
-  }
-
-  .roadmap-now .eyebrow {
-    margin: 0;
+    margin-block-end: var(--space-4);
   }
 
   .roadmap-now ul {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-1);
-    padding: 0;
+    padding: var(--space-3) 0;
     list-style: none;
   }
 
@@ -649,6 +639,7 @@
     grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
     gap: var(--space-4);
     align-items: start;
+    margin-block-start: var(--space-4);
   }
 
   .priority-list,
@@ -657,12 +648,16 @@
     list-style: none;
   }
 
+  .roadmap-now ul,
+  .priority-list > li {
+    border-block-start: 1px solid rgb(157 145 144 / 36%);
+  }
+
   .priority-list > li {
     display: grid;
     grid-template-columns: 3rem 1fr;
     gap: var(--space-2);
     padding-block: var(--space-3);
-    border-block-start: 1px solid rgb(157 145 144 / 36%);
   }
 
   .priority-list > li > span {

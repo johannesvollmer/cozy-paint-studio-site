@@ -528,9 +528,14 @@
 
   .project-wall {
     display: grid;
-    grid-template-columns: 1.4fr 0.8fr 1fr;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      "portrait portrait portrait landscape landscape landscape"
+      "portrait portrait portrait johannes johannes johannes"
+      "new new new johannes johannes johannes";
     gap: var(--space-1);
+    aspect-ratio: 4 / 3;
   }
   .project-wall figure,
   .project-wall > span {
@@ -541,11 +546,14 @@
     border-radius: var(--radius-content);
     background: linear-gradient(135deg, #82625f, #403943);
   }
-  .project-wall figure:nth-child(1) {
-    grid-row: 1 / 3;
+  .project-portrait {
+    grid-area: portrait;
   }
-  .project-wall figure:nth-child(3) {
-    grid-column: 2 / 4;
+  .project-johannes {
+    grid-area: johannes;
+  }
+  .project-landscape {
+    grid-area: landscape;
   }
   .project-wall img {
     position: absolute;
@@ -556,6 +564,7 @@
     object-position: center;
   }
   .project-wall .new-project {
+    grid-area: new;
     display: grid;
     place-items: center;
     background: transparent;
@@ -565,7 +574,6 @@
   }
 
   .project-wall .credited-painting {
-    aspect-ratio: 1 / 1;
     border-radius: var(--radius-surface);
     background: var(--color-ground-deep);
   }
@@ -1114,6 +1122,31 @@
 
     .color-picker-visual {
       grid-template-columns: 1fr;
+    }
+
+    .project-wall {
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "portrait portrait portrait johannes johannes johannes"
+        "landscape landscape landscape new new new";
+      aspect-ratio: auto;
+    }
+
+    .project-wall .credited-painting img {
+      position: static;
+      block-size: auto;
+      aspect-ratio: 1;
+    }
+
+    .project-wall .credited-painting figcaption {
+      position: static;
+      max-inline-size: none;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .project-landscape {
+      aspect-ratio: 2 / 1;
     }
   }
 
